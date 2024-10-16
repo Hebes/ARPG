@@ -1,0 +1,386 @@
+<FxData>
+  <FX id="0" functionName="敌人出现特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Appear/EnemyAppear.prefab">
+    <scale x="1.20000" y="1.20000" z="1.00000" />
+  </FX>
+  <FX id="1" functionName="机器人被击中特效" isFollow="False" maxCount="20" rotation="1" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/SparkEffect/SparkEffectOld.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="6" functionName="机器人坠地尘土" isFollow="False" maxCount="20" rotation="2" effectStartCount="4" prefabPath="Assets/_Prefabs/Effect/HitEffect/Dust/EnemyFall.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="9" functionName="蓝色爆炸" isFollow="False" maxCount="20" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/Explosion/BlueExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="14" functionName="敌人普通死亡蓝色火星" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/SparkEffect/NormalKillSparkEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="17" functionName="BOSS吼叫的圈" isFollow="True" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/HaloEffect/HaloEffect.prefab">
+    <scale x="3.00000" y="3.00000" z="3.00000" />
+  </FX>
+  <FX id="22" functionName="主角尘土" isFollow="False" maxCount="20" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/Dust/PlayerFall.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="23" functionName="空气扭曲" isFollow="False" maxCount="20" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Effect/FXEffect/DisortEffect/DistortionCore-PS4.prefab">
+    <scale x="1.00000" y="1.00000" z="0.70000" />
+  </FX>
+  <FX id="40" functionName="后退尘土" isFollow="False" maxCount="20" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Effect/HitEffect/Dust/DustEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="48" functionName="飞燕特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="5" prefabPath="Assets/_Prefabs/Effect/HitEffect/FlashEffect/Flash_Distort.prefab">
+    <scale x="2.50000" y="2.50000" z="1.00000" />
+  </FX>
+  <FX id="49" functionName="普通扭曲空气特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Effect/FXEffect/DisortEffect/DistortionCore-PS4.prefab">
+    <scale x="1.00000" y="1.00000" z="0.70000" />
+  </FX>
+  <FX id="61" functionName="炮姐发射尘土" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/Dust/PaoSisterDust.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="70" functionName="主角被攻击黄色特效" isFollow="False" maxCount="20" rotation="2" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/EnemyHitEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="71" functionName="机器人被攻击动画" isFollow="False" maxCount="20" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/EnemyHurt/EnemyHurt.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="76" functionName="主角护盾火星" isFollow="True" maxCount="10" rotation="3" effectStartCount="5" prefabPath="Assets/_Prefabs/Effect/HitEffect/SparkEffect/PlayerArmorSpark01.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="80" functionName="主角护盾火星2" isFollow="True" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/SparkEffect/PlayerArmorSpark02.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="90" functionName="无属性子弹爆炸" isFollow="False" maxCount="10" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Bullet/BulletExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="91" functionName="蓝色能量球特效" isFollow="False" maxCount="30" rotation="3" effectStartCount="7" prefabPath="Assets/_Prefabs/Effect/EnergyBall/EnergyBallBlue2.prefab">
+    <scale x="0.40000" y="0.40000" z="1.00000" />
+  </FX>
+  <FX id="92" functionName="敌人死亡小方块" isFollow="False" maxCount="20" rotation="3" effectStartCount="7" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/BlockParticle_Enemy.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="95" functionName="主角轻攻击子弹击中地面" isFollow="False" maxCount="20" rotation="3" effectStartCount="10" prefabPath="Assets/_Prefabs/Effect/Bullet/LightGunHitGroundSpark.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="98" functionName="透明刀光ATK1" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="99" functionName="刀光ATK2" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="100" functionName="刀光ATK15" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK15.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="101" functionName="刀光ATK5" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK5.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="102" functionName="刀光ATK23" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK23.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="103" functionName="透明刀光ATK4" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATK1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="104" functionName="透明刀光ATK5" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATK2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="105" functionName="空中刀光ATK6" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATK6.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="106" functionName="刀光上挑" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewUpRising.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="107" functionName="突刺刀光1" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHv1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="108" functionName="突刺刀光2" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHv2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="109" functionName="突刺刀光3" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHv3.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="110" functionName="透明刀光ATK7_5" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATKHv1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="111" functionName="透明刀光ATK7_6" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATKHv2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="112" functionName="透明刀光ATK7_7" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATKHv5.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="114" functionName="枪刃空中刀光ATK1" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK16.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="116" functionName="刀光ATKRollEnd" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKRollEnd.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="117" functionName="上挑刀光" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHv1Push.prefab">
+    <scale x="1.00000" y="1.00000" z="0.10000" />
+  </FX>
+  <FX id="118" functionName="下劈刀光" isFollow="True" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKRollGround.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="121" functionName="蓄力1" isFollow="False" maxCount="3" rotation="5" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/Charging/Charging1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="124" functionName="蓄力攻击" isFollow="False" maxCount="3" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/Charging/ChargingScreenEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="125" functionName="芯片吸收" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/ClipAbsorb/ChipAbsorb.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="126" functionName="蓄力攻击" isFollow="True" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/ClipAbsorb/EnemyChip.prefab">
+    <scale x="0.20000" y="0.17000" z="1.00000" />
+  </FX>
+  <FX id="127" functionName="芯片生成飞出" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/HitEffect/ClipAbsorb/ChipExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="128" functionName="警告" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Warning.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="131" functionName="DahalBullet" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Bullet/DahalBullet.prefab">
+    <scale x="0.15000" y="0.15000" z="1.00000" />
+  </FX>
+  <FX id="133" functionName="暴食ATK3" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Beelzebub/BeelzebubATK3.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="134" functionName="暴食ATK1" isFollow="True" maxCount="10" rotation="1" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Beelzebub/BeelzebubATK1_1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="139" functionName="暴食技能ATK1_2" isFollow="True" maxCount="6" rotation="1" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Beelzebub/BeelzebubATK1_2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="142" functionName="使用技能召唤暴食砸到地面的爆炸" isFollow="False" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/RealisticEffect/IceExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="144" functionName="小怪被处决死的时候顺着裂缝散落的粒子" isFollow="False" maxCount="6" rotation="1" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/SparkEffect/SparkEffectLongTime.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="145" functionName="暴食自己砸到地面的爆炸" isFollow="False" maxCount="6" rotation="5" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/RealisticEffect/IceExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="148" functionName="达哈尔火箭" isFollow="False" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Dahal/DahalAtk4Bullet.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="149" functionName="达哈尔ATK6下落火星" isFollow="False" maxCount="3" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Dahal/DahalATK6FallSpark.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="150" functionName="达哈尔切换状态火星" isFollow="False" maxCount="3" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Dahal/DahalTansferSpark.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="151" functionName="敌人受伤特效" isFollow="False" maxCount="5" rotation="2" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/EnemyHitEffect02.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="152" functionName="主角聚怪特效" isFollow="True" maxCount="5" rotation="6" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/CloseEnemyEffect/Player/CloseEnemyEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="153" functionName="主角聚怪后冲刺特效" isFollow="False" maxCount="5" rotation="6" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/CloseEnemyEffect/Blast/CloseEnemyEffectBlast.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="154" functionName="激光特效" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Mosquito/BeeLaser.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="155" functionName="激光特效" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Mosquito/BeeLaser2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="156" functionName="重击特效" isFollow="False" maxCount="1" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/HeavyHitEffect/HeavyHitEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="157" functionName="敌人防御特效" isFollow="True" maxCount="1" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/PlayerBlockEffect/EnemyBlockEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="158" functionName="主角防御特效" isFollow="True" maxCount="1" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/PlayerBlockEffect/PlayerBlockEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="159" functionName="场景中的红色货币光晕" isFollow="True" maxCount="10" rotation="3" effectStartCount="4" prefabPath="Assets/_Prefabs/Effect/Scene/RedMoneyHalo.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="160" functionName="敌人破盾特效" isFollow="False" maxCount="10" rotation="3" effectStartCount="4" prefabPath="Assets/_Prefabs/Effect/HitEffect/BreakShield/BreakShieldEnemy.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="161" functionName="主角破盾特效" isFollow="False" maxCount="10" rotation="3" effectStartCount="4" prefabPath="Assets/_Prefabs/Effect/HitEffect/BreakShield/BreakShield.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="162" functionName="BOSS爆炸特效" isFollow="False" maxCount="2" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/EnemyExplosion/EnemyExplosion001.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="163" functionName="怪物消失" isFollow="True" maxCount="2" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/DeadEffect/DeadEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="164" functionName="开启扭曲" isFollow="False" maxCount="2" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/FXEffect/TwirlEffect/TwirlEffect.prefab">
+    <scale x="3.00000" y="3.00000" z="1.00000" />
+  </FX>
+  <FX id="165" functionName="分身斩特效" isFollow="False" maxCount="2" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/ShadeAtk/ShadeAtk.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="166" functionName="主角匝地" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHitGround2.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="168" functionName="主角空中下劈转" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATKRoll.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="169" functionName="主角劈转" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewHitGround.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="170" functionName="主角劈转" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK3.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="171" functionName="主角劈转" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATK14.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="172" functionName="主角劈转" isFollow="True" maxCount="1" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewRoll.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="173" functionName="主角ATK上挑" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKUpRising.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="174" functionName="主角ATK上挑" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewRollEnd.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="175" functionName="主角空中ATK7" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATK7.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="176" functionName="主角空中ATKHv1Push" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewAirATKHv1Push.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="177" functionName="Dahal处决分身斩" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/ShadeAtk/ShadeAtk_ToLeftAir.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="178" functionName="DahalQTE受伤" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/QTEShadeAtk/DahalQTEHurt.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="179" functionName="暴食QTE受伤分身斩" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/QTEShadeAtk/BeelzebubQTEHurt.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="180" functionName="骑兵QTE死亡分身斩" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/ShadeAtk/ShadeAtk_Down.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="181" functionName="空中蓄力1" isFollow="True" maxCount="6" rotation="5" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/Charging/AirCharging1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="182" functionName="追击分身斩" isFollow="True" maxCount="6" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/ShadeAtk/ShadeAtk_Chase.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="183" functionName="左右穿梭刀光" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewDoubelFlash.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="184" functionName="地面下劈刀光" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewRollEndFrameGround.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="185" functionName="空中下劈2刀光" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewRollEndFrame1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="186" functionName="空中下劈2刀光" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewRollEndFrame.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="188" functionName="Supply Box add Energy" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/SupplyBox/SupplyBoxScreenEffect_Energy.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="189" functionName="Supply Box add Energy Matrix" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/SupplyBox/SupplyBoxScreenEffect_EnergyMatrix.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="191" functionName="分身斩技能" isFollow="False" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/ShadeAtk/ShadeAtk_Skill.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="192" functionName="宝箱喷金币" isFollow="False" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/Money/CoinGenerator.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="193" functionName="大风车特效" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKRollGround.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="194" functionName="主角突刺特效" isFollow="True" maxCount="6" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewATKHv4.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="195" functionName="大锤尘土" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/Dust/HammerATK1DustEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="197" functionName="锤子导弹" isFollow="False" maxCount="10" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Missile/Missile.prefab">
+    <scale x="0.25000" y="0.25000" z="1.00000" />
+  </FX>
+  <FX id="198" functionName="锤子导弹爆炸效果" isFollow="False" maxCount="10" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Sticker/MissileExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="200" functionName="Jack瞄准特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="6" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Jack/JackAim.prefab">
+    <scale x="0.70000" y="0.70000" z="1.00000" />
+  </FX>
+  <FX id="201" functionName="Jack真瞄准特效" isFollow="False" maxCount="6" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Jack/Baked/JackAimEffect1.prefab">
+    <scale x="0.70000" y="0.70000" z="1.00000" />
+  </FX>
+  <FX id="202" functionName="Jack瞄准爆炸特效" isFollow="False" maxCount="10" rotation="3" effectStartCount="3" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Jack/JackAimExplosion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="203" functionName="巨型机器人激光" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Mosquito/GiantRobotLaser.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="204" functionName="巨型机器人激光" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Mosquito/GiantRobotLaser 1.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="205" functionName="犹大激光" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Mosquito/JudgesLaser.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="206" functionName="音乐播放器爆炸特效" isFollow="False" maxCount="1" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/HitEffect/EnemyExplosion/EnemyExplosion002.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="207" functionName="霰弹利刃的霰弹" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/Fire/FireShotGun01.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="208" functionName="达哈尔感谢" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/Boss/Dahal.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="209" functionName="珠子攻击2" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Sticker/StickerAtk2Effect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="210" functionName="卡洛斯Atk4特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Carlos/EatingBossAtk4Effect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="211" functionName="犹大攻击2" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/EnemyEffect/Judges/JudgesLightingEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="212" functionName="跳跃特效" isFollow="False" maxCount="20" rotation="3" effectStartCount="10" prefabPath="Assets/_Prefabs/Effect/NewPlayerEffect/NewPlayerAirJumpEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="213" functionName="敌人处决黑屏1" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/Resources/Prefab/CameraEffectProxy/ShakePrefab/ExecuteBlack.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="214" functionName="敌人处决屏幕特效1" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/Resources/Prefab/CameraEffectProxy/ShakePrefab/EnemyExecute.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="215" functionName="e26关屏幕" isFollow="False" maxCount="20" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Effect/CloseScreenEffect.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="216" functionName="受伤蜂窝特效" isFollow="False" maxCount="2" rotation="3" effectStartCount="1" prefabPath="Assets/Resources/Prefab/CameraEffectProxy/ShakePrefab/PlayerHurt.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="217" functionName="主角洋葱皮" isFollow="False" maxCount="20" rotation="3" effectStartCount="10" prefabPath="Assets/_Packages/Onion/Onion.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="218" functionName="怪物洋葱皮" isFollow="False" maxCount="20" rotation="3" effectStartCount="10" prefabPath="Assets/_Packages/Onion/Onion_DaoBrother.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="219" functionName="刀哥碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/DaoBrotherAndPaoSisterPartA.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="220" functionName="刀哥碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/DaoBrotherAndPaoSisterPartB.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="221" functionName="刀炮碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/DaoPaoPartA.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="222" functionName="刀炮碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/DaoPaoPartB.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="223" functionName="半身自爆碎片" isFollow="False" maxCount="4" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/BombKillerIIPartA.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="224" functionName="半身自爆碎片" isFollow="False" maxCount="4" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/BombKillerIIPartB.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="225" functionName="大脚碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/FooterPartA.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="226" functionName="大脚碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="1" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/FooterPartB.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="227" functionName="跳拳碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/JumperPartA.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+  <FX id="228" functionName="跳拳碎片" isFollow="False" maxCount="5" rotation="3" effectStartCount="2" prefabPath="Assets/_Prefabs/Enemy/EnemyPart/JumperPartB.prefab">
+    <scale x="1.00000" y="1.00000" z="1.00000" />
+  </FX>
+</FxData>

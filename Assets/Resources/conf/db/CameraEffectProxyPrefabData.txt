@@ -1,0 +1,20 @@
+1,无,Nothing,Prefab/CameraEffectProxy/ShakePrefab/,无,一个什么都没有的特效
+2,镜头抖动,MonsterJumperCatch,Prefab/CameraEffectProxy/ShakePrefab/,Shake,用于Jumper怪将主角丢在地面上产生的镜头抖动和帧冻结
+3,集成特效,ExecuteCameraEffect,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur,Shake,AAASuperHex,捏碎核心的镜头特效
+4,镜头抖动,JumperCatchSuccess,Prefab/CameraEffectProxy/ShakePrefab/,Shake,Jumper抓取成功
+5,镜头抖动,JumperCatchRelease,Prefab/CameraEffectProxy/ShakePrefab/,Shake,Jumper抓取成功丢主角
+6,镜头抖动,BeelzebubJumpAttack,Prefab/CameraEffectProxy/ShakePrefab/,Shake，FV,暴食跳跃攻击
+7,镜头抖动,BeelzebubEatEffect,Prefab/CameraEffectProxy/ShakePrefab/,FV,暴食吃人攻击
+8,镜头抖动,BeelzebubSawEffect,Prefab/CameraEffectProxy/ShakePrefab/,Shake，FV,暴食锯人攻击
+9,死亡镜头,DaoDieEffect,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur，FV,刀哥死亡2镜头特效
+10,死亡镜头,DaoFlashDieEffect,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur，FV,刀哥受到飞燕攻击死亡特效
+11,技能镜头,BeelzebubSkillEffect,Prefab/CameraEffectProxy/ShakePrefab/,FV,暴食技能FV调节
+12,技能镜头抖动,BeelzebubSkillShake,Prefab/CameraEffectProxy/ShakePrefab/,Shake,暴食技能镜头抖动
+13,镜头抖动,JumperHitGround,Prefab/CameraEffectProxy/ShakePrefab/,Shake,Jumper砸地板
+14,镜头抖动,JumperCatchEffect,Prefab/CameraEffectProxy/ShakePrefab/,Shake，fv，MotionBlur,Jumper抓人
+15,镜头模糊,PlayerPerfectFlash,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur,主角一闪
+16,镜头边缘闪光,PlayerHurt,Prefab/CameraEffectProxy/ShakePrefab/,AAASuperHex,怪物进入虚弱
+17,镜头抖动，镜头模糊,BeelzebubAngryEffect,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur,CameraShake,暴食吼叫镜头效果
+18,镜头模糊,DahalAngry,Prefab/CameraEffectProxy/ShakePrefab/,MotionBlur,Dahal暴气
+19,边缘闪光,EnemyExecute,Prefab/CameraEffectProxy/ShakePrefab/,AAASuperHex,怪物处决边缘闪光
+20,黑屏,ExecuteBlack,Prefab/CameraEffectProxy/ShakePrefab/,color mask,处决黑屏

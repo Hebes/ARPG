@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: "sprite_Water"
+  m_Shader: {fileID: 4800000, guid: 60cc97cc68974a84a006b38b3e0af66d, type: 3}
+  m_ShaderKeywords: "ETC1_EXTERNAL_ALPHA"
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistortionMap:
+        m_Texture: {fileID: 2800000, guid: ed6b3c13aef04e98be02ba9c174b9e20, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMap2:
+        m_Texture: {fileID: 2800000, guid: dbf9d7edae0748989b89d1c0961b3552, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BackgroundFade2: 1
+    - _BackgroundFade3: 1
+    - _BackgroundScaleX: 1
+    - _BackgroundScaleX2: 1
+    - _BackgroundScaleX3: 1
+    - _BackgroundScaleY: 1
+    - _BackgroundScaleY2: 1
+    - _BackgroundScaleY3: 1
+    - _BackgroundScrollX: 0
+    - _BackgroundScrollX2: 0
+    - _BackgroundScrollX3: 0
+    - _BackgroundScrollY: 0
+    - _BackgroundScrollY2: 0
+    - _BackgroundScrollY3: 0
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DispScrollSpeedX1: 0
+    - _DispScrollSpeedX2: 0.1
+    - _DispScrollSpeedX3: 0
+    - _DispScrollSpeedX4: 0
+    - _DispScrollSpeedY1: 0.05
+    - _DispScrollSpeedY2: 0
+    - _DispScrollSpeedY3: -0.25
+    - _DispScrollSpeedY4: -0.25
+    - _DistortionPower: 1
+    - _DistortionPower2: 1
+    - _DistortionPower3: 0.08
+    - _DistortionPower4: 0.08
+    - _DistortionScaleX: 1
+    - _DistortionScaleX2: 1
+    - _DistortionScaleX3: 1
+    - _DistortionScaleX4: 1
+    - _DistortionScaleY: 1
+    - _DistortionScaleY2: 1
+    - _DistortionScaleY3: 0.5
+    - _DistortionScaleY4: 0.5
+    - _DistortionScrollX: 0
+    - _DistortionScrollX2: 0
+    - _DistortionScrollY: 0
+    - _DistortionScrollY2: 0
+    - _DstBlend: 0
+    - _EmissionScaleUI: 0
+    - _Exposure: 1
+    - _Glossiness: 0.5
+    - _MainTexFade2: 0
+    - _MainTexFade3: 0
+    - _MainTexScaleX: 1
+    - _MainTexScaleX2: 1
+    - _MainTexScaleX3: 1
+    - _MainTexScaleY: 1
+    - _MainTexScaleY2: 1
+    - _MainTexScaleY3: 1
+    - _MainTexScrollX: 0
+    - _MainTexScrollX2: 0
+    - _MainTexScrollX3: 0
+    - _MainTexScrollY: 0
+    - _MainTexScrollY2: 0
+    - _MainTexScrollY3: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Refraction: 0.01
+    - _Refraction2: 1
+    - _Refraction3: 1
+    - _Rotation: 0
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}

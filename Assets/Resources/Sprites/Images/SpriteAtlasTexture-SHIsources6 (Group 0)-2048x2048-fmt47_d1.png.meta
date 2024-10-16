@@ -1,0 +1,1292 @@
+fileFormatVersion: 2
+guid: e848e217cd3243d79081d43ffa738862
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: roofLeaf3
+  - first:
+      213: 21300002
+    second: gearSupportLiang
+  - first:
+      213: 21300004
+    second: yangTaiFence
+  - first:
+      213: 21300006
+    second: yangTaiSide
+  - first:
+      213: 21300008
+    second: floorRight
+  - first:
+      213: 21300010
+    second: fenceLeft
+  - first:
+      213: 21300012
+    second: fenceRight
+  - first:
+      213: 21300014
+    second: paint3
+  - first:
+      213: 21300016
+    second: bell
+  - first:
+      213: 21300018
+    second: huaPing
+  - first:
+      213: 21300020
+    second: menKuangLeft
+  - first:
+      213: 21300022
+    second: fence
+  - first:
+      213: 21300024
+    second: gearWood
+  - first:
+      213: 21300026
+    second: roofBroken2
+  - first:
+      213: 21300028
+    second: gearThrone
+  - first:
+      213: 21300030
+    second: paint2
+  - first:
+      213: 21300032
+    second: roofUpWall
+  - first:
+      213: 21300034
+    second: LanternColumn
+  - first:
+      213: 21300036
+    second: doorCurtain
+  - first:
+      213: 21300038
+    second: roofUp
+  - first:
+      213: 21300040
+    second: menKuangRight
+  - first:
+      213: 21300042
+    second: e
+  - first:
+      213: 21300044
+    second: yangTaiFloor
+  - first:
+      213: 21300046
+    second: roofLeft
+  - first:
+      213: 21300048
+    second: roofLeaf2
+  - first:
+      213: 21300050
+    second: roofLeaf1
+  - first:
+      213: 21300052
+    second: roofLeaf0
+  - first:
+      213: 21300054
+    second: throne
+  - first:
+      213: 21300056
+    second: wallRight
+  - first:
+      213: 21300058
+    second: roofTop
+  - first:
+      213: 21300060
+    second: roofDown
+  - first:
+      213: 21300062
+    second: roofRight
+  - first:
+      213: 21300064
+    second: gearSupportColumn
+  - first:
+      213: 21300066
+    second: floor
+  - first:
+      213: 21300068
+    second: floorLeft
+  - first:
+      213: 21300070
+    second: gearSupportPan
+  - first:
+      213: 21300072
+    second: paint1
+  - first:
+      213: 21300074
+    second: paper
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 47
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: roofUpWall
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 567
+        width: 301
+        height: 220
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -150.5, y: 110}
+        - {x: 150.5, y: 110}
+        - {x: -150.5, y: -110}
+      - - {x: -150.5, y: -110}
+        - {x: 150.5, y: 110}
+        - {x: 150.5, y: -110}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofLeaf1
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 0
+        width: 28
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 13}
+        - {x: 14, y: 13}
+        - {x: -14, y: -13}
+      - - {x: -14, y: -13}
+        - {x: 14, y: 13}
+        - {x: 14, y: -13}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofDown
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 453
+        width: 219
+        height: 250
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.5, y: 125}
+        - {x: 109.5, y: 125}
+        - {x: -109.5, y: -125}
+      - - {x: -109.5, y: -125}
+        - {x: 109.5, y: 125}
+        - {x: 109.5, y: -125}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5305410000000000800000000000000
+      internalID: 21300060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gearSupportLiang
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1019
+        width: 134
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -67, y: 16.5}
+        - {x: 67, y: 16.5}
+        - {x: -67, y: -16.5}
+      - - {x: -67, y: -16.5}
+        - {x: 67, y: 16.5}
+        - {x: 67, y: -16.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fenceRight
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1533
+        width: 51
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -25.5, y: 70}
+        - {x: 25.5, y: 70}
+        - {x: -25.5, y: -70}
+      - - {x: -25.5, y: -70}
+        - {x: 25.5, y: 70}
+        - {x: 25.5, y: -70}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menKuangRight
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 363
+        width: 248
+        height: 440
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -124, y: 220}
+        - {x: 124, y: 220}
+        - {x: -124, y: -220}
+      - - {x: -124, y: -220}
+        - {x: 124, y: 220}
+        - {x: 124, y: -220}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: huaPing
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1064
+        width: 40
+        height: 166
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 83}
+        - {x: 20, y: 83}
+        - {x: -20, y: -83}
+      - - {x: -20, y: -83}
+        - {x: 20, y: 83}
+        - {x: 20, y: -83}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paper
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 0
+        width: 214
+        height: 431
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -107, y: 215.5}
+        - {x: 107, y: 215.5}
+        - {x: -107, y: -215.5}
+      - - {x: -107, y: -215.5}
+        - {x: 107, y: 215.5}
+        - {x: 107, y: -215.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6305410000000000800000000000000
+      internalID: 21300074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorLeft
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1349
+        width: 40
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 66}
+        - {x: 20, y: 66}
+        - {x: -20, y: -66}
+      - - {x: -20, y: -66}
+        - {x: 20, y: 66}
+        - {x: 20, y: -66}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46305410000000000800000000000000
+      internalID: 21300068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fence
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 293
+        width: 366
+        height: 158
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -183, y: 79}
+        - {x: 183, y: 79}
+        - {x: -183, y: -79}
+      - - {x: -183, y: -79}
+        - {x: 183, y: 79}
+        - {x: 183, y: -79}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throne
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 805
+        width: 458
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -229, y: 49}
+        - {x: 229, y: 49}
+        - {x: -229, y: -49}
+      - - {x: -229, y: -49}
+        - {x: 229, y: 49}
+        - {x: 229, y: -49}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65305410000000000800000000000000
+      internalID: 21300054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paint2
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 905
+        width: 469
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -234.5, y: 26}
+        - {x: 234.5, y: 26}
+        - {x: -234.5, y: -26}
+      - - {x: -234.5, y: -26}
+        - {x: 234.5, y: 26}
+        - {x: 234.5, y: -26}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: e
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1195
+        width: 371
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -185.5, y: 31.5}
+        - {x: 185.5, y: 31.5}
+        - {x: -185.5, y: -31.5}
+      - - {x: -185.5, y: -31.5}
+        - {x: 185.5, y: 31.5}
+        - {x: 185.5, y: -31.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofBroken2
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 1010
+        width: 36
+        height: 59
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 29.5}
+        - {x: 18, y: 29.5}
+        - {x: -18, y: -29.5}
+      - - {x: -18, y: -29.5}
+        - {x: 18, y: 29.5}
+        - {x: 18, y: -29.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofTop
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 453
+        width: 193
+        height: 229
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -96.5, y: 114.5}
+        - {x: 96.5, y: 114.5}
+        - {x: -96.5, y: -114.5}
+      - - {x: -96.5, y: -114.5}
+        - {x: 96.5, y: 114.5}
+        - {x: 96.5, y: -114.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5305410000000000800000000000000
+      internalID: 21300058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofLeft
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 0
+        width: 75
+        height: 298
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 149}
+        - {x: 37.5, y: 149}
+        - {x: -37.5, y: -149}
+      - - {x: -37.5, y: -149}
+        - {x: 37.5, y: 149}
+        - {x: 37.5, y: -149}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fenceLeft
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 1019
+        width: 49
+        height: 140
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 70}
+        - {x: 24.5, y: 70}
+        - {x: -24.5, y: -70}
+      - - {x: -24.5, y: -70}
+        - {x: 24.5, y: 70}
+        - {x: 24.5, y: -70}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofRight
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 705
+        width: 80
+        height: 298
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 149}
+        - {x: 40, y: 149}
+        - {x: -40, y: -149}
+      - - {x: -40, y: -149}
+        - {x: 40, y: 149}
+        - {x: 40, y: -149}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5305410000000000800000000000000
+      internalID: 21300062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofLeaf3
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 0
+        width: 20
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 14.5}
+        - {x: 10, y: 14.5}
+        - {x: -10, y: -14.5}
+      - - {x: -10, y: -14.5}
+        - {x: 10, y: 14.5}
+        - {x: 10, y: -14.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menKuangLeft
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 363
+        width: 256
+        height: 440
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -128, y: 220}
+        - {x: 128, y: 220}
+        - {x: -128, y: -220}
+      - - {x: -128, y: -220}
+        - {x: 128, y: 220}
+        - {x: 128, y: -220}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bell
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1349
+        width: 68
+        height: 182
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34, y: 91}
+        - {x: 34, y: 91}
+        - {x: -34, y: -91}
+      - - {x: -34, y: -91}
+        - {x: 34, y: 91}
+        - {x: 34, y: -91}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: doorCurtain
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 385
+        height: 388
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -192.5, y: 194}
+        - {x: 192.5, y: 194}
+        - {x: -192.5, y: -194}
+      - - {x: -192.5, y: -194}
+        - {x: 192.5, y: 194}
+        - {x: 192.5, y: -194}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 433
+        width: 556
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -278, y: 66}
+        - {x: 278, y: 66}
+        - {x: -278, y: -66}
+      - - {x: -278, y: -66}
+        - {x: 278, y: 66}
+        - {x: 278, y: -66}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26305410000000000800000000000000
+      internalID: 21300066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gearWood
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1010
+        width: 237
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -118.5, y: 26}
+        - {x: 118.5, y: 26}
+        - {x: -118.5, y: -26}
+      - - {x: -118.5, y: -26}
+        - {x: 118.5, y: 26}
+        - {x: 118.5, y: -26}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gearThrone
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 789
+        width: 191
+        height: 87
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -95.5, y: 43.5}
+        - {x: 95.5, y: 43.5}
+        - {x: -95.5, y: -43.5}
+      - - {x: -95.5, y: -43.5}
+        - {x: 95.5, y: 43.5}
+        - {x: 95.5, y: -43.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yangTaiFloor
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 185
+        width: 557
+        height: 106
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -278.5, y: 53}
+        - {x: 278.5, y: 53}
+        - {x: -278.5, y: -53}
+      - - {x: -278.5, y: -53}
+        - {x: 278.5, y: 53}
+        - {x: 278.5, y: -53}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gearSupportColumn
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1064
+        width: 53
+        height: 205
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26.5, y: 102.5}
+        - {x: 26.5, y: 102.5}
+        - {x: -26.5, y: -102.5}
+      - - {x: -26.5, y: -102.5}
+        - {x: 26.5, y: 102.5}
+        - {x: 26.5, y: -102.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06305410000000000800000000000000
+      internalID: 21300064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gearSupportPan
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1019
+        width: 174
+        height: 174
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -87, y: 87}
+        - {x: 87, y: 87}
+        - {x: -87, y: -87}
+      - - {x: -87, y: -87}
+        - {x: 87, y: 87}
+        - {x: 87, y: -87}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66305410000000000800000000000000
+      internalID: 21300070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yangTaiSide
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1349
+        width: 24
+        height: 246
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -12, y: 123}
+        - {x: 12, y: 123}
+        - {x: -12, y: -123}
+      - - {x: -12, y: -123}
+        - {x: 12, y: 123}
+        - {x: 12, y: -123}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofLeaf2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1105
+        width: 23
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.5, y: 8.5}
+        - {x: 11.5, y: 8.5}
+        - {x: -11.5, y: -8.5}
+      - - {x: -11.5, y: -8.5}
+        - {x: 11.5, y: 8.5}
+        - {x: 11.5, y: -8.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yangTaiFence
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 0
+        width: 370
+        height: 361
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -185, y: 180.5}
+        - {x: 185, y: 180.5}
+        - {x: -185, y: -180.5}
+      - - {x: -185, y: -180.5}
+        - {x: 185, y: 180.5}
+        - {x: 185, y: -180.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wallRight
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 705
+        width: 54
+        height: 440
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 220}
+        - {x: 27, y: 220}
+        - {x: -27, y: -220}
+      - - {x: -27, y: -220}
+        - {x: 27, y: 220}
+        - {x: 27, y: -220}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85305410000000000800000000000000
+      internalID: 21300056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofUp
+      rect:
+        serializedVersion: 2
+        x: 1300
+        y: 567
+        width: 192
+        height: 298
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -96, y: 149}
+        - {x: 96, y: 149}
+        - {x: -96, y: -149}
+      - - {x: -96, y: -149}
+        - {x: 96, y: 149}
+        - {x: 96, y: -149}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paint3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1298
+        width: 444
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -222, y: 24.5}
+        - {x: 222, y: 24.5}
+        - {x: -222, y: -24.5}
+      - - {x: -222, y: -24.5}
+        - {x: 222, y: 24.5}
+        - {x: 222, y: -24.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floorRight
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1349
+        width: 33
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16.5, y: 66}
+        - {x: 16.5, y: 66}
+        - {x: -16.5, y: -66}
+      - - {x: -16.5, y: -66}
+        - {x: 16.5, y: 66}
+        - {x: 16.5, y: -66}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paint1
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 959
+        width: 473
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -236.5, y: 24.5}
+        - {x: 236.5, y: 24.5}
+        - {x: -236.5, y: -24.5}
+      - - {x: -236.5, y: -24.5}
+        - {x: 236.5, y: 24.5}
+        - {x: 236.5, y: -24.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86305410000000000800000000000000
+      internalID: 21300072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roofLeaf0
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1080
+        width: 28
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14, y: 11.5}
+        - {x: 14, y: 11.5}
+        - {x: -14, y: -11.5}
+      - - {x: -14, y: -11.5}
+        - {x: 14, y: 11.5}
+        - {x: 14, y: -11.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LanternColumn
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 905
+        width: 91
+        height: 391
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -45.5, y: 195.5}
+        - {x: 45.5, y: 195.5}
+        - {x: -45.5, y: -195.5}
+      - - {x: -45.5, y: -195.5}
+        - {x: 45.5, y: 195.5}
+        - {x: 45.5, y: -195.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      LanternColumn: 21300034
+      bell: 21300016
+      doorCurtain: 21300036
+      e: 21300042
+      fence: 21300022
+      fenceLeft: 21300010
+      fenceRight: 21300012
+      floor: 21300066
+      floorLeft: 21300068
+      floorRight: 21300008
+      gearSupportColumn: 21300064
+      gearSupportLiang: 21300002
+      gearSupportPan: 21300070
+      gearThrone: 21300028
+      gearWood: 21300024
+      huaPing: 21300018
+      menKuangLeft: 21300020
+      menKuangRight: 21300040
+      paint1: 21300072
+      paint2: 21300030
+      paint3: 21300014
+      paper: 21300074
+      roofBroken2: 21300026
+      roofDown: 21300060
+      roofLeaf0: 21300052
+      roofLeaf1: 21300050
+      roofLeaf2: 21300048
+      roofLeaf3: 21300000
+      roofLeft: 21300046
+      roofRight: 21300062
+      roofTop: 21300058
+      roofUp: 21300038
+      roofUpWall: 21300032
+      throne: 21300054
+      wallRight: 21300056
+      yangTaiFence: 21300004
+      yangTaiFloor: 21300044
+      yangTaiSide: 21300006
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

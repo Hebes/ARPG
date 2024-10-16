@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<trophyconf version="1.1" platform="ps4" policy="large">
+ <title-name>ICEY</title-name>
+ <title-detail>ICEY's Trophys</title-detail>
+ <trophy id="000">
+  <name>Hastur</name>
+  <detail>Earn all trophies</detail>
+ </trophy>
+ <trophy id="001">
+  <name>Once Isn't Enough</name>
+  <detail>Do not wake up ICEY</detail>
+ </trophy>
+ <trophy id="002">
+  <name>Pitfalls</name>
+  <detail>Do not activate the photon bridge and jump 3 times into the ravine</detail>
+ </trophy>
+ <trophy id="003">
+  <name>Restart, Restart</name>
+  <detail>Keep trying to go left in the "extra area"</detail>
+ </trophy>
+ <trophy id="004">
+  <name>Junk Jumper</name>
+  <detail>Jump into sewage 3 times</detail>
+ </trophy>
+ <trophy id="005">
+  <name>God's 9 Billion Names</name>
+  <detail>Learn the name of God</detail>
+ </trophy>
+ <trophy id="006">
+  <name>Trophy Addict</name>
+  <detail>Finish the story in the "Totally Empty Room"</detail>
+ </trophy>
+ <trophy id="007">
+  <name>Waiting for Nothing</name>
+  <detail>Wait for a few minutes in the "Totally Empty Room"</detail>
+ </trophy>
+ <trophy id="008">
+  <name>Bronze Trophy</name>
+  <detail>Earn a bronze trophy in the "Totally Empty Room"</detail>
+ </trophy>
+ <trophy id="009">
+  <name>Silver Trophy</name>
+  <detail>Earn a silver trophy in the "Totally Empty Room"</detail>
+ </trophy>
+ <trophy id="010">
+  <name>Buy Another Copy!</name>
+  <detail>Witness secrets of development in the "Archive Room"</detail>
+ </trophy>
+ <trophy id="011">
+  <name>Gate Crasher</name>
+  <detail>Ignore the narrator and enter Emberville before the gate closes</detail>
+ </trophy>
+ <trophy id="012">
+  <name>Black Star Rises</name>
+  <detail>And in the dark of night, the unfathomable Black Star rises</detail>
+ </trophy>
+ <trophy id="013">
+  <name>People Are Pigs</name>
+  <detail>Select "Not Ready" before the final battle</detail>
+ </trophy>
+ <trophy id="014">
+  <name>SHIO</name>
+  <detail>Enter level "Shio"</detail>
+ </trophy>
+ <trophy id="015">
+  <name>CEO and Miss Perfect</name>
+  <detail>Earn sponsorship for the game</detail>
+ </trophy>
+ <trophy id="016">
+  <name>ICEY, UCEY</name>
+  <detail>Discover the truth of ICEY's birth</detail>
+ </trophy>
+ <trophy id="017">
+  <name>And the Next Song is...?</name>
+  <detail>Destroy the background music player</detail>
+ </trophy>
+ <trophy id="018">
+  <name>The Abyss Watches Back</name>
+  <detail>Confront the Yellow King in the monitor room</detail>
+ </trophy>
+ <trophy id="019">
+  <name>"Outside" Fire</name>
+  <detail>Encourage the narrator to meet the tip of a bullet</detail>
+ </trophy>
+ <trophy id="020">
+  <name>True Love</name>
+  <detail>Do not kill Dahal's self which lives within Trinity</detail>
+ </trophy>
+ <trophy id="021">
+  <name>Modern Day Pandora's Box</name>
+  <detail>Break open Pandora's box</detail>
+ </trophy>
+ <trophy id="022">
+  <name>To Meet You Again</name>
+  <detail>Witness the birth of ICEY's self-awareness</detail>
+ </trophy>
+ <trophy id="023">
+  <name>Follow the Leader</name>
+  <detail>Enter the real "game" with the narrator</detail>
+ </trophy>
+ <trophy id="024">
+  <name>Trinity's Chains</name>
+  <detail>Defeat Trinity&#x0a;Trinity could not stop this cycle, nor can she ever stop the wheel of reincarnation from spinning.</detail>
+ </trophy>
+ <trophy id="025">
+  <name>Gorger's Apathy</name>
+  <detail>Defeat Gorger&#x0a;Gorger was a simple resident of Ultimopolis that sacrificed himself to Judas without regret... or any other feelings.</detail>
+ </trophy>
+ <trophy id="026">
+  <name>Thor's Loyalty</name>
+  <detail>Defeat Thor&#x0a;Thor understood Judas' ultimate goal, and paid the ultimate price of splitting his self to serve Judas.</detail>
+ </trophy>
+ <trophy id="027">
+  <name>Parker's Lost Heart</name>
+  <detail>Defeat Parker&#x0a;Parker, betrayed by Judas, retreated with no conscience to the dark corners of the metro.</detail>
+ </trophy>
+ <trophy id="028">
+  <name>Carlos' Ambitions</name>
+  <detail>Defeat Carlos&#x0a;Carlos was fed up with the constant sacrifice of his self in each reincarnation. His solution? Kill and replace the Chosen One.</detail>
+ </trophy>
+ <trophy id="029">
+  <name>Jack's Faith</name>
+  <detail>Defeat Jack&#x0a;While Jack's faith is unwavering, being banished to the furthest corner of the world left him unable to even come close to the Chosen One.</detail>
+ </trophy>
+ <trophy id="030">
+  <name>Ideon's Resignation</name>
+  <detail>Defeat Ideon&#x0a;Ideon's self was slowly destroyed through the process of never-ending reincarnation, leaving him even more vulnerable to Judas' manipulation.</detail>
+ </trophy>
+ <trophy id="031">
+  <name>Dahal's Pain</name>
+  <detail>Defeat Dahal&#x0a;Only in a virtual world is such a thing possible... To mix two beings' memories... Because of this, Dahal short-circuited.</detail>
+ </trophy>
+ <trophy id="032">
+  <name>Trinity's Self</name>
+  <detail>Defeat Trinity&#x0a;Even after her memories were mixed with another's, Trinity still tried to prevent the birth of the Chosen One. That was, of course, futile.</detail>
+ </trophy>
+ <trophy id="033">
+  <name>Judas' Repentance</name>
+  <detail>Defeat Judas&#x0a;Judas had long ago given up his struggle. As he ascended the Clock Tower, the Black Star rose once more.</detail>
+ </trophy>
+</trophyconf>

@@ -1,0 +1,951 @@
+fileFormatVersion: 2
+guid: d70bc34e9fc24825a3c80d499be4a85b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Lab__0000_middle_tv
+  - first:
+      213: 21300002
+    second: OPENR_ZH_CN
+  - first:
+      213: 21300004
+    second: Lab_0001_middle_left_ban
+  - first:
+      213: 21300006
+    second: OPEN_ZH_CN
+  - first:
+      213: 21300008
+    second: Lab__0003_door_right_1CN
+  - first:
+      213: 21300010
+    second: CLOSE_ZH_CN
+  - first:
+      213: 21300012
+    second: CLOSER_ZH_CN
+  - first:
+      213: 21300014
+    second: OPEN_EN
+  - first:
+      213: 21300016
+    second: OPENR_EN
+  - first:
+      213: 21300018
+    second: CloseIconR
+  - first:
+      213: 21300020
+    second: Lab__0008_door_left
+  - first:
+      213: 21300022
+    second: Lab__0007_door_left_2CN
+  - first:
+      213: 21300024
+    second: Lab__0006_door_left_1CN
+  - first:
+      213: 21300026
+    second: CloseIcon
+  - first:
+      213: 21300028
+    second: CLOSER_EN
+  - first:
+      213: 21300030
+    second: Lab_0002_middle_left_2
+  - first:
+      213: 21300032
+    second: Lab_0000_middle_left_1
+  - first:
+      213: 21300034
+    second: OpenIconR
+  - first:
+      213: 21300036
+    second: Lab__0001_middle_TV
+  - first:
+      213: 21300038
+    second: Lab__0004_doorr_right_2CN
+  - first:
+      213: 21300040
+    second: Lab__0005_door_right
+  - first:
+      213: 21300042
+    second: OpenIcon
+  - first:
+      213: 21300044
+    second: FloorLight_test
+  - first:
+      213: 21300046
+    second: CLOSE_EN
+  - first:
+      213: 21300048
+    second: Lab1__0000_near_1
+  - first:
+      213: 21300050
+    second: Lab3__0005_near_2
+  - first:
+      213: 21300052
+    second: Lab__0000_near_1
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 47
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lab__0000_near_1
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 0
+        width: 452
+        height: 1304
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -226, y: 652}
+        - {x: 226, y: 652}
+        - {x: -226, y: -652}
+      - - {x: -226, y: -652}
+        - {x: 226, y: 652}
+        - {x: 226, y: -652}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45305410000000000800000000000000
+      internalID: 21300052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OPEN_EN
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1649
+        width: 156
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -78, y: 42}
+        - {x: 78, y: 42}
+        - {x: -78, y: -42}
+      - - {x: -78, y: -42}
+        - {x: 78, y: 42}
+        - {x: 78, y: -42}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0005_door_right
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 0
+        width: 202
+        height: 641
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -101, y: 320.5}
+        - {x: 101, y: 320.5}
+        - {x: -101, y: -320.5}
+      - - {x: -101, y: -320.5}
+        - {x: 101, y: 320.5}
+        - {x: 101, y: -320.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84305410000000000800000000000000
+      internalID: 21300040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CLOSER_ZH_CN
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 0
+        width: 155
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -77.5, y: 42.5}
+        - {x: 77.5, y: 42.5}
+        - {x: -77.5, y: -42.5}
+      - - {x: -77.5, y: -42.5}
+        - {x: 77.5, y: 42.5}
+        - {x: 77.5, y: -42.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CLOSE_ZH_CN
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 724
+        width: 148
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -74, y: 41.5}
+        - {x: 74, y: 41.5}
+        - {x: -74, y: -41.5}
+      - - {x: -74, y: -41.5}
+        - {x: 74, y: 41.5}
+        - {x: 74, y: -41.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OPENR_EN
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 87
+        width: 158
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -79, y: 41.5}
+        - {x: 79, y: 41.5}
+        - {x: -79, y: -41.5}
+      - - {x: -79, y: -41.5}
+        - {x: 79, y: 41.5}
+        - {x: 79, y: -41.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OPEN_ZH_CN
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 815
+        width: 152
+        height: 81
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: 40.5}
+        - {x: 76, y: 40.5}
+        - {x: -76, y: -40.5}
+      - - {x: -76, y: -40.5}
+        - {x: 76, y: 40.5}
+        - {x: 76, y: -40.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0006_door_left_1CN
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 643
+        width: 62
+        height: 558
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 279}
+        - {x: 31, y: 279}
+        - {x: -31, y: -279}
+      - - {x: -31, y: -279}
+        - {x: 31, y: 279}
+        - {x: 31, y: -279}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OpenIcon
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1787
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 44}
+        - {x: 40, y: 44}
+        - {x: -40, y: -44}
+      - - {x: -40, y: -44}
+        - {x: 40, y: 44}
+        - {x: 40, y: -44}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4305410000000000800000000000000
+      internalID: 21300042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CLOSER_EN
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 724
+        width: 169
+        height: 89
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -84.5, y: 44.5}
+        - {x: 84.5, y: 44.5}
+        - {x: -84.5, y: -44.5}
+      - - {x: -84.5, y: -44.5}
+        - {x: 84.5, y: 44.5}
+        - {x: 84.5, y: -44.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0004_doorr_right_2CN
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 643
+        width: 127
+        height: 544
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63.5, y: 272}
+        - {x: 63.5, y: 272}
+        - {x: -63.5, y: -272}
+      - - {x: -63.5, y: -272}
+        - {x: 63.5, y: 272}
+        - {x: 63.5, y: -272}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64305410000000000800000000000000
+      internalID: 21300038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0003_door_right_1CN
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1189
+        width: 62
+        height: 558
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 279}
+        - {x: 31, y: 279}
+        - {x: -31, y: -279}
+      - - {x: -31, y: -279}
+        - {x: 31, y: 279}
+        - {x: 31, y: -279}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloseIcon
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 264
+        width: 80
+        height: 90
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 45}
+        - {x: 40, y: 45}
+        - {x: -40, y: -45}
+      - - {x: -40, y: -45}
+        - {x: 40, y: 45}
+        - {x: 40, y: -45}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0007_door_left_2CN
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 0
+        width: 127
+        height: 544
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -63.5, y: 272}
+        - {x: 63.5, y: 272}
+        - {x: -63.5, y: -272}
+      - - {x: -63.5, y: -272}
+        - {x: 63.5, y: 272}
+        - {x: 63.5, y: -272}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_0001_middle_left_ban
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1306
+        width: 219
+        height: 219
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.5, y: 109.5}
+        - {x: 109.5, y: 109.5}
+        - {x: -109.5, y: -109.5}
+      - - {x: -109.5, y: -109.5}
+        - {x: 109.5, y: 109.5}
+        - {x: 109.5, y: -109.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab1__0000_near_1
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 0
+        width: 254
+        height: 1682
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -127, y: 841}
+        - {x: 127, y: 841}
+        - {x: -127, y: -841}
+      - - {x: -127, y: -841}
+        - {x: 127, y: 841}
+        - {x: 127, y: -841}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05305410000000000800000000000000
+      internalID: 21300048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab3__0005_near_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 464
+        height: 1306
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -232, y: 653}
+        - {x: 232, y: 653}
+        - {x: -232, y: -653}
+      - - {x: -232, y: -653}
+        - {x: 232, y: 653}
+        - {x: 232, y: -653}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25305410000000000800000000000000
+      internalID: 21300050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OPENR_ZH_CN
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1649
+        width: 157
+        height: 85
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -78.5, y: 42.5}
+        - {x: 78.5, y: 42.5}
+        - {x: -78.5, y: -42.5}
+      - - {x: -78.5, y: -42.5}
+        - {x: 78.5, y: 42.5}
+        - {x: 78.5, y: -42.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorLight_test
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 643
+        width: 379
+        height: 79
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -189.5, y: 39.5}
+        - {x: 189.5, y: 39.5}
+        - {x: -189.5, y: -39.5}
+      - - {x: -189.5, y: -39.5}
+        - {x: 189.5, y: 39.5}
+        - {x: 189.5, y: -39.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4305410000000000800000000000000
+      internalID: 21300044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0001_middle_TV
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1308
+        width: 580
+        height: 339
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -290, y: 169.5}
+        - {x: 290, y: 169.5}
+        - {x: -290, y: -169.5}
+      - - {x: -290, y: -169.5}
+        - {x: 290, y: 169.5}
+        - {x: 290, y: -169.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OpenIconR
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 898
+        width: 80
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 44}
+        - {x: 40, y: 44}
+        - {x: -40, y: -44}
+      - - {x: -40, y: -44}
+        - {x: 40, y: 44}
+        - {x: 40, y: -44}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0000_middle_tv
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1649
+        width: 229
+        height: 136
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -114.5, y: 68}
+        - {x: 114.5, y: 68}
+        - {x: -114.5, y: -68}
+      - - {x: -114.5, y: -68}
+        - {x: 114.5, y: 68}
+        - {x: 114.5, y: -68}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab__0008_door_left
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 0
+        width: 202
+        height: 641
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -101, y: 320.5}
+        - {x: 101, y: 320.5}
+        - {x: -101, y: -320.5}
+      - - {x: -101, y: -320.5}
+        - {x: 101, y: 320.5}
+        - {x: 101, y: -320.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_0002_middle_left_2
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1619
+        width: 63
+        height: 133
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 66.5}
+        - {x: 31.5, y: 66.5}
+        - {x: -31.5, y: -66.5}
+      - - {x: -31.5, y: -66.5}
+        - {x: 31.5, y: 66.5}
+        - {x: 31.5, y: -66.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CloseIconR
+      rect:
+        serializedVersion: 2
+        x: 1787
+        y: 172
+        width: 80
+        height: 90
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -40, y: 45}
+        - {x: 40, y: 45}
+        - {x: -40, y: -45}
+      - - {x: -40, y: -45}
+        - {x: 40, y: 45}
+        - {x: 40, y: -45}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_0000_middle_left_1
+      rect:
+        serializedVersion: 2
+        x: 1713
+        y: 172
+        width: 72
+        height: 151
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36, y: 75.5}
+        - {x: 36, y: 75.5}
+        - {x: -36, y: -75.5}
+      - - {x: -36, y: -75.5}
+        - {x: 36, y: 75.5}
+        - {x: 36, y: -75.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CLOSE_EN
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1527
+        width: 171
+        height: 90
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -85.5, y: 45}
+        - {x: 85.5, y: 45}
+        - {x: -85.5, y: -45}
+      - - {x: -85.5, y: -45}
+        - {x: 85.5, y: 45}
+        - {x: 85.5, y: -45}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4305410000000000800000000000000
+      internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CLOSER_EN: 21300028
+      CLOSER_ZH_CN: 21300012
+      CLOSE_EN: 21300046
+      CLOSE_ZH_CN: 21300010
+      CloseIcon: 21300026
+      CloseIconR: 21300018
+      FloorLight_test: 21300044
+      Lab1__0000_near_1: 21300048
+      Lab3__0005_near_2: 21300050
+      Lab_0000_middle_left_1: 21300032
+      Lab_0001_middle_left_ban: 21300004
+      Lab_0002_middle_left_2: 21300030
+      Lab__0000_middle_tv: 21300000
+      Lab__0000_near_1: 21300052
+      Lab__0001_middle_TV: 21300036
+      Lab__0003_door_right_1CN: 21300008
+      Lab__0004_doorr_right_2CN: 21300038
+      Lab__0005_door_right: 21300040
+      Lab__0006_door_left_1CN: 21300024
+      Lab__0007_door_left_2CN: 21300022
+      Lab__0008_door_left: 21300020
+      OPENR_EN: 21300016
+      OPENR_ZH_CN: 21300002
+      OPEN_EN: 21300014
+      OPEN_ZH_CN: 21300006
+      OpenIcon: 21300042
+      OpenIconR: 21300034
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

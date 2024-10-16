@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Windy
+  - EnemyHurtBox
+  - EnemyBullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Enemy
+  - PlayerBody
+  - EnemyBody
+  - Player
+  - FXCamera
+  - OnlyHitGround
+  - Obstacle
+  - 
+  - 
+  - 
+  - 
+  - OnlyCollidedPlayer
+  - OneWayPlatforms
+  - SoftCollidedImpact
+  - PhysicCheckLine
+  - Ceiling
+  - Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: FXParticle
+    uniqueID: 1902169829
+    locked: 0
+  - name: Near
+    uniqueID: 2569511843
+    locked: 0
+  - name: CameraFX
+    uniqueID: 2250173039
+    locked: 0

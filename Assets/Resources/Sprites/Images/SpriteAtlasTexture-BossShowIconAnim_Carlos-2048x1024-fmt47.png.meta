@@ -1,0 +1,610 @@
+fileFormatVersion: 2
+guid: caa5e3edf7ab4832864de2eccb9f8cc8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: Word2_EN
+  - first:
+      213: 21300002
+    second: Word1_EN
+  - first:
+      213: 21300004
+    second: Word1
+  - first:
+      213: 21300006
+    second: DisappearLight
+  - first:
+      213: 21300008
+    second: Word3
+  - first:
+      213: 21300010
+    second: MainL3
+  - first:
+      213: 21300012
+    second: Word3_EN
+  - first:
+      213: 21300014
+    second: MainR3
+  - first:
+      213: 21300016
+    second: MainL1
+  - first:
+      213: 21300018
+    second: Word2
+  - first:
+      213: 21300020
+    second: Main1
+  - first:
+      213: 21300022
+    second: MainR1
+  - first:
+      213: 21300024
+    second: MainL2
+  - first:
+      213: 21300026
+    second: MainStop
+  - first:
+      213: 21300028
+    second: MainR2
+  - first:
+      213: 21300030
+    second: WordPoint
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 47
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Word3
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 356
+        width: 132
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 66}
+        - {x: 66, y: 66}
+        - {x: -66, y: -66}
+      - - {x: -66, y: -66}
+        - {x: 66, y: 66}
+        - {x: 66, y: -66}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word2_EN
+      rect:
+        serializedVersion: 2
+        x: 1892
+        y: 356
+        width: 113
+        height: 115
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56.5, y: 57.5}
+        - {x: 56.5, y: 57.5}
+        - {x: -56.5, y: -57.5}
+      - - {x: -56.5, y: -57.5}
+        - {x: 56.5, y: 57.5}
+        - {x: 56.5, y: -57.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DisappearLight
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 0
+        width: 679
+        height: 203
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -339.5, y: 101.5}
+        - {x: 339.5, y: 101.5}
+        - {x: -339.5, y: -101.5}
+      - - {x: -339.5, y: -101.5}
+        - {x: 339.5, y: 101.5}
+        - {x: 339.5, y: -101.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainR3
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 599
+        width: 187
+        height: 354
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.5, y: 177}
+        - {x: 93.5, y: 177}
+        - {x: -93.5, y: -177}
+      - - {x: -93.5, y: -177}
+        - {x: 93.5, y: 177}
+        - {x: 93.5, y: -177}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainR2
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 205
+        width: 238
+        height: 394
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -119, y: 197}
+        - {x: 119, y: 197}
+        - {x: -119, y: -197}
+      - - {x: -119, y: -197}
+        - {x: 119, y: 197}
+        - {x: 119, y: -197}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainR1
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 205
+        width: 213
+        height: 484
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -106.5, y: 242}
+        - {x: 106.5, y: 242}
+        - {x: -106.5, y: -242}
+      - - {x: -106.5, y: -242}
+        - {x: 106.5, y: 242}
+        - {x: 106.5, y: -242}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WordPoint
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 734
+        width: 71
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -35.5, y: 22}
+        - {x: 35.5, y: 22}
+        - {x: -35.5, y: -22}
+      - - {x: -35.5, y: -22}
+        - {x: 35.5, y: 22}
+        - {x: 35.5, y: -22}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word2
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 691
+        width: 128
+        height: 131
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64, y: 65.5}
+        - {x: 64, y: 65.5}
+        - {x: -64, y: -65.5}
+      - - {x: -64, y: -65.5}
+        - {x: 64, y: 65.5}
+        - {x: 64, y: -65.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Main1
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 0
+        width: 441
+        height: 597
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -220.5, y: 298.5}
+        - {x: 220.5, y: 298.5}
+        - {x: -220.5, y: -298.5}
+      - - {x: -220.5, y: -298.5}
+        - {x: 220.5, y: 298.5}
+        - {x: 220.5, y: -298.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainL1
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 205
+        width: 213
+        height: 484
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -106.5, y: 242}
+        - {x: 106.5, y: 242}
+        - {x: -106.5, y: -242}
+      - - {x: -106.5, y: -242}
+        - {x: 106.5, y: 242}
+        - {x: 106.5, y: -242}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainL3
+      rect:
+        serializedVersion: 2
+        x: 1769
+        y: 0
+        width: 187
+        height: 354
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.5, y: 177}
+        - {x: 93.5, y: 177}
+        - {x: -93.5, y: -177}
+      - - {x: -93.5, y: -177}
+        - {x: 93.5, y: 177}
+        - {x: 93.5, y: -177}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word1
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 490
+        width: 129
+        height: 132
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: 66}
+        - {x: 64.5, y: 66}
+        - {x: -64.5, y: -66}
+      - - {x: -64.5, y: -66}
+        - {x: 64.5, y: 66}
+        - {x: 64.5, y: -66}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainStop
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 643
+        height: 616
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -321.5, y: 308}
+        - {x: 321.5, y: 308}
+        - {x: -321.5, y: -308}
+      - - {x: -321.5, y: -308}
+        - {x: 321.5, y: 308}
+        - {x: 321.5, y: -308}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word1_EN
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 618
+        width: 175
+        height: 114
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -87.5, y: 57}
+        - {x: 87.5, y: 57}
+        - {x: -87.5, y: -57}
+      - - {x: -87.5, y: -57}
+        - {x: 87.5, y: 57}
+        - {x: 87.5, y: -57}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainL2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 618
+        width: 238
+        height: 394
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -119, y: 197}
+        - {x: 119, y: 197}
+        - {x: -119, y: -197}
+      - - {x: -119, y: -197}
+        - {x: 119, y: 197}
+        - {x: 119, y: -197}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Word3_EN
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 599
+        width: 180
+        height: 98
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -90, y: 49}
+        - {x: 90, y: 49}
+        - {x: -90, y: -49}
+      - - {x: -90, y: -49}
+        - {x: 90, y: 49}
+        - {x: 90, y: -49}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DisappearLight: 21300006
+      Main1: 21300020
+      MainL1: 21300016
+      MainL2: 21300024
+      MainL3: 21300010
+      MainR1: 21300022
+      MainR2: 21300028
+      MainR3: 21300014
+      MainStop: 21300026
+      Word1: 21300004
+      Word1_EN: 21300002
+      Word2: 21300018
+      Word2_EN: 21300000
+      Word3: 21300008
+      Word3_EN: 21300012
+      WordPoint: 21300030
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

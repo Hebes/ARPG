@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<trophyconf version="1.1" platform="ps4" policy="large">
+ <title-name>艾希</title-name>
+ <title-detail>艾希的獎盃們</title-detail>
+ <trophy id="000">
+  <name>哈斯塔</name>
+  <detail>獲得所有獎盃</detail>
+ </trophy>
+ <trophy id="001">
+  <name>一次根本不夠</name>
+  <detail>不喚醒沉睡中的艾希</detail>
+ </trophy>
+ <trophy id="002">
+  <name>為什麼你要往坑裏跳……</name>
+  <detail>不打開懸浮橋並嘗試跳入坑中3次</detail>
+ </trophy>
+ <trophy id="003">
+  <name>重啟重啟重啟</name>
+  <detail>嘗試在“額外生成的區域”往左走</detail>
+ </trophy>
+ <trophy id="004">
+  <name>連個坑都跳不過去</name>
+  <detail>3次跳入綠色的泥沼中</detail>
+ </trophy>
+ <trophy id="005">
+  <name>神的九十億個名字</name>
+  <detail>獲知神的名字</detail>
+ </trophy>
+ <trophy id="006">
+  <name>為了獎盃！</name>
+  <detail>完成“什麼都沒有的房間”中的事件</detail>
+ </trophy>
+ <trophy id="007">
+  <name>在什麼都沒有的房間中等了幾分鐘</name>
+  <detail>在“什麼都沒有的房間”中，等待幾分鐘</detail>
+ </trophy>
+ <trophy id="008">
+  <name>這是一個銅獎盃</name>
+  <detail>在“什麼都沒有的房間”中獲得一個銅獎盃</detail>
+ </trophy>
+ <trophy id="009">
+  <name>這是一個銀獎盃</name>
+  <detail>在“什麼都沒有的房間”中獲得一個銀獎盃</detail>
+ </trophy>
+ <trophy id="010">
+  <name>再買一份吧！</name>
+  <detail>在“歷史之間”中見證開發祕辛</detail>
+ </trophy>
+ <trophy id="011">
+  <name>來不及關上的門</name>
+  <detail>無視旁白的話直接衝入彌城</detail>
+ </trophy>
+ <trophy id="012">
+  <name>願黑星照常升起</name>
+  <detail>不可思議的是夜裏升起的黑星</detail>
+ </trophy>
+ <trophy id="013">
+  <name>不要隨便説別人是豬</name>
+  <detail>在最終戰前選擇“沒有準備好戰鬥”</detail>
+ </trophy>
+ <trophy id="014">
+  <name>汐</name>
+  <detail>進入“汐”關卡</detail>
+ </trophy>
+ <trophy id="015">
+  <name>出任總經理，迎娶白富美</name>
+  <detail>通過在遊戲中植入廣告獲得贊助</detail>
+ </trophy>
+ <trophy id="016">
+  <name>艾希，佑希</name>
+  <detail>探尋艾希誕生的真相</detail>
+ </trophy>
+ <trophy id="017">
+  <name>下一首……是？</name>
+  <detail>擊毀音樂控制器</detail>
+ </trophy>
+ <trophy id="018">
+  <name>注視深淵，深淵也在注視着你</name>
+  <detail>在監視房內直面深淵中的黃衣使者</detail>
+ </trophy>
+ <trophy id="019">
+  <name>“外面”的槍聲</name>
+  <detail>誘導旁白遭到槍擊</detail>
+ </trophy>
+ <trophy id="020">
+  <name>這就是愛</name>
+  <detail>不消滅達哈爾存在於崔妮蒂軀體中的自我</detail>
+ </trophy>
+ <trophy id="021">
+  <name>潘多拉的箱子</name>
+  <detail>打破潘多拉的箱子</detail>
+ </trophy>
+ <trophy id="022">
+  <name>為了，與你重逢</name>
+  <detail>見證艾希自我的誕生</detail>
+ </trophy>
+ <trophy id="023">
+  <name>與旁白一起繼續遊戲</name>
+  <detail>進入真正的“遊戲”</detail>
+ </trophy>
+ <trophy id="024">
+  <name>崔妮蒂的阻止</name>
+  <detail>擊敗崔妮蒂&#x0a;崔妮蒂最終還是沒能阻止這次的輪迴，她永遠也無法阻止輪迴的開始</detail>
+ </trophy>
+ <trophy id="025">
+  <name>暴食的麻木</name>
+  <detail>擊敗暴食&#x0a;暴食就是彌城居民的典型，向猶大獻上自我，不再思考直到麻木</detail>
+ </trophy>
+ <trophy id="026">
+  <name>托爾的忠誠</name>
+  <detail>擊敗托爾&#x0a;也有了解到猶大的真正目的，而自願獻上自我的人，比如托爾。他自願將自我分裂，交給猶大</detail>
+ </trophy>
+ <trophy id="027">
+  <name>帕克的失心</name>
+  <detail>擊敗帕克&#x0a;父親猶大的背叛，令帕克徹底放棄了思考，蜷縮在漆黑的地鐵黑暗角落</detail>
+ </trophy>
+ <trophy id="028">
+  <name>卡洛斯的野心</name>
+  <detail>擊敗卡洛斯&#x0a;卡洛斯受夠了不斷輪迴獻上自我的過程，他決定要代替神選之子獲得她收集的所有自我</detail>
+ </trophy>
+ <trophy id="029">
+  <name>傑克的信仰</name>
+  <detail>擊敗傑克&#x0a;傑克的信仰從未改變，但被放逐的他卻不一定能碰觸到神選之子</detail>
+ </trophy>
+ <trophy id="030">
+  <name>伊汀的無奈</name>
+  <detail>擊敗伊汀&#x0a;伊汀的自我在輪迴中消磨殆盡，只剩下驅殼被猶大所操縱。</detail>
+ </trophy>
+ <trophy id="031">
+  <name>達哈爾的痛苦</name>
+  <detail>擊敗達哈爾&#x0a;正是因為只有在虛擬的世界中才能做得到這種事——讓兩人記憶互換——達哈爾因此崩潰</detail>
+ </trophy>
+ <trophy id="032">
+  <name>崔妮蒂的自我</name>
+  <detail>擊敗崔妮蒂&#x0a;崔妮蒂即使在記憶遭到互換後，仍然嘗試着阻止神選之子的誕生，但仍然是徒勞</detail>
+ </trophy>
+ <trophy id="033">
+  <name>猶大的倒吊</name>
+  <detail>擊敗猶大&#x0a;猶大早已放棄最後的掙扎，倒吊於塔頂的他，看到的仍然是升起的黑星</detail>
+ </trophy>
+</trophyconf>
