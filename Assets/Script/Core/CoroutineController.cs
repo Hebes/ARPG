@@ -12,28 +12,29 @@ using UnityEngine;
 /// </summary>
 public class CoroutineController : SMono<CoroutineController>
 {
-    private readonly Dictionary<string, Coroutine> _coroutineDic = new Dictionary<string, Coroutine>();
+    private readonly Dictionary<int, Coroutine> _coroutineDic = new Dictionary<int, Coroutine>();
 
     public Coroutine StartIEnumerator(IEnumerator routine)
     {
         Coroutine coroutine = StartCoroutine(routine);
-        _coroutineDic.Add(nameof(routine), coroutine);
+        _coroutineDic.Add(routine.GetHashCode(), coroutine);
         return coroutine;
     }
 
     public void StopIEnumerator(IEnumerator routine)
     {
         //检查空删除
-        foreach (KeyValuePair<string, Coroutine> data in _coroutineDic)
+        foreach (KeyValuePair<int, Coroutine> data in _coroutineDic)
         {
             if (data.Value != null) continue;
             _coroutineDic.Remove(data.Key);
         }
 
+        int temp = routine.GetHashCode();
         //删除空的
-        Coroutine coroutine = _coroutineDic[nameof(routine)];
+        Coroutine coroutine = _coroutineDic[temp];
         StopCoroutine(coroutine);
-        _coroutineDic.Remove(nameof(routine));
+        _coroutineDic.Remove(temp);
     }
 
     public void StopAll()
