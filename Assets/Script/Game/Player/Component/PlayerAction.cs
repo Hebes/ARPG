@@ -128,6 +128,8 @@ public class PlayerAction : MonoBehaviour
             case PlayerStaEnum.UpRising:
             case PlayerStaEnum.HitGroundStart:
             case PlayerStaEnum.HitGroundEnd:
+            case PlayerStaEnum.DoubleFlash:
+            case PlayerStaEnum.AtkFlashRollEnd:
                 _playerAnimationController.Play(state, false, true, _playerAnimationController.animSpeed);
                 break;
             case PlayerStaEnum.Idle:
@@ -280,6 +282,7 @@ public class PlayerAction : MonoBehaviour
         PlayerStaEnum.Atk2.ToString(),
         PlayerStaEnum.Atk3.ToString(),
         PlayerStaEnum.Atk4.ToString(),
+        PlayerStaEnum.DoubleFlash.ToString(),
     };
 
     /// <summary>

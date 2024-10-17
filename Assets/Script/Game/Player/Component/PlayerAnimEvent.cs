@@ -126,6 +126,22 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 0, nameof(FlashReset));
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayEffect), 166);
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
+        
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(SetAtkData));
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayEffect),183);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayerSound),201);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 1, nameof(PlayerSound),202);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 1, nameof(SetAttackId));
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 3, nameof(CanPlayNextAttack));
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(AttackFinish));
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(PlayAnim),PlayerStaEnum.Idle.ToString());
+        
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayerSound),151);
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayEffect),184);
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(SetAtkData));
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 1, nameof(Speed), "{\"x\":0,\"y\":20}");
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 3, nameof(Speed), "{\"x\":0,\"y\":-80}");
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 15, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
     }
 
     private void Start()

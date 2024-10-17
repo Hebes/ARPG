@@ -8,7 +8,7 @@ public class TrainingDummyHurt : EnemyBaseHurt
 
     private void GetComponent()
     {
-        _anim = GetComponentInChildren<TrainingDummyAnimEvent>();
+        _anim = GetComponent<TrainingDummyAnimEvent>();
     }
 
     #endregion
@@ -17,7 +17,7 @@ public class TrainingDummyHurt : EnemyBaseHurt
     {
         base.Init();
         GetComponent();
-        hurtData = GameReadDB.EnemyHurtData[EnemyType.稻草人];
+        hurtData = GameReadDB.EnemyHurtData[EnemyType.稻草人]; 
     }
     
     /// <summary>

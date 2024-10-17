@@ -18,10 +18,6 @@ public class PlayerAbilities : MonoBehaviour
 
     // //下面测试暂未开放
     // public PlayerChargingAbility charge = new PlayerChargingAbility();//充能
-    // public PlayerExecuteAbility execute = new PlayerExecuteAbility(); //处决
-    // public PlayerJumpDownAbility jumpDown = new PlayerJumpDownAbility(); //跳下
-    // public PlayerSkillAbility skill = new PlayerSkillAbility(); //技能
-    // public PlayerFlashAttackAbility flashAttack = new PlayerFlashAttackAbility(); //闪攻击
     // public PlayerChaseAbility chase = new PlayerChaseAbility(); //追逐
 
     private void Awake()

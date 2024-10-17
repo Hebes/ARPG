@@ -119,11 +119,11 @@ public class PlayerAttackAbility : CharacterState
     public override void OnStateTransfer(object sender, TransferEventArgs args)
     {
         //playl listener.atkBox.localScale = new Vector3(0f, 0f, 1f);
-        //listener.atkBox.localPosition = Vector3.zero;
-        // if (args.lastState.IsInArray(PlayerAction.AirAttackSta) && !args.nextState.IsInArray(PlayerAction.AirAttackSta))
-        // {
-        //     weapon.AirAttackRecover();
-        // }
+        //Listener.atkBox.localPosition = Vector3.zero;
+        if (args.lastState.IsInArray(PlayerAction.AirAttackSta) && !args.nextState.IsInArray(PlayerAction.AirAttackSta))
+        {
+            weapon.AirAttackRecover();
+        }
     }
 
 

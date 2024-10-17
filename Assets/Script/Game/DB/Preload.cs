@@ -49,14 +49,57 @@ public class DB
         return Asset.LoadFromResources<T>("conf/", name);
     }
 
+    
+    /// <summary>
+    /// {
+    ///   "normalAttack":{
+    ///        "1":{"anim":"Atk1","nextID":"2","nextCirtID":"-1"},
+    ///        "2":{"anim":"Atk2","nextID":"3","nextCirtID":"5"},
+    ///        "3":{"anim":"Atk5","nextID":"4","nextCirtID":"19"},
+    ///        "4":{"anim":"Atk15","nextID":"-1","nextCirtID":"-1"},
+    ///        "5":{"anim":"Atk23","nextID":"-1","nextCirtID":"6"},
+    ///        "6":{"anim":"Atk3","nextID":"-1","nextCirtID":"7"},
+    ///        "7":{"anim":"Atk4","nextID":"-1","nextCirtID":"-1"},
+    ///        "8":{"anim":"Atk16","nextID":"-1","nextCirtID":"-1"},
+    ///        "9":{"anim":"AtkHv1","nextID":"-1","nextCirtID":"10"},
+    ///        "10":{"anim":"AtkHv2","nextID":"-1","nextCirtID":"11"},
+    ///        "11":{"anim":"AtkHv3","nextID":"-1","nextCirtID":"-1"},
+    ///        "12":{"anim":"AtkHv1Push","nextID":"-1","nextCirtID":"10"},
+    ///        "13":{"anim":"RollGround","nextID":"-1","nextCirtID":"-1"},
+    ///        "14":{"anim":"Atk6","nextID":"-1","nextCirtID":"-1"},
+    ///        "15":{"anim":"AtkUpRising","nextID":"-1","nextCirtID":"-1"},
+    ///        "16":{"anim":"AtkRollEnd","nextID":"-1","nextCirtID":"-1"},
+    ///        "17":{"anim":"RollGround","nextID":"-1","nextCirtID":"-1"},
+    ///        "18":{"anim":"Atk14","nextID":"-1","nextCirtID":"-1"},
+    ///        "19":{"anim":"DoubleFlash","nextID":"-1","nextCirtID":"20"},
+    ///        "20":{"anim":"AtkFlashRollEnd","nextID":"-1","nextCirtID":"-1"}
+    ///      },
+    /// "airAttack":{
+    ///       "1":{"anim":"AirAtk1","nextID":"2","nextCirtID":"13"},
+    ///       "2":{"anim":"AirAtk2","nextID":"3","nextCirtID":"-1"},
+    ///       "3":{"anim":"AirAtk6","nextID":"8","nextCirtID":"7"},
+    ///       "4":{"anim":"AirAtkHv1","nextID":"-1","nextCirtID":"5"},
+    ///       "5":{"anim":"AirAtkHv2","nextID":"-1","nextCirtID":"6"},
+    ///       "6":{"anim":"AirAtkHv3","nextID":"-1","nextCirtID":"-1"},
+    ///       "7":{"anim":"AirAtkRoll","nextID":"-1","nextCirtID":"-1"},
+    ///       "8":{"anim":"RollReady","nextID":"-1","nextCirtID":"-1"},
+    ///       "10":{"anim":"AirAtkHv1Push","nextID":"-1","nextCirtID":"5"},
+    ///       "11":{"anim":"DoubleFlashAir","nextID":"-1","nextCirtID":"-1"},
+    ///       "12":{"anim":"RollEndFrame","nextID":"-1","nextCirtID":"-1"},
+    ///       "13":{"anim":"RollEndFrame","nextID":"-1","nextCirtID":"-1"}
+    ///     }
+    ///}
+    /// </summary>
     private static readonly Dictionary<string, Dictionary<string, Dictionary<string, string>>> WeaponConfigureDic = new()
     {
         {
             "normalAttack", new Dictionary<string, Dictionary<string, string>>()
             {
                 { "1", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Atk1}" }, { "nextID", "2" }, { "nextCirtID", "-1" }, } },
-                { "2", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Atk2}" }, { "nextID", "3" }, { "nextCirtID", "5" }, } },
+                { "2", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Atk2}" }, { "nextID", "3" }, { "nextCirtID", "4" }, } },
                 { "3", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Atk3}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
+                { "4", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.DoubleFlash}" }, { "nextID", "-1" }, { "nextCirtID", "5" }, } },
+                { "5", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.AtkFlashRollEnd}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
             }
         },
         {

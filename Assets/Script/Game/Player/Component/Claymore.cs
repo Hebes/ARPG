@@ -75,8 +75,7 @@ public class Claymore : MonoBehaviour
             {
                 attackID = 9;
                 "AtkHv1".Log();
-                // pm.PAction.ChangeState();
-                //  player.ChangeState(jsonData[9.ToString()].Get<string>("anim"));
+                //_playerAction.ChangeState(jsonData[9.ToString()].Get<string>("anim"));
             }
             else
             {
@@ -107,8 +106,8 @@ public class Claymore : MonoBehaviour
             if (cirt) //重攻击
             {
                 if (!airAttackReset) return;
-                attackID = 4;
-                _playerAction.ChangeState(jsonData[attackID.ToString()].Get<string>("anim"));
+                // attackID = 4;
+                // _playerAction.ChangeState(jsonData[attackID.ToString()].Get<string>("anim"));
                 airAttackReset = false;
             }
             else //轻攻击
@@ -141,7 +140,7 @@ public class Claymore : MonoBehaviour
             PlayNextAttackAnim(cirtAttack);
             return;
         }
-
+    
         if (continueAttack)
             PlayNextAttackAnim(cirtAttack);
         else

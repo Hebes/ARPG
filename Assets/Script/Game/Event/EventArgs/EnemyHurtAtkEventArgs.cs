@@ -89,7 +89,7 @@ public class EnemyHurtAtkEventArgs : EventArgs
     public class PlayerNormalAtkData : EventArgs
     {
         /// <summary>
-        /// 
+        /// 伤害
         /// </summary>
         /// <param name="atkData"></param>
         /// <param name="_firstHurt">是否第一次伤害</param>

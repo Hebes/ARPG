@@ -35,6 +35,7 @@ public class Mode
     /// </summary>
     public void Reset()
     {
+        "重置模式".Log();
         _modeStack.Clear();
         _currentMode = AllMode.Normal;
         SetInputMode(AllMode.Normal);
@@ -53,7 +54,7 @@ public class Mode
         SetInputMode(nextMode);//设置输入模式
         _currentMode = nextMode;
         LogAfter(nextMode, true);
-        if (nextMode == AllMode.UI || nextMode == AllMode.Story)
+        if (nextMode is AllMode.UI or AllMode.Story)
         {
             MobileInputPlayer.I.Visible = false;
         }
@@ -82,7 +83,7 @@ public class Mode
         SetInputMode(allMode);
         _currentMode = allMode;
         LogAfter(mode, false);
-        if (mode == AllMode.UI || mode == AllMode.Story)
+        if (mode is AllMode.UI or AllMode.Story)
         {
             MobileInputPlayer.I.Visible = true;
         }

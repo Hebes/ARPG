@@ -25,7 +25,7 @@ public class EnemyBaseHurt : MonoBehaviour
         action = GetComponent<EnemyBaseAction>();
         Pivot = GetComponent<Pivot>();
         armor = GetComponent<EnemyArmor>();
-        frameShakeBody = transform.FindChildByName("Render 角色渲染");
+        frameShakeBody = transform;
     }
 
     /// <summary>

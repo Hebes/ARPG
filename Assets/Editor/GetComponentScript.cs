@@ -207,9 +207,92 @@ public class SpriteRenderTools
             setting.spritePixelsPerUnit = 40f;
             setting.spriteMode = (int)SpriteImportMode.Single;
             setting.spriteAlignment = (int)SpriteAlignment.Custom;
-            setting.spritePivot = new Vector2(0.45f, 0.07f); 
+            setting.spritePivot = new Vector2(0.44f, 0.23f);
             textureIm.SetTextureSettings(setting);
             textureIm.SaveAndReimport();
         }
+    }
+}
+
+public class InstantiatePrefabInEditor : Editor
+{
+    [MenuItem("GameObject/实例化/Player", false, 1)]
+    public static void LoadPlayer() => InstantiatePrefab("Assets/Resources/Prefab/Core/Player.prefab");
+
+
+    /// <summary>
+    /// 实例化资源
+    /// </summary>
+    /// <param name="path"></param>
+    /// <exception cref="NullReferenceException"></exception>
+    private static void InstantiatePrefab(string path)
+    {
+        // 加载Prefab资源（这里假设预制体在"Assets/Prefabs"文件夹下）
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+
+        // 检查Prefab是否加载成功
+        if (prefab == null)
+        {
+            throw new NullReferenceException();
+        }
+
+        // 实例化Prefab到场景中
+        GameObject instance = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+
+        // 设置实例化后的Prefab位置
+        // if (Selection.activeTransform != null)
+        // {
+        //     instance.transform.position = Selection.activeTransform.position + Vector3.up; // 举例：将实例化Prefab的位置设置为当前选中对象的位置上方
+        // }
+    }
+}
+
+public class EditorTool
+{
+    public static List<GameObject> ScanPrefab()
+    {
+        string[] str = new[]
+        {
+            "Assets/Resources/Prefab",
+        };
+        var assetGUIDs = AssetDatabase.FindAssets("t:Prefab", str);
+        List<GameObject> keyList = new List<GameObject>();
+        int totalCount = assetGUIDs.Length;
+        for (int i = 0; i < totalCount; i++)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(assetGUIDs[i]);
+            GameObject pfb = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            keyList.Add(pfb);
+        }
+
+        return keyList;
+    }
+
+    /// <summary>
+    /// 扫描Prefab
+    /// </summary>
+    public static List<string> ScanLocalizationTextFromPrefab(Action<string, int, int> onProgressUpdate = null)
+    {
+        string[] str = new[]
+        {
+            "Assets/Resources/Prefab",
+        };
+        var assetGUIDs = AssetDatabase.FindAssets("t:Prefab", str);
+        List<string> keyList = new List<string>();
+        int totalCount = assetGUIDs.Length;
+        for (int i = 0; i < totalCount; i++)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(assetGUIDs[i]);
+            GameObject pfb = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            // onProgressUpdate?.Invoke(path, totalCount, i);
+            // var keyArr = pfb.GetComponentsInChildren<UnityGameFramework.Runtime.UIStringKey>(true);
+            // foreach (var newKey in keyArr)
+            // {
+            //     if (string.IsNullOrWhiteSpace(newKey.Key) || keyList.Contains(newKey.Key)) continue;
+            //     keyList.Add(newKey.Key);
+            // }
+        }
+
+        return keyList;
     }
 }

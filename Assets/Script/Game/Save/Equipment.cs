@@ -8,11 +8,12 @@ public class Equipment
 {
     public void Clear()
     {
-        CoinNum = 0;
+        CoinNum = 100000; //测试专用
+        //CoinNum = 0;
     }
 
     /// <summary>
     /// 金币
     /// </summary>
-    public int CoinNum;
+    public int CoinNum = 100000;
 }

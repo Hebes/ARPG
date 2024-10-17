@@ -77,7 +77,6 @@
     <Compile Include="Assets\Script\Game\Save\StorageUtil.cs" />
     <Compile Include="Assets\Script\Game\Colorful\Strokes.cs" />
     <Compile Include="Assets\Script\Game\Camera\GameArea.cs" />
-    <Compile Include="Assets\Script\Game\Player\Character\PlayerChaseAbility.cs" />
     <Compile Include="Assets\Script\Game\Save\SaveStorage.cs" />
     <Compile Include="Assets\Script\Game\Player\Character\PlayerUpRisingAbility.cs" />
     <Compile Include="Assets\Script\Game\GameData\Data\GameReadDB.cs" />
@@ -219,7 +218,6 @@
     <Compile Include="Assets\Script\Game\Setting\Config\StaType.cs" />
     <Compile Include="Assets\Script\Game\Save\Component\SavePoint\SavePoint.cs" />
     <Compile Include="Assets\Script\Game\Battle\BattleAssessmentManager\BattleAssessmentManager.cs" />
-    <Compile Include="Assets\Script\Game\Player\Character\PlayerFlashAttackAbility.cs" />
     <Compile Include="Assets\Script\Game\Colorful\ContrastVignette.cs" />
     <Compile Include="Assets\Script\Game\Camera\CameraController.cs" />
     <Compile Include="Assets\Script\Game\Colorful\CrossStitch.cs" />
@@ -264,7 +262,6 @@
     <Compile Include="Assets\Script\Game\Event\EventArgs\MoveAreaLimitArgs.cs" />
     <Compile Include="Assets\Script\Game\Battle\BattleCheckPoint.cs" />
     <Compile Include="Assets\Script\Game\Player\Other\PlayerDamageCalculate.cs" />
-    <Compile Include="Assets\Script\Game\Player\Character\PlayerExecuteAbility.cs" />
     <Compile Include="Assets\Script\Game\UI\MobileInputPlayer.cs" />
     <Compile Include="Assets\Script\Game\Colorful\Convolution3x3.cs" />
     <Compile Include="Assets\Script\Game\Player\Component\PlayerInput.cs" />
@@ -284,7 +281,6 @@
     <Compile Include="Assets\Script\Game\GameData\Component\EnemyDataPreload.cs" />
     <Compile Include="Assets\Script\Game\Player\Other\PlayerAttribute.cs" />
     <Compile Include="Assets\Script\Game\Colorful\GradientRamp.cs" />
-    <Compile Include="Assets\Script\Game\Player\Character\PlayerSkillAbility.cs" />
     <Compile Include="Assets\Script\Game\Colorful\BleachBypass.cs" />
     <Compile Include="Assets\Script\Game\Enemy\Prop\Ball\EnergyBall.cs" />
     <Compile Include="Assets\Script\Core\BaseBehaviour.cs" />
@@ -328,7 +324,6 @@
     <Compile Include="Assets\Script\Game\Input\InputSetting.cs" />
     <Compile Include="Assets\Script\Game\Tool\Tools.cs" />
     <Compile Include="Assets\Script\Game\暂时无用代码\ShadowControl\ShadowControl.cs" />
-    <Compile Include="Assets\Script\Game\Player\Character\PlayerJumpDownAbility.cs" />
     <Compile Include="Assets\Script\Game\Scene\SwitchLevelGateData.cs" />
     <Compile Include="Assets\Script\Game\AudioManager\AutoDestroyAfterAudioPlay.cs" />
     <Compile Include="Assets\Script\Game\Enemy\AI\BeelzebubAIAction.cs" />

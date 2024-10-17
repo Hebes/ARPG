@@ -44,6 +44,9 @@ public enum PlayerStaEnum
     
     UpRising,//上升攻击
     
+    DoubleFlash,//双闪
+    AtkFlashRollEnd,//攻击翻滚结束
+
     Flash,//闪
     Flash2,//闪2
     FlashEnd,//闪结束

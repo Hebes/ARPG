@@ -24,35 +24,23 @@ public class PlayerInput : MonoBehaviour
         if (_attribute.isDead) return;
         if (!battlePause) //是否暂停战斗
         {
-            // if (Input.Game.JumpDown.OnPressed)
-            // {
-            //     _abilities.jumpDown.JumpDown();
-            //     return;
-            // }
-            // if (Input.Game.BladeStorm.OnPressed)
-            // {
-            //     pab.skill.BladeStorm();
-            //     return;
-            // }
-            // if (Input.Game.ShadeAtk.OnPressed)
-            // {
-            //     pab.skill.ShadeAtk();
-            //     return;
-            // }
             if (Setting.GetFlag(InputType.Flash))
             {
+                //左闪
                 if (Input.Game.Flash.Left.OnPressed)
                 {
                     _abilities.flash.FlashLeft();
                     return;
                 }
 
+                //右闪
                 if (Input.Game.Flash.Right.OnPressed)
                 {
                     _abilities.flash.FlashRight();
                     return;
                 }
 
+                //按照角色的防线闪
                 if (Input.Game.Flash.FaceDirection.OnPressed)
                 {
                     _abilities.flash.FlashFace();
@@ -60,29 +48,27 @@ public class PlayerInput : MonoBehaviour
                 }
             }
 
+            //上挑
             if (Input.Game.UpRising.OnPressed && Setting.GetFlag(InputType.UpRising))
             {
                 _abilities.upRising.UpJumpAttack();
             }
 
+            //攻击地面
             if (Input.Game.HitGround.OnPressed)
             {
                 _abilities.hitGround.HitGround();
             }
+
             // if (Input.Game.FlashAttack.OnPressed && pab.flashAttack.PressFlashAttack())
             // {
             //     return;
             // }
-            if (Input.Game.Execute.OnPressed && Setting.GetFlag(InputType.Execute))
-            {
-                //     pab.execute.Execute();
-                //     return;
-            }
-
-            if (Input.Game.Chase.OnPressed)
-            {
-                //Abilities.chase.Chase();
-            }
+            // if (Input.Game.Execute.OnPressed && Setting.GetFlag(InputType.Execute))
+            // {
+            //     //     pab.execute.Execute();
+            //     //     return;
+            // }
 
             //跳跃
             if (Input.Game.Jump.OnPressed && Setting.GetFlag(InputType.Jump))
@@ -126,12 +112,11 @@ public class PlayerInput : MonoBehaviour
                 _abilities.attack.PlayerCirtPressAttackReleasd();
 
             //充能
-            if (Input.Game.Charging.LongPressed && Setting.GetFlag(InputType.Charging))
-            {
-                //Abilities.charge.Charging();
-            }
+            // if (Input.Game.Charging.LongPressed && Setting.GetFlag(InputType.Charging))
+            // {
+            //     //Abilities.charge.Charging();
+            // }
         }
-
         if (Setting.GetFlag(InputType.Move))
         {
             if (Input.Game.MoveLeft.Pressed)
