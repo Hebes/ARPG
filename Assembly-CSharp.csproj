@@ -79,9 +79,9 @@
     <Compile Include="Assets\Script\Game\Camera\GameArea.cs" />
     <Compile Include="Assets\Script\Game\Save\SaveStorage.cs" />
     <Compile Include="Assets\Script\Game\Player\Character\PlayerUpRisingAbility.cs" />
-    <Compile Include="Assets\Script\Game\GameData\Data\GameReadDB.cs" />
     <Compile Include="Assets\Script\Game\Colorful\Blend.cs" />
     <Compile Include="Assets\Script\Game\UI\UIOption\UIOption.cs" />
+    <Compile Include="Assets\Script\Game\Setting\Config\DBType.cs" />
     <Compile Include="Assets\Script\Game\Enemy\AI\DahalAIAction.cs" />
     <Compile Include="Assets\Script\Game\UI\UIBossHpBar\UIBossHpBar.cs" />
     <Compile Include="Assets\Script\Game\Colorful\Letterbox.cs" />
@@ -278,7 +278,6 @@
     <Compile Include="Assets\Script\Game\Colorful\SmartSaturation.cs" />
     <Compile Include="Assets\Script\Game\Colorful\ShadowsMidtonesHighlights.cs" />
     <Compile Include="Assets\Script\Game\Colorful\WaveDistortion.cs" />
-    <Compile Include="Assets\Script\Game\GameData\Component\EnemyDataPreload.cs" />
     <Compile Include="Assets\Script\Game\Player\Other\PlayerAttribute.cs" />
     <Compile Include="Assets\Script\Game\Colorful\GradientRamp.cs" />
     <Compile Include="Assets\Script\Game\Colorful\BleachBypass.cs" />

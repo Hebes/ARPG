@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 
 /// <summary>
@@ -14,13 +14,13 @@ public class PlayerAtk : BaseBehaviour
         _collider = GetComponent<Collider2D>();
     }
 
-    public void SetData(Dictionary<PlayerAtkDataType, string> atkData, int atkId)
+    public void SetData(JsonData atkData, int atkId)
     {
         data = atkData;
         attackId = atkId;
-        _hitTimes = data[PlayerAtkDataType.hitTimes].ToInt();
-        _interval = data[PlayerAtkDataType.interval].ToFloat();
-        _hitType = (HitType)data[PlayerAtkDataType.hitType].ToInt();
+        _hitTimes = data.Get(PlayerAtkDataType.hitTimes.ToString(), 0);
+        _interval = data.Get(PlayerAtkDataType.interval.ToString(), 100f);
+        _hitType = (HitType)data.Get(PlayerAtkDataType.hitType.ToString(), 0f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -66,7 +66,7 @@ public class PlayerAtk : BaseBehaviour
     private void UnlimitedAttack(Collider2D other)
     {
         "无限制攻击".Log();
-        _interval = data[PlayerAtkDataType.interval].ToFloat();
+        _interval = data.Get(PlayerAtkDataType.interval.ToString(), 0f);
         attackId = Incrementor.GetNextId();
         GameEvent.EnemyHurtAtk.Trigger(EventArgs(other, false));
     }
@@ -80,7 +80,7 @@ public class PlayerAtk : BaseBehaviour
         "有限的攻击".Log();
         if (_hitTimes > 0)
         {
-            _interval = data[PlayerAtkDataType.interval].ToFloat();
+            _interval = data.Get(PlayerAtkDataType.interval.ToString(), 0f);
             attackId = Incrementor.GetNextId();
             GameEvent.EnemyHurtAtk.Trigger(EventArgs(other, false));
             _hitTimes--;
@@ -136,7 +136,7 @@ public class PlayerAtk : BaseBehaviour
     /// <summary>
     /// 玩家动作的伤害数据
     /// </summary>
-    private Dictionary<PlayerAtkDataType, string> data;
+    private JsonData data;
 
     /// <summary>
     /// 攻击ID

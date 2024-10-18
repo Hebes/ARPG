@@ -38,7 +38,7 @@ public class CameraController : SMono<CameraController>
     /// <summary>
     /// 移动摄像机
     /// </summary>
-    public Transform MovableCamera => transform;
+    public Transform MovableCamera => transform.parent;
 
     /// <summary>
     /// 最大检测精度
@@ -112,6 +112,7 @@ public class CameraController : SMono<CameraController>
         {
             return Vector3.zero;
         }
+
         Vector3 position = Pivot.position; //玩家的位置
         Vector3? farestEnemyPosition = R.Enemy.GetFarestEnemyPosition(position, MaxDetectRect);
         Vector3 vector;
@@ -257,10 +258,7 @@ public class CameraController : SMono<CameraController>
             }
             else
             {
-                MovableCamera.DOMove(CameraPositionClamp(pos), speed).SetSpeedBased(true).SetEase(type).OnComplete(delegate
-                {
-                    CamereMoveFinished(false);
-                });
+                MovableCamera.DOMove(CameraPositionClamp(pos), speed).SetSpeedBased(true).SetEase(type).OnComplete(delegate { CamereMoveFinished(false); });
             }
         }
     }
@@ -297,8 +295,8 @@ public class CameraController : SMono<CameraController>
     /// <summary>
     /// 相机抖动
     /// </summary>
-    /// <param name="second"></param>
-    /// <param name="strength"></param>
+    /// <param name="second">秒，持续时间</param>
+    /// <param name="strength">强烈成都</param>
     /// <param name="type">晃动类型</param>
     /// <param name="isLoop">是否循环</param>
     public void CameraShake(float second, ShakeTypeEnum type, float strength = 0.2f, bool isLoop = false)
@@ -306,11 +304,20 @@ public class CameraController : SMono<CameraController>
         "相机抖动".Log();
         if (Math.Abs(second) < 0.01f) return;
         Vector3 strength2 = new Vector3(1f, 1f, 0f) * strength;
-        if (type == ShakeTypeEnum.Vertical)
-            strength2.x = 0f;
-        if (type == ShakeTypeEnum.Horizon)
-            strength2.y = 0f;
+        switch (type)
+        {
+            case ShakeTypeEnum.Vertical:
+                strength2.x = 0f;
+                break;
+            case ShakeTypeEnum.Horizon:
+                strength2.y = 0f;
+                break;
+            case ShakeTypeEnum.Rect: break;
+            default: throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+
         KillTweening();
+        //strength2.z = -10;
         transform.DOShakePosition(second, strength2, 100).SetLoops(isLoop ? -1 : 1).OnKill(OnShakeFinished).OnComplete(OnShakeFinished);
     }
 
@@ -364,7 +371,7 @@ public class CameraController : SMono<CameraController>
     {
         //this._globalBloom.enabled = false;
     }
-    
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         ManualOffsetY = 0f;
@@ -381,7 +388,7 @@ public enum ShakeTypeEnum
     /// <summary>
     /// 垂直
     /// </summary>
-    Vertical,
+    Vertical = 0,
 
     /// <summary>
     /// 水平

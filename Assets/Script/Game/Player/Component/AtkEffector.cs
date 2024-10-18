@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 
 public class AtkEffector : BaseBehaviour
 {
-    public void SetData(Dictionary<PlayerAtkDataType, string> atkData, int atkId)
+    public void SetData(JsonData atkData, int atkId)
     {
         playerAtk?.SetData(atkData, atkId);
     }

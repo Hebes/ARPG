@@ -102,17 +102,18 @@ public class WorldTime : SMono<WorldTime>
     public void TimeSlow(float slowTime, float slowScale)
     {
         if (IsPausing) return;
+        //缓慢结束
         _slowEnd = Time.time + slowTime * slowScale; //Time.time：获取自游戏开始以来的累计时间
         IsSlow = true;
         Time.timeScale = slowScale;
-        _slowRecover = (1f - slowScale) / 7f;
+        _slowRecover = (1f - slowScale) / 7f;//缓慢的恢复
     }
 
     /// <summary>
     /// 时间按帧慢速在60Fps
     /// </summary>
-    /// <param name="slowFrame"></param>
-    /// <param name="slowScale"></param>
+    /// <param name="slowFrame">迟钝帧</param>
+    /// <param name="slowScale">迟钝规模</param>
     public void TimeSlowByFrameOn60Fps(int slowFrame, float slowScale)
     {
         TimeSlow(slowFrame / 60f, slowScale);

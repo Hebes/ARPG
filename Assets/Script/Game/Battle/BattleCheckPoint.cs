@@ -10,8 +10,13 @@ public class BattleCheckPoint : BaseBehaviour
 {
     private void Awake()
     {
-        for (int i = 0; i < fileId.Count; i++)
-            _levelEnemyData.Add(fileId[i],GameReadDB.LevelEnemyData[LevelManager.SceneName]);
+        //TODO 需要加载敌人，暂时没做敌人预制体
+        // for (int i = 0; i < fileId.Count; i++)
+        // {
+        //     string name = $"{LevelManager.SceneName}.{fileId[i]}";
+        //     LevelEnemyData value = Asset.DeserializeFromFile<LevelEnemyData>($"Prefab/Enemy", name);
+        //     _levelEnemyData.Add(fileId[i], value);
+        // }
     }
 
     private void OnEnable()

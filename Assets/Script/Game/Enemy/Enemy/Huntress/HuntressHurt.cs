@@ -45,7 +45,7 @@ public class HuntressHurt : EnemyBaseHurt
         // airDieAnimName = "Fall";
         // airDieHitGroundAnimName = "AirDie";
         // flyToFallAnimName = "AirDiePre";
-        hurtData = EnemyDataPreload.I.hurt[EnemyType.女猎手];
+        hurtData = DB.LevelEnemyData[EnemyType.女猎手.ToString()];
     }
 
     /// <summary>

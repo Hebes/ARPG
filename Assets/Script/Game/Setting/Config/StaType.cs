@@ -19,10 +19,13 @@ public enum EnemyStaEnum
     Jumping, //跳跃中
     Fall, //落下
     Falling, //落下中
-    HitToFly3,
     JumpBack, //往后跳
     UnderAtk1, //受伤
     UnderAtkHitToFly, //受伤倒飞
+    HitGround,//攻击地面
+    HitToFly1,//在空中受伤1
+    HitToFly3,//在空中受伤3
+    FallHitGround,//降落攻击地面
 }
 
 public enum PlayerStaEnum

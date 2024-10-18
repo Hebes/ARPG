@@ -14,9 +14,9 @@ public class PlayerHitGroundAbility : CharacterState
 
     public override void Update()
     {
-        if (Attribute.isDead) return;//死亡
-        if (TimeController.isPause) return;//暂停
-        if (Listener.checkHitGround && Attribute.isOnGround)//站在地面或者击中地面
+        if (Attribute.isDead) return; //死亡
+        if (TimeController.isPause) return; //暂停
+        if (Listener.checkHitGround && Attribute.isOnGround) //站在地面或者击中地面
         {
             TimeController.SetSpeed(Vector2.zero);
             Listener.PhysicReset();
@@ -27,6 +27,7 @@ public class PlayerHitGroundAbility : CharacterState
             switch (currentState)
             {
                 case PlayerStaEnum.HitGrounding:
+                    R.Player.AnimEvent.CameraEffect(0, 0.2f, 0.1f, ShakeTypeEnum.Rect, 0.2f);
                     Action.ChangeState(PlayerStaEnum.HitGroundEnd);
                     break;
                 // case "Roll":

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using Object = UnityEngine.Object;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
+using EditorWindow = UnityEditor.EditorWindow;
+using GenericMenu = UnityEditor.GenericMenu;
+using GUIContent = UnityEngine.GUIContent;
 
 public class GetComponentScript
 {
@@ -214,10 +219,30 @@ public class SpriteRenderTools
     }
 }
 
+public class SceneTools : Editor
+{
+    [MenuItem("GameObject/切换场景/01InitScene", false, 1)]
+    public static void SwitchScene1() => SwitchScene("Assets/Scenes/01InitScene.unity");
+
+    [MenuItem("GameObject/切换场景/02Game", false, 1)]
+    public static void SwitchScene2() => SwitchScene("Assets/Scenes/02Game.unity");
+
+    private static void SwitchScene(string path)
+    {
+        string currentScenePath = EditorSceneManager.GetActiveScene().path; // 获取当前场景路径
+        //string targetScenePath = "Assets/Scenes/TargetScene.unity";// 定义需要切换到的场景路径
+        EditorSceneManager.OpenScene(path); // 切换到目标场景
+        //Debug.Log("Switched from " + currentScenePath + " to " + targetScenePath);
+    }
+}
+
 public class InstantiatePrefabInEditor : Editor
 {
     [MenuItem("GameObject/实例化/Player", false, 1)]
     public static void LoadPlayer() => InstantiatePrefab("Assets/Resources/Prefab/Core/Player.prefab");
+
+    [MenuItem("GameObject/打开/UI", false, 1)]
+    public static void LoadPrefab2() => OpenAsset("Assets/Resources/Prefab/Core/UI.prefab");
 
 
     /// <summary>
@@ -244,6 +269,23 @@ public class InstantiatePrefabInEditor : Editor
         // {
         //     instance.transform.position = Selection.activeTransform.position + Vector3.up; // 举例：将实例化Prefab的位置设置为当前选中对象的位置上方
         // }
+    }
+
+    /// <summary>
+    /// 打开预制体
+    /// </summary>
+    /// <param name="path"></param>
+    private static void OpenAsset(string path)
+    {
+        Object prefab = AssetDatabase.LoadAssetAtPath(path, typeof(GameObject));
+        if (prefab != null)
+        {
+            AssetDatabase.OpenAsset(prefab);
+        }
+        else
+        {
+            Debug.LogError("没找到: " + path);
+        }
     }
 }
 

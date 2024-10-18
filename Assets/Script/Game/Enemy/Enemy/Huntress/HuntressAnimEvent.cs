@@ -63,7 +63,7 @@ public class HuntressAnimEvent : MonoBehaviour
     private void Start()
     {
         _rollLoopTimes = 2;
-        _atkData = GameReadDB.PlayerHurtData[EnemyType.女猎手];
+        _atkData = DB.PlayerHurtData[EnemyType.女猎手];
     }
 
     private void Update()

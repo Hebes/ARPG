@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
@@ -44,12 +45,12 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(PlayAtkSound));
-        animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 8, nameof(CanPlayNextAttack));
+        animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 8, nameof(CanPlayNextAttack)); 
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 10, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 14, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
-        animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAtkData));
-        animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAttackId));
+        //animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAtkData));
+        //animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(OpenOnion)); //打开幻影
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 1, nameof(PlayFlashSound));
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 3, nameof(FlashPositionSet));
@@ -110,7 +111,7 @@ public class PlayerAnimEvent : MonoBehaviour
 
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":-60}");
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(AirPhysic), 0);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":5}");//10
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":5}"); //10
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 3, nameof(AirPhysic), 0);
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 8, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 8, nameof(SetAttackId));
@@ -126,18 +127,18 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 0, nameof(FlashReset));
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayEffect), 166);
         animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
-        
+
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(SetAtkData));
-        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayEffect),183);
-        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayerSound),201);
-        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 1, nameof(PlayerSound),202);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayEffect), 183);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayerSound), 201);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 1, nameof(PlayerSound), 202);
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 1, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 3, nameof(CanPlayNextAttack));
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(AttackFinish));
-        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(PlayAnim),PlayerStaEnum.Idle.ToString());
-        
-        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayerSound),151);
-        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayEffect),184);
+        animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
+
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayerSound), 151);
+        animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayEffect), 184);
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 1, nameof(Speed), "{\"x\":0,\"y\":20}");
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 3, nameof(Speed), "{\"x\":0,\"y\":-80}");
@@ -201,7 +202,49 @@ public class PlayerAnimEvent : MonoBehaviour
 
         UpdateFlashEnd();
     }
+    public void CameraShake(int frame)
+    {
+        //R.Camera.Controller.CameraShake((float)frame / 60f, 0.1f, CameraController.ShakeTypeEnum.Vertical, false);
+    }
+    public void CameraShake(AnimationEvent animationEvent)
+    {
+        // int intParameter = animationEvent.intParameter;
+        // float floatParameter = animationEvent.floatParameter;
+        // R.Camera.Controller.CameraShake((float)intParameter / 60f, floatParameter, CameraController.ShakeTypeEnum.Rect, false);
+    }
 
+    /// <summary>
+    /// 相机效果
+    /// </summary>
+    /// <param name="value"></param>
+    public void CameraEffect(string value)
+    {
+        // {"slowFrame":"45","slowScale":"0.2","second":"0.9","shakeType":"2","strength":"0.3"}
+        string sta = _stateMachine.currentState; //测试专用
+        JsonData jsonData = JsonMapper.ToObject(value);
+        int slowFrame = jsonData.Get<int>("slowFrame");
+        float slowScale = jsonData.Get<float>("slowScale");
+        float second = jsonData.Get<float>("second");
+        float strength = jsonData.Get<float>("strength");//强烈成都
+        ShakeTypeEnum shakeType = (ShakeTypeEnum)jsonData.Get<int>("ShakeType");
+        WorldTime.I.TimeSlowByFrameOn60Fps(slowFrame, slowScale); //时间按帧慢速在60Fps
+        R.Camera.Controller.CameraShake(second, shakeType, strength); //相机抖动
+    }
+    
+    /// <summary>
+    /// 相机效果
+    /// </summary>
+    /// <param name="slowFrame">迟钝帧</param>
+    /// <param name="slowScale">迟钝规模</param>
+    /// <param name="second">秒，持续时间</param>
+    /// <param name="type">晃动类型</param>
+    /// <param name="strength">强烈程度</param>
+    /// <param name="isLoop"></param>
+    public void CameraEffect(int slowFrame, float slowScale,float second, ShakeTypeEnum type, float strength = 0.2f, bool isLoop = false)
+    {
+        WorldTime.I.TimeSlowByFrameOn60Fps(slowFrame, slowScale); //时间按帧慢速在60Fps
+        R.Camera.Controller.CameraShake(second, type, strength); //相机抖动
+    }
 
     /// <summary>
     /// 能否继续地面攻击
@@ -251,10 +294,10 @@ public class PlayerAnimEvent : MonoBehaviour
 
     public void SetAtkData()
     {
-        if (GameReadDB.PlayerAtkData.TryGetValue(_stateMachine.currentState, out Dictionary<PlayerAtkDataType, string> data))
-        {
-            _playerAtk.SetData(data, Incrementor.GetNextId());
-        }
+        if (!DB.PlayerAtkData.ContainsKey(_stateMachine.currentState))
+            throw new NullReferenceException($"当前状态的{_stateMachine.currentState}没有玩家的PlayerAtkData数据");
+        JsonData jsonData = DB.PlayerAtkData[_stateMachine.currentState];
+        _playerAtk.SetData(jsonData, Incrementor.GetNextId());
     }
 
     public void TurnRoundChild()
@@ -340,7 +383,7 @@ public class PlayerAnimEvent : MonoBehaviour
     /// <param name="speed"></param>
     public void Speed(string speed)
     {
-        string sta = _stateMachine.currentState;//测试专用
+        string sta = _stateMachine.currentState; //测试专用
         JsonData jsonData = JsonMapper.ToObject(speed);
         float num = float.Parse(jsonData["x"].ToJson());
         float y = float.Parse(jsonData["y"].ToJson());
@@ -607,16 +650,17 @@ public class PlayerAnimEvent : MonoBehaviour
             transform.localScale.z);
         if (component.UseAtkData)
         {
+            "使用攻击数据".Log();
             if (charge)
             {
                 charge = false;
                 Vector3 position = Camera.main.transform.position.SetZ(-0.2f);
                 transform.position = position;
-                transform.GetComponent<AtkEffector>().SetData(GameReadDB.PlayerAtkData["Charge1EndLevel1"], Incrementor.GetNextId());
+                transform.GetComponent<AtkEffector>().SetData(DB.PlayerAtkData["Charge1EndLevel1"], Incrementor.GetNextId());
             }
             else
             {
-                transform.GetComponent<AtkEffector>().SetData(GameReadDB.PlayerAtkData[_stateMachine.currentState], Incrementor.GetNextId());
+                transform.GetComponent<AtkEffector>().SetData(DB.PlayerAtkData[_stateMachine.currentState], Incrementor.GetNextId());
             }
         }
     }
@@ -757,6 +801,33 @@ public class PlayerAnimEvent : MonoBehaviour
     public void ChargeEffectDisappear()
     {
         //chargeAnim.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 执行死亡  测试专用
+    /// </summary>
+    protected virtual void ExecuteDie()
+    {
+        // R.Audio.PlayEffect(Random.Range(105, 108), transform.position);
+        // deadFlag = true;
+        // att.currentHp = 0;
+        // eAttr.inWeakState = false;
+        // eAttr.isFlyingUp = false;
+        // eAttr.checkHitGround = false;
+        // eAttr.stiffTime = 0f;
+        // eAttr.timeController.SetGravity(1f);
+        // EventManager.PostEvent("EnemyKilled", eAttr);
+        // action.WeakEffectDisappear("Null");
+        // R.Effect.Generate(91, null, transform.position + new Vector3(0f, 1.2f, LayerManager.ZNum.Fx), Vector3.zero);
+        // R.Effect.Generate(49, transform);
+        // R.Effect.Generate(14, null, transform.position + new Vector3(0f, 1.2f, LayerManager.ZNum.Fx));
+        // AddCoinAndExp();
+        // ExecuteDieEffect();
+        // R.Effect.Generate(213);
+        // R.Effect.Generate(214);
+        // SingletonMono<WorldTime>.Instance.TimeSlowByFrameOn60Fps(45, 0.2f);
+        // R.Camera.Controller.CameraShake(0.9166667f, 0.3f);
+        // R.Camera.Controller.OpenMotionBlur(0.13333334f, 1f, transform.position);
     }
 
 

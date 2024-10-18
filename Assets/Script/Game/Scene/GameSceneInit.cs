@@ -32,11 +32,11 @@ public class GameSceneInit : MonoBehaviour
             R.Settings.Save();
         }
 
-        Load("GameBD", typeof(Preload), typeof(EnemyDataPreload)); //游戏数据
+        Load("GameBD", typeof(Preload)); //游戏数据
         Load("World", typeof(WorldTime), typeof(WorldSetting),typeof(SaveManager)); //世界时间
         Load("BattleZoneTrigger", typeof(BattleZoneTrigger)); //战斗区域触发
         Load("EffectGenerator", typeof(EffectController)); //效果生成数据
-        Load("Prefab/Core", "MainCamera"); //主摄像机
+        Load("Prefab/Core", "Camera"); //主摄像机
         Load("Prefab/Core", "UI"); //UI摄像机
         Load("Prefab/Core", "AudioSource"); //音乐
     }

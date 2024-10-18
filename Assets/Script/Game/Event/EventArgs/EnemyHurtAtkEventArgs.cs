@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
 
@@ -93,17 +92,17 @@ public class EnemyHurtAtkEventArgs : EventArgs
         /// </summary>
         /// <param name="atkData"></param>
         /// <param name="_firstHurt">是否第一次伤害</param>
-        public PlayerNormalAtkData(Dictionary<PlayerAtkDataType, string> atkData, bool _firstHurt)
+        public PlayerNormalAtkData(JsonData atkData, bool _firstHurt)
         {
             "玩家默认攻击数据".Log();
-            damagePercent = atkData[PlayerAtkDataType.damagePercent].ToFloat();
-            atkName = atkData[PlayerAtkDataType.atkName];
-            camShakeFrame = atkData[PlayerAtkDataType.shakeClip].ToInt();
-            shakeStrength = atkData[PlayerAtkDataType.shakeOffset].ToFloat();
-            shakeType = atkData[PlayerAtkDataType.shakeType].ToInt();
-            frozenFrame = atkData[PlayerAtkDataType.frozenClip].ToInt();
-            shakeFrame = atkData[PlayerAtkDataType.frameShakeClip].ToInt();
-            joystickShakeNum = atkData[PlayerAtkDataType.joystickShakeNum].ToInt();
+            damagePercent = atkData.Get(PlayerAtkDataType.damagePercent.ToString(), 1f);
+            atkName = atkData.Get(PlayerAtkDataType.atkName.ToString(), "Atk1");
+            camShakeFrame = atkData.Get(PlayerAtkDataType.shakeClip.ToString(), 0);
+            shakeStrength = atkData.Get(PlayerAtkDataType.shakeOffset.ToString(), 0f);
+            shakeType = atkData.Get(PlayerAtkDataType.shakeType.ToString(), 0);
+            frozenFrame = atkData.Get(PlayerAtkDataType.frozenClip.ToString(), 0);
+            shakeFrame = atkData.Get(PlayerAtkDataType.frameShakeClip.ToString(), 0);
+            joystickShakeNum = atkData.Get(PlayerAtkDataType.joystickShakeNum.ToString(), -1);
             firstHurt = _firstHurt;
         }
 

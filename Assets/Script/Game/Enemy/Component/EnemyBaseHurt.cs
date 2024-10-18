@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 
 /// <summary>
@@ -9,7 +10,7 @@ public class EnemyBaseHurt : MonoBehaviour
 {
     protected GameObject player => R.Player.GameObject;
     protected PlayerAttribute Attr => R.Player.Attribute;
-    protected Dictionary<string, Dictionary<EnemyHurtDataType, string>> hurtData;
+    protected JsonData hurtData;
 
     protected Pivot Pivot;
     protected EnemyAttribute eAttr;
@@ -182,8 +183,6 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <summary>
     /// 敌人受伤
     /// </summary>
-    /// <param name="eventName">事件名称</param>
-    /// <param name="sender"></param>
     /// <param name="args"></param>
     /// <returns></returns>
     private bool EnemyHurt(EnemyHurtAtkEventArgs args)
@@ -233,10 +232,10 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <summary>
     /// 时间冻结和相机抖动
     /// </summary>
-    /// <param name="frozenFrame"></param>
+    /// <param name="frozenFrame">冻结帧</param>
     /// <param name="frameShakeFrame">边框摇晃</param>
     /// <param name="shakeType">摇类型</param>
-    /// <param name="shakeFrame">边框摇晃</param>
+    /// <param name="shakeFrame">晃动帧</param>
     /// <param name="shakeOffset">摇晃偏移</param>
     protected void TimeFrozenAndCameraShake(int frozenFrame, int frameShakeFrame, int shakeType, int shakeFrame, float shakeOffset)
     {
@@ -605,9 +604,9 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <param name="hurtPos"></param>
     public virtual void NormalHurt(EnemyHurtAtkEventArgs.PlayerNormalAtkData atkData, int atkId, HurtCheck.BodyType body, Vector2 hurtPos)
     {
-        if (hurtId >= atkId || !hurtData.TryGetValue(atkData.atkName, out var data)) return;
+        if (hurtId >= atkId || !hurtData.ContainsKey(atkData.atkName)) return;
         GetHurt(atkId);
-        HurtAttribute hurtAttribute = new HurtAttribute(data, defaultAnimName, defaultAirAnimName); //伤害属性
+        HurtAttribute hurtAttribute = new HurtAttribute(hurtData[atkData.atkName], defaultAnimName, defaultAirAnimName); //伤害属性
         SpeedAdjust(atkData.atkName, ref hurtAttribute);
         playerAtkName = atkData.atkName;
         Vector2 speed = new Vector2(hurtAttribute.xSpeed, hurtAttribute.ySpeed);
@@ -644,8 +643,8 @@ public class EnemyBaseHurt : MonoBehaviour
 
             flag = false;
             NotInDefense();
-            speed.x *= speedDir;
-            airSpeed.x *= speedDir;
+            speed.x *= speedDir * -1;
+            airSpeed.x *= speedDir* -1;
             if (!eAttr.isDead)
             {
                 GenerateCritHurtNum(finalDamage);
@@ -1086,7 +1085,7 @@ public class EnemyBaseHurt : MonoBehaviour
     /// </summary>
     protected void DieTimeControl()
     {
-        WorldTime.I.TimeFrozenByFixedFrame(25, FrozenArgs.FrozenType.Enemy);//时间冻结
+        WorldTime.I.TimeFrozenByFixedFrame(25, FrozenArgs.FrozenType.Enemy); //时间冻结
         //R.Camera.Controller.CameraShake(0.416666657f, ShakeTypeEnum.Rect, 0.3f);//相机抖动
         if (gameObject.activeSelf)
             StartCoroutine(ClipShake(12));
@@ -1194,9 +1193,9 @@ public class EnemyBaseHurt : MonoBehaviour
     protected int maxPhase;
 
     [SerializeField] private bool canChangeFace = true;
-    [Header("框架振动体")]  [SerializeField] private Transform frameShakeBody;
+    [Header("框架振动体")] [SerializeField] private Transform frameShakeBody;
     [SerializeField] private Vector3 centerOffset;
-    [Header("左右抖动幅度")] [SerializeField] private float m_frameShakeOffset=0.1f;
+    [Header("左右抖动幅度")] [SerializeField] private float m_frameShakeOffset = 0.1f;
     [SerializeField] private int[] hpPercent;
 
     /// <summary>
@@ -1236,14 +1235,14 @@ public class EnemyBaseHurt : MonoBehaviour
     /// </summary>
     private class HurtAttribute
     {
-        public HurtAttribute(Dictionary<EnemyHurtDataType, string> hurt, string defaultAnimName, string defaultAirAnimName)
+        public HurtAttribute(JsonData hurt, string defaultAnimName, string defaultAirAnimName)
         {
-            xSpeed = hurt[EnemyHurtDataType.xSpeed].ToFloat();
-            ySpeed = hurt[EnemyHurtDataType.ySpeed].ToFloat();
-            airXSpeed = hurt[EnemyHurtDataType.airXSpeed].ToFloat();
-            airYSpeed = hurt[EnemyHurtDataType.airYSpeed].ToFloat();
-            normalAtkType = hurt[EnemyHurtDataType.normalAtkType];
-            airAtkType = hurt[EnemyHurtDataType.airAtkType];
+            xSpeed = hurt.Get($"{EnemyHurtDataType.xSpeed}", 0f);
+            ySpeed = hurt.Get($"{EnemyHurtDataType.ySpeed}", 0f);
+            airXSpeed = hurt.Get($"{EnemyHurtDataType.airXSpeed}", 0f);
+            airYSpeed = hurt.Get($"{EnemyHurtDataType.airYSpeed}", 0f);
+            normalAtkType = hurt.Get($"{EnemyHurtDataType.normalAtkType}", defaultAnimName);
+            airAtkType = hurt.Get($"{EnemyHurtDataType.airAtkType}", defaultAirAnimName);
         }
 
         /// <summary>

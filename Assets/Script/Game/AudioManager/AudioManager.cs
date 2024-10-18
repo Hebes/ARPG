@@ -80,7 +80,7 @@ public class AudioManager : SMono<AudioManager>
 
     private void Awake()
     {
-        _audioList = GameReadDB.AudioList;
+        _audioList = DB.AudioList;
         _bgmSource = _bgmSource1;
         CreatePool();
         Preload();
