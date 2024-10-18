@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// 敌人基础伤害
@@ -20,14 +21,6 @@ public class EnemyBaseHurt : MonoBehaviour
     public Transform atkBox;
     public Transform center;
 
-    private void GetComponent()
-    {
-        eAttr = GetComponent<EnemyAttribute>();
-        action = GetComponent<EnemyBaseAction>();
-        Pivot = GetComponent<Pivot>();
-        armor = GetComponent<EnemyArmor>();
-        frameShakeBody = transform;
-    }
 
     /// <summary>
     /// 显示攻击伤害
@@ -90,7 +83,12 @@ public class EnemyBaseHurt : MonoBehaviour
 
     protected void Awake()
     {
-        GetComponent();
+        frameShakeBody = transform.FindChildByName("Body");
+        eAttr = transform.FindComponent<EnemyAttribute>();
+        action = transform.FindComponent<EnemyBaseAction>();
+        Pivot = transform.FindComponent<Pivot>();
+        armor = transform.FindComponent<EnemyArmor>();
+
         GameEvent.EnemyHurtAtk.Register(EnemyHurtAtk);
     }
 
@@ -644,7 +642,7 @@ public class EnemyBaseHurt : MonoBehaviour
             flag = false;
             NotInDefense();
             speed.x *= speedDir * -1;
-            airSpeed.x *= speedDir* -1;
+            airSpeed.x *= speedDir * -1;
             if (!eAttr.isDead)
             {
                 GenerateCritHurtNum(finalDamage);
@@ -1229,6 +1227,8 @@ public class EnemyBaseHurt : MonoBehaviour
     private bool qteCameraEffectOn;
 
     private Coroutine _chaseCoroutine;
+    private GameObject _getSelf;
+
 
     /// <summary>
     /// 伤害属性
@@ -1275,4 +1275,6 @@ public class EnemyBaseHurt : MonoBehaviour
         /// </summary>
         public string airAtkType;
     }
+
+    
 }

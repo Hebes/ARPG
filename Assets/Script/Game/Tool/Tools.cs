@@ -140,7 +140,7 @@ public static class ComponentTools
         return value.name.Equals(nameValue) ? value : FindParentByName(value.parent, nameValue);
     }
 
-    public static T FindChildByType<T>(this Transform value) where T : UnityEngine.Object
+    public static T FindComponent<T>(this Transform value) where T : UnityEngine.Object
     {
         T t = value.GetComponent<T>();
         if (t != null)
@@ -150,7 +150,7 @@ public static class ComponentTools
 
         for (int i = 0; i < value.childCount; i++)
         {
-            t = FindChildByType<T>(value.GetChild(i));
+            t = FindComponent<T>(value.GetChild(i));
             if (t != null)
             {
                 return t;

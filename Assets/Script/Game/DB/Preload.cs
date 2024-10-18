@@ -345,6 +345,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.Atk1.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -361,6 +362,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.Atk2.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -377,6 +379,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.Atk3.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -393,6 +396,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.UpRising.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移 摇晃偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -409,6 +413,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.AirAtk1.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -425,6 +430,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.AirAtk2.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -441,6 +447,7 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.AirAtk3.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
@@ -457,9 +464,44 @@ public class DB
                 { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
                 { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.HitGroundStart.ToString() }, //攻击名称
                 { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
                 { PlayerAtkDataType.shakeOffset.ToString(), "0.2" }, //振动偏移
                 { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
                 { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
+                { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
+                { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
+            }
+        },
+        {
+            PlayerStaEnum.DoubleFlash.ToString(), new Dictionary<string, string>
+            {
+                { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
+                { PlayerAtkDataType.interval.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.hitType.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
+                { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.DoubleFlash.ToString() }, //攻击名称
+                { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
+                { PlayerAtkDataType.shakeOffset.ToString(), "0.2" }, //振动偏移
+                { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
+                { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
+                { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
+                { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
+            }
+        },
+        {
+            PlayerStaEnum.AtkFlashRollEnd.ToString(), new Dictionary<string, string>
+            {
+                { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
+                { PlayerAtkDataType.interval.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.hitType.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
+                { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.AtkFlashRollEnd.ToString() }, //攻击名称
+                { PlayerAtkDataType.shakeClip.ToString(), "10" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0.4" }, //振动速度
+                { PlayerAtkDataType.shakeOffset.ToString(), "0.4" }, //振动偏移
+                { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
+                { PlayerAtkDataType.frozenClip.ToString(), "10" }, //冻结帧
                 { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
                 { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
             }
@@ -594,9 +636,9 @@ public class DB
             EnemyType.女猎手.ToString(), new Dictionary<string, Dictionary<string, string>>
             {
                 {
-                    EnemyStaEnum.Atk1.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk1.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "3.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "1.0" },
                         { EnemyHurtDataType.ySpeed.ToString(), "0.0" },
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
@@ -605,10 +647,10 @@ public class DB
                     }
                 },
                 {
-                    EnemyStaEnum.Atk2.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk2.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.ySpeed.ToString(), "7.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
@@ -616,10 +658,10 @@ public class DB
                     }
                 },
                 {
-                    EnemyStaEnum.Atk3.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk3.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.ySpeed.ToString(), "7.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
@@ -632,7 +674,7 @@ public class DB
             EnemyType.稻草人.ToString(), new Dictionary<string, Dictionary<string, string>>
             {
                 {
-                    EnemyStaEnum.Atk1.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk1.ToString(), new Dictionary<string, string>()
                     {
                         { EnemyHurtDataType.xSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.ySpeed.ToString(), "0.0" },
@@ -643,10 +685,10 @@ public class DB
                     }
                 },
                 {
-                    EnemyStaEnum.Atk2.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk2.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.ySpeed.ToString(), "7.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "1.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
@@ -654,10 +696,21 @@ public class DB
                     }
                 },
                 {
-                    EnemyStaEnum.Atk3.ToString(), new Dictionary<string, string>()
+                    PlayerStaEnum.Atk3.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.ySpeed.ToString(), "7.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                    }
+                },
+                {
+                    PlayerStaEnum.UpRising.ToString(), new Dictionary<string, string>()
+                    {
+                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },

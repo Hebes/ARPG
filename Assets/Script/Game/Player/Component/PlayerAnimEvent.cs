@@ -99,10 +99,10 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.GetUp.ToString(), 0, nameof(AirAttackReset));
         animator.AddAnimatorEvent(PlayerStaEnum.GetUp.ToString(), 5, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(AirAttackReset));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(PhysicReset));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(PlayEffect), 106);
-        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 1, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 1, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 6, nameof(Speed), "{\"x\":0,\"y\":15}");
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 6, nameof(PlayerSound), 32);
@@ -292,6 +292,10 @@ public class PlayerAnimEvent : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 从动画事件中触发
+    /// </summary>
+    /// <exception cref="NullReferenceException"></exception>
     public void SetAtkData()
     {
         if (!DB.PlayerAtkData.ContainsKey(_stateMachine.currentState))

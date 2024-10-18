@@ -32,9 +32,9 @@ public class PlayerAction : MonoBehaviour
     private void Awake()
     {
         _playerAnimationController = GetComponent<PlayerAnimationController>();
-        blockPartical = transform.FindChildByType<ParticleSystem>();
+        blockPartical = transform.FindComponent<ParticleSystem>();
         weapon = GetComponent<Claymore>();
-        listener = transform.FindChildByType<PlayerAnimEvent>();
+        listener = transform.FindComponent<PlayerAnimEvent>();
         playerAttribute = R.Player.Attribute;
         _stateMachine = GetComponent<StateMachine>();
         _stateMachine = GetComponent<StateMachine>();

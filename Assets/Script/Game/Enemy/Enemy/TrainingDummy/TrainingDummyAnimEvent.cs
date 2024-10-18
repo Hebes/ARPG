@@ -2,8 +2,6 @@
 
 public class TrainingDummyAnimEvent : MonoBehaviour
 {
-    #region 组件
-
     private Transform Player => R.Player.Transform;
     private EnemyAtk _atk;
     private OnionCreator _onion;
@@ -12,32 +10,25 @@ public class TrainingDummyAnimEvent : MonoBehaviour
     private EnemyAttribute _eAttr;
     private Animator _animator;
 
-    private void GetComponent()
-    {
-        _eAction = GetComponent<TrainingDummyAction>();
-        _eAttr = GetComponent<EnemyAttribute>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-    }
-
-    #endregion
-
     private void Awake()
     {
-        GetComponent();
-        
-         _animator.AddAnimatorEvent(EnemyStaEnum.Hurt.ToString(), 4, nameof(BackToIdle));
+        _eAction = transform.parent.FindComponent<TrainingDummyAction>();
+        _eAttr = transform.parent.FindComponent<EnemyAttribute>();
+        _rigidbody2D = transform.parent.FindComponent<Rigidbody2D>();
+        _animator = transform.parent.FindComponent<Animator>();
+
+        _animator.AddAnimatorEvent(EnemyStaEnum.Hurt.ToString(), 4, nameof(BackToIdle));
     }
-    
+
     private void Update()
     {
-        return;
-        if (_eAttr.isDead)return;
+        if (_eAttr.isDead) return;
         if (_rollAttackFly && _eAttr.isOnGround && _rigidbody2D.velocity.y <= 0f)
         {
             _rollAttackFly = false;
             _eAction.ChangeState(EnemyStaEnum.HitGround);
         }
+
         if (_eAttr.isFlyingUp)
         {
             bool flag = maxFlyHeight > 0f && _eAttr.height >= maxFlyHeight;
@@ -47,12 +38,14 @@ public class TrainingDummyAnimEvent : MonoBehaviour
                 currentSpeed.y = 0f;
                 _eAttr.timeController.SetSpeed(currentSpeed);
             }
+
             if (_rigidbody2D.velocity.y <= 0f)
             {
                 _eAttr.isFlyingUp = false;
                 _eAction.ChangeState(EnemyStaEnum.HitToFly3);
             }
         }
+
         if (_eAttr.checkHitGround && _eAttr.isOnGround)
         {
             _eAttr.checkHitGround = false;
@@ -69,7 +62,7 @@ public class TrainingDummyAnimEvent : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// 回到闲置状态
     /// </summary>
@@ -84,7 +77,7 @@ public class TrainingDummyAnimEvent : MonoBehaviour
     /// 最大飞行高度
     /// </summary>
     public float maxFlyHeight;
-    
+
     /// <summary>
     /// 滚动攻击在天上
     /// </summary>

@@ -33,6 +33,7 @@ public class TimeController : MonoBehaviour, IPlatformPhysics
     {
         Vector2? vector = currentSpeed;
         return vector ?? _rigid.velocity;
+        
     }
 
     private void FixedUpdate()

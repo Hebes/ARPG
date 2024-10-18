@@ -20,7 +20,7 @@ public class HuntressAnimEvent : MonoBehaviour
 
     private void GetComponent()
     {
-        _atk = transform.FindChildByType<EnemyAtk>();
+        _atk = transform.FindComponent<EnemyAtk>();
         _onion = GetComponent<OnionCreator>();
         _eAction = GetComponent<HuntressAction>();
         _eAttr = GetComponent<EnemyAttribute>();

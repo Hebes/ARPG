@@ -203,6 +203,7 @@
     <Compile Include="Assets\Script\Game\IPlatformPhysics.cs" />
     <Compile Include="Assets\Script\Game\Save\Data\SettingData.cs" />
     <Compile Include="Assets\Script\Game\Enemy\AI\EnemyAIAttribute.cs" />
+    <Compile Include="Assets\Script\Game\ComComponent\AutoDestroy.cs" />
     <Compile Include="Assets\Script\Game\Player\Other\RayData.cs" />
     <Compile Include="Assets\Script\Game\Input\Controller\PCController.cs" />
     <Compile Include="Assets\Script\Game\Colorful\Sharpen.cs" />

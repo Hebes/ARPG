@@ -7,17 +7,8 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class EnemyAttribute : MonoBehaviour
 {
-    #region 组件
-
     [HideInInspector] public TimeController timeController;
     [NonSerialized] private EnemyBaseAction _action;
-
-    private void GetComponent()
-    {
-        timeController = GetComponent<TimeController>();
-    }
-
-    #endregion
 
     /// <summary>
     /// 试图X前面
@@ -153,7 +144,7 @@ public class EnemyAttribute : MonoBehaviour
 
     protected void Awake()
     {
-        GetComponent();
+        timeController = transform.FindComponent<TimeController>();
         currentSp = maxSP;
         currentHp = maxHp;
     }
@@ -265,11 +256,15 @@ public class EnemyAttribute : MonoBehaviour
 
     public Bounds bounds;
 
-    [Header("看到玩家,X点前面最远的距离")][SerializeField] private float _viewXFront;
-    [Header("看到玩家,X点后面最远的距离")][SerializeField] private float _viewXBack;
+    [Header("看到玩家,X点前面最远的距离")] [SerializeField]
+    private float _viewXFront;
+
+    [Header("看到玩家,X点后面最远的距离")] [SerializeField]
+    private float _viewXBack;
+
     [SerializeField] private float _viewYTop;
     [SerializeField] private float _viewYDown;
-    [Header("敌人的朝向")] public int faceDir ;
+    [Header("敌人的朝向")] public int faceDir;
     [Header("硬直时间")] public float stiffTime;
     [Header("是否被玩家看到")] public bool playerInView;
     [Header("敌人关卡基本属性值，编辑器修改无效")] public EnemyAttrData baseData;

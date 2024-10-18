@@ -25,7 +25,7 @@ public class UIOption : SMono<UIOption>
         KeyCode = transform.Find("Panel/KeyCode").GetComponent<UnityEngine.EventSystems.EventTrigger>();
         Quit = transform.Find("Panel/Quit").GetComponent<UnityEngine.EventSystems.EventTrigger>();
 
-        _uiAudioSettingElement = transform.FindChildByType<UIAudioSettingElement>();
+        _uiAudioSettingElement = transform.FindComponent<UIAudioSettingElement>();
         Panel.FadeTo(0f);
 
         Quit.AddEventTrigger(EventTriggerType.PointerClick, OnQuit);

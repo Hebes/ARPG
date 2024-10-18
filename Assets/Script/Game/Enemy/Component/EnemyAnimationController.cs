@@ -17,7 +17,7 @@ public class EnemyAnimationController : MonoBehaviour
 
     private void Awake()
     {
-        _timeController = GetComponent<TimeController>();
+        _timeController = transform.parent.FindComponent<TimeController>();
         _animator = GetComponent<Animator>();
         CurrentUnityAnim = string.Empty;
     }
