@@ -129,17 +129,13 @@ public class OnionCreator : MonoBehaviour
                     if (gameObject.activeSelf)
                     {
                         Transform transform = R.Effect.Generate(_onionId, null, pos + new Vector3(0f, 0f, 0.001f), Vector3.zero);
-                        if (_ghostParent == null)
-                        {
-                            _ghostParent = new GameObject("GhostParent").transform;
-                            _ghostParent.parent = R.Effect.transform;
-                            transform.parent = _ghostParent;
-                            //transform.localScale = this.transform.localScale;
-                            OnionAnimController component2 = transform.GetComponent<OnionAnimController>();
-                            component2.Clone(gameObject);
-                            component2.SetDisappear(disappearCurve, disappearTime);
-                            
-                        }
+                        _ghostParent ??= new GameObject("GhostParent").transform;
+                        _ghostParent.parent = R.Effect.transform;
+                        transform.parent = _ghostParent;
+                        transform.localScale = this.transform.localScale;
+                        OnionAnimController component2 = transform.GetComponent<OnionAnimController>();
+                        component2.Clone(gameObject);
+                        component2.SetDisappear(disappearCurve, disappearTime);
                     }
                 }
 

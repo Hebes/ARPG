@@ -5,10 +5,13 @@
 /// </summary>
 public class OnionAnimController : MonoBehaviour
 {
+    private SpriteRenderer _meshFilter;
+    private AnimationCurve _curve;
+    private AnimationCurve _scaleCurve;
+    
     private void OnEnable()
     {
-        if (_meshFilter == null)
-            _meshFilter = GetComponent<SpriteRenderer>();
+        _meshFilter ??= GetComponent<SpriteRenderer>();
         _startColor = tint;
     }
 
@@ -28,14 +31,17 @@ public class OnionAnimController : MonoBehaviour
             _disappearTime = 1f;
         }
 
-        _scaleCurve ??= AnimationCurve.Linear(0f, 1f, 1f, 1f);
+        if (_scaleCurve == null)
+        {
+            _scaleCurve = AnimationCurve.Linear(0f, 1f, 1f, 1f);
+        }
 
         _disappearTimer += Time.deltaTime;
         float num = Mathf.Clamp01(_curve.Evaluate(_disappearTimer / _disappearTime));
-        //tint.a *= num;
+        tint.a *= num;
         float d = Mathf.Clamp01(_scaleCurve.Evaluate(_disappearTimer / _disappearTime));
-        // Vector3 localScale = _startScale * d;
-        // transform.localScale = localScale;
+        Vector3 localScale = _startScale * d;
+        transform.localScale = localScale;
         Refresh();
         if (_disappearTimer > _disappearTime)
         {
@@ -45,7 +51,7 @@ public class OnionAnimController : MonoBehaviour
 
     public void Clone(GameObject game)
     {
-        //_startScale = transform.localScale;
+        _startScale = transform.localScale;
         _meshFilter ??= GetComponent<SpriteRenderer>();
         //_meshFilter.sprite = game.GetComponent<SpriteRenderer>().sprite;
     }
@@ -68,21 +74,6 @@ public class OnionAnimController : MonoBehaviour
     /// 底色
     /// </summary>
     public Color tint = new Color(0f, 0f, 0.5f, 0.5f);
-
-    /// <summary>
-    /// 图片
-    /// </summary>
-    private SpriteRenderer _meshFilter;
-
-    /// <summary>
-    /// 曲线
-    /// </summary>
-    public AnimationCurve _curve;
-
-    /// <summary>
-    /// 规模曲线
-    /// </summary>
-    public AnimationCurve _scaleCurve;
 
     /// <summary>
     /// 开始比例
