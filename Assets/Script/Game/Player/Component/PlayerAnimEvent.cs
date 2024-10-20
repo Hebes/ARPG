@@ -143,6 +143,10 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 1, nameof(Speed), "{\"x\":0,\"y\":20}");
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 3, nameof(Speed), "{\"x\":0,\"y\":-80}");
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 15, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
+        
+        animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 0, nameof(SetAtkData));
+        animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 18, nameof(AttackFinish));
+        animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 19, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
     }
 
     private void Start()
@@ -460,7 +464,7 @@ public class PlayerAnimEvent : MonoBehaviour
 
     public void BoxSizeRecover()
     {
-        $"BoxSizeRecover".Log();
+        //$"BoxSizeRecover".Log();
         // _box.offset = new Vector2(0f, 1f);
         // _box.size = new Vector2(1f, 2f);
     }

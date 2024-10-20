@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,13 @@ public class LevelManager
     public static string SceneName => SceneManager.GetActiveScene().name;
 
     private static AsyncOperation _asyncOperation;
+
+    /// <summary>
+    /// 是否是目标场景
+    /// </summary>
+    /// <param name="targetSceneName"></param>
+    /// <returns></returns>
+    public static bool IsScene(string targetSceneName) => SceneManager.GetActiveScene().name.Equals(targetSceneName);
 
     /// <summary>
     /// 死亡人数
@@ -34,7 +42,7 @@ public class LevelManager
             return _asyncOperation;
         _asyncOperation = SceneManager.LoadSceneAsync(levelName);
         if (_asyncOperation == null)
-            (levelName + "场景不存在，是不是没放在build里？还是名字写错了？").Warning();
+            throw new NullReferenceException($"{levelName}场景不存在，是不是没放在build里？还是名字写错了？");
         return _asyncOperation;
     }
 
@@ -67,11 +75,12 @@ public class LevelManager
     /// <returns></returns>
     public static Coroutine LoadLevelByPosition(string levelName, Vector3 position, bool needProgressBar = false)
     {
-        SwitchLevelGateData switchLevelGateData = new();
-        switchLevelGateData.ToLevelId = levelName;
-        switchLevelGateData.ToId = -1;
-        switchLevelGateData.TargetPosition = position;
-        return R.SceneGate.Enter(switchLevelGateData, needProgressBar);
+        return R.SceneGate.Enter(new()
+        {
+            ToLevelId = levelName,
+            ToId = -1,
+            TargetPosition = position
+        }, needProgressBar);
     }
 
     public static Coroutine OnRoundOver()

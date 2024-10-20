@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -21,14 +22,13 @@ public class SavePoint : BaseBehaviour
     private void Start()
     {
         HasConquer = true;
-        //R.Ui.Enhancement.OnFinish += this.OnEnhancementFinish;
     }
 
     private void OnDestroy()
     {
         if (!UIController.ApplicationIsQuitting)
         {
-            //R.Ui.Enhancement.OnFinish -= this.OnEnhancementFinish;
+            
             //R.Ui.SaveProgressCircle.Disappear();
         }
     }
@@ -46,7 +46,9 @@ public class SavePoint : BaseBehaviour
         R.GameData.Save();
         //测试成就
         AchievementManager.I.AwardAchievement(1);
-        //_animator.SetTrigger("Save");
+        //测试提示程序
+        UITutorial.I.ShowTutorial().StartIEnumerator();
+        UISaveCircle.I.StartShow();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -55,7 +57,6 @@ public class SavePoint : BaseBehaviour
         if (Input.Game.Search.OnClick)
         {
             //_prompt.FadeOut();
-            //_animator.SetBool("IsShopping", true);
         }
     }
 

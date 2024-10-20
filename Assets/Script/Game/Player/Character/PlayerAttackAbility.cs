@@ -85,30 +85,28 @@ public class PlayerAttackAbility : CharacterState
     /// <param name="attackDir"></param>
     public void PlayerCirtPressAttack(int attackDir)
     {
-        "玩家按下重攻击".Error();
-        // if (R.Player.TimeController.isPause)
-        // {
-        // 	return;
-        // }
-        // if (StateMachine.currentState.IsInArray(CanAttackSta) && _pressRelease)
-        // {
-        // 	if (attackDir != 3)
-        // 	{
-        // 		PAction.TurnRound(attackDir);
-        // 	}
-        // 	listener.PhysicReset();
-        // 	R.Player.TimeController.SetSpeed(Vector2.zero);
-        // 	if (StateMachine.currentState.IsInArray(PlayerAction.NormalSta))
-        // 	{
-        // 		R.Player.TimeController.SetSpeed(Vector2.zero);
-        // 		weapon.CirtAttackHold();
-        // 	}
-        // 	else
-        // 	{
-        // 		weapon.AirCirtAttackHold();
-        // 	}
-        // 	_pressRelease = false;
-        // }
+        //"玩家按下重攻击".Error();
+        if (TimeController.isPause)return;
+        if ( StateMachine.IsSta(CanAttackSta) && _pressRelease)
+        {
+        	if (attackDir != 3)
+        	{
+        		Action.TurnRound(attackDir);
+        	}
+        	Listener.PhysicReset();
+        	R.Player.TimeController.SetSpeed(Vector2.zero);
+        	if (StateMachine.IsSta(PlayerAction.NormalSta))
+        	{
+        		R.Player.TimeController.SetSpeed(Vector2.zero);
+        		weapon.CirtAttackHold();
+        	}
+            "空中重攻击".Log();
+        	// else
+        	// {
+        	// 	weapon.AirCirtAttackHold();
+        	// }
+        	_pressRelease = false;
+        }
     }
 
     public void PlayerCirtPressAttackReleasd()

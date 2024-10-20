@@ -34,7 +34,7 @@ public class PlayerManager
     public PlayerTimeController TimeController => _timeController ??= GetComponent<PlayerTimeController>();
     public Claymore Claymore => _claymore ??= GetComponent<Claymore>();
     public PlayerAnimEvent AnimEvent => _animEvent ??= GetComponentInChildren<PlayerAnimEvent>();
-    public PlatformMovement PPlatformMovement => _platformMovement ??= GetComponent<PlatformMovement>();
+    public PlatformMovement PlatformMovement => _platformMovement ??= GetComponent<PlatformMovement>();
     public PlayerAnimationController PAnimationController => _playerAnimationController ??= GetComponent<PlayerAnimationController>();
 
 

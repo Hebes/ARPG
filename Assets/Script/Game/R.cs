@@ -1,4 +1,6 @@
-﻿using LitJson;
+﻿using System.Collections;
+using LitJson;
+using UnityEngine;
 
 /// <summary>
 /// 全局管理
@@ -24,6 +26,7 @@ public static class R
             return _settings;
         }
     }
+
     public static Equipment Equipment => GameData.Equipment;
 
     /// <summary>
@@ -39,11 +42,11 @@ public static class R
     {
         "死亡重置数据".Log();
         Mode.Reset();
-         Cliff.Reset();
+        Cliff.Reset();
         WorldTime.Reset();
         Ui.Reset();
     }
-    
+
     public static void RoundReset()
     {
         "周目结束重置数据".Log();
@@ -75,7 +78,7 @@ public static class R
         GameEvent.PauseGame.Trigger((UIPause.I, PauseGameArgs.Resume));
         Audio.ResumeVoiceOver();
     }
-    
+
     /// <summary>
     /// 存档重置
     /// </summary>
@@ -94,7 +97,7 @@ public static class R
         //UIStartController.IsEnterWithVoice = false;
         SaveManager.AutoDelete();
     }
-    
+
     private static GameData _gameData;
     private static SettingData _settings;
 
@@ -109,4 +112,7 @@ public static class R
     public static SceneGateManager SceneGate => SceneGateManager.I;
     public static UIController Ui => UIController.I;
     public static AudioManager Audio => AudioManager.I;
+
+    public static Coroutine Start(IEnumerator routine) => CoroutineProxy.I.StartCoroutine(routine);
+    public static void Stop(string methodName) => CoroutineProxy.I.StopCoroutine(methodName);
 }

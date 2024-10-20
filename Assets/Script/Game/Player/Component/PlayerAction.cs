@@ -28,7 +28,6 @@ public class PlayerAction : MonoBehaviour
         return _stateMachine.currentState.IsInArray(NormalSta);
     }
 
-
     private void Awake()
     {
         _playerAnimationController = GetComponent<PlayerAnimationController>();
@@ -130,6 +129,7 @@ public class PlayerAction : MonoBehaviour
             case PlayerStaEnum.HitGroundEnd:
             case PlayerStaEnum.DoubleFlash:
             case PlayerStaEnum.AtkFlashRollEnd:
+            case PlayerStaEnum.Cast1:
                 _playerAnimationController.Play(state, false, true, _playerAnimationController.animSpeed);
                 break;
             case PlayerStaEnum.Idle:
@@ -217,7 +217,7 @@ public class PlayerAction : MonoBehaviour
     /// </summary>
     public static void Reborn()
     {
-        GameEvent.Assessment.Trigger((R.Player.Action, new AssessmentEventArgs(AssessmentEventArgs.EventType.ContinueGame)));
+        GameEvent.Assessment.Trigger(new AssessmentEventArgs(AssessmentEventArgs.EventType.ContinueGame));
         R.Player.Attribute.AllAttributeRecovery();
         R.Player.Abilities.hurt.DeadFlag = false; //死去的标志位
         R.Player.Action.ChangeState(PlayerStaEnum.Idle);

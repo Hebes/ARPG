@@ -174,6 +174,7 @@ public class UIPause : SMono<UIPause>
     private void OnReturn(PointerEventData obj)
     {
         if (!Enabled) return;
+        UITutorial.I.Kill();
         UIKeyInput.OnPauseClick();
         R.Ui.Reset();
         R.Player.Action.ChangeState(PlayerStaEnum.Idle);

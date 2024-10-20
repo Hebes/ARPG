@@ -125,9 +125,9 @@ public class Claymore : MonoBehaviour
 
     public void CirtAttackHold()
     {
-        // JsonData1 jsonData = comboConfig["normalAttack"];
-        // player.ChangeState(jsonData[12.ToString()].Get<string>("anim"));
-        // attackID = 12;
+        JsonData jsonData =DB.WeaponConfigure["normalAttack"];
+        attackID = 12;
+        _playerAction.ChangeState(jsonData[attackID.ToString()].Get<string>("anim"));
     }
 
     /// <summary>

@@ -108,33 +108,35 @@ public class UIStart : SMono<UIStart>
 
     private void OnStart(PointerEventData obj)
     {
+        //if (!Input.JoystickIsOpen) return;
         StartCoroutine(OnStartIEnumerator());
+    }
 
-        IEnumerator OnStartIEnumerator()
+    private IEnumerator OnStartIEnumerator()
+    {
+        //cg.CanvasGroupInit(0);//UIStart关闭
+        InputSetting.Stop(false); //输入停止
+
+        //显示进度条
+        yield return canvasGroup.DOUIFade(1f, 0f, GameSetting.UISplashScreenTimer);
+        R.SceneGate.AllowSceneActivation = false;
+        UIPause.I.Enabled = true;
+        if (SaveManager.IsAutoSaveDataExists) //如果存在数据文件
         {
-            //cg.CanvasGroupInit(0);//UIStart关闭
-            InputSetting.Stop(false); //输入停止
-
-            //显示进度条
-            yield return canvasGroup.DOUIFade(1f, 0f, GameSetting.UISplashScreenTimer);
-            R.SceneGate.AllowSceneActivation = false;
-            UIPause.I.Enabled = true;
-            if (SaveManager.IsAutoSaveDataExists) //如果存在数据文件
-            {
-                yield return R.GameData.Load();
-                //SingletonMono<MobileInputPlayer>.Instance.VisiableBladeStorm();//显示按钮
-                LevelManager.LoadLevelByPosition(R.GameData.SceneName, R.GameData.PlayerPosition, true);
-                yield return StartCoroutine(ProgressAnimCoroutine()); //进度条
-                R.Player.Transform.position = R.GameData.PlayerPosition;
-                R.Player.Action.TurnRound(R.GameData.PlayerAttributeGameData.faceDir); //玩家转向
-                R.Camera.Controller.CameraResetPostionAfterSwitchScene(); //切换场景后相机复位位置
-            }
-            else
-            {
-                _tutorialGate.Enter(true);
-                MobileInputPlayer.I.VisiableBladeStorm();
-                StartCoroutine(ProgressAnimCoroutine());
-            }
+            yield return R.GameData.Load();
+            //MobileInputPlayer.Instance.VisiableBladeStorm();//TODO 显示按钮
+            LevelManager.LoadLevelByPosition(R.GameData.SceneName, R.GameData.PlayerPosition, true);
+            yield return StartCoroutine(ProgressAnimCoroutine()); //进度条
+            //TODO 还需要吗暂时未定
+            // R.Player.Transform.position = R.GameData.PlayerPosition;
+            // R.Player.Action.TurnRound(R.GameData.PlayerAttributeGameData.faceDir); //玩家转向
+            // R.Camera.Controller.CameraResetPostionAfterSwitchScene(); //切换场景后相机复位位置
+        }
+        else
+        {
+            _tutorialGate.Enter(true);
+            MobileInputPlayer.I.VisiableBladeStorm();
+            StartCoroutine(ProgressAnimCoroutine());
         }
     }
 

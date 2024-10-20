@@ -81,7 +81,7 @@ public class PlayerAttribute
     /// <summary>
     /// 是否在地面
     /// </summary>
-    public bool isOnGround => R.Player.PPlatformMovement.State.IsDetectedGround;
+    public bool isOnGround => R.Player.PlatformMovement.State.IsDetectedGround;
 
     /// <summary>
     /// 是否死亡

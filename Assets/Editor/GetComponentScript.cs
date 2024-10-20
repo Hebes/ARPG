@@ -39,6 +39,9 @@ public class GetComponentScript
 
     [MenuItem("GameObject/获取变量/Text", false, 1)]
     private static void GetValue1() => GetValue<Text>();
+    
+    [MenuItem("GameObject/获取变量/CanvasGroup", false, 1)]
+    private static void GetValue2() => GetValue<CanvasGroup>();
 
     #endregion
 
@@ -221,28 +224,43 @@ public class SpriteRenderTools
 
 public class SceneTools : Editor
 {
-    [MenuItem("GameObject/切换场景/01InitScene", false, 1)]
-    public static void SwitchScene1() => SwitchScene("Assets/Scenes/01InitScene.unity");
+    [MenuItem("GameObject/场景/切换/00Splash", false, 1)]
+    public static void Switch00Splash() => SwitchScene($"Assets/Scenes/00Splash.unity");
 
-    [MenuItem("GameObject/切换场景/02Game", false, 1)]
-    public static void SwitchScene2() => SwitchScene("Assets/Scenes/02Game.unity");
+    [MenuItem("GameObject/场景/切换/01InitScene", false, 1)]
+    public static void Switch01InitScene() => SwitchScene($"Assets/Scenes/01InitScene.unity");
 
-    private static void SwitchScene(string path)
+    [MenuItem("GameObject/场景/切换/02Game", false, 1)]
+    public static void Switch02Game() => SwitchScene($"Assets/Scenes/02Game.unity");
+
+    [MenuItem("GameObject/场景/添加/02Game", false, 1)]
+    public static void AddScene1() => SwitchScene($"Assets/Scenes/02Game.unity");
+
+    private static void SwitchScene(string scenePath)
     {
         string currentScenePath = EditorSceneManager.GetActiveScene().path; // 获取当前场景路径
         //string targetScenePath = "Assets/Scenes/TargetScene.unity";// 定义需要切换到的场景路径
-        EditorSceneManager.OpenScene(path); // 切换到目标场景
+        EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
+        //EditorSceneManager.OpenScene(path); // 切换到目标场景
         //Debug.Log("Switched from " + currentScenePath + " to " + targetScenePath);
+    }
+
+    private static void AddScene(string scenePath)
+    {
+        EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
     }
 }
 
-public class InstantiatePrefabInEditor : Editor
+public class PrefabTools : Editor
 {
     [MenuItem("GameObject/实例化/Player", false, 1)]
-    public static void LoadPlayer() => InstantiatePrefab("Assets/Resources/Prefab/Core/Player.prefab");
+    public static void LoadInstantiatePrefab1() => InstantiatePrefab("Assets/Resources/Prefab/Core/Player.prefab");
+
+    [MenuItem("GameObject/实例化/Camera", false, 1)]
+    public static void LoadInstantiatePrefab2() => InstantiatePrefab("Assets/Resources/Prefab/Core/Camera.prefab");
 
     [MenuItem("GameObject/打开/UI", false, 1)]
-    public static void LoadPrefab2() => OpenAsset("Assets/Resources/Prefab/Core/UI.prefab");
+    public static void LoadOpenPrefab1() => OpenAsset("Assets/Resources/Prefab/Core/UI.prefab");
 
 
     /// <summary>

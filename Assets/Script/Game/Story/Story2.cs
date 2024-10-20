@@ -121,7 +121,7 @@ public class Story2 : BaseBehaviour
         R.Player.Action.TurnRound(1);
         R.Player.Action.StartMove();
         InputSetting.Stop();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         R.Player.Action.StopMove();
         yield return new WaitForSeconds(0.3f);
         DoorCollider.SetActive(true);

@@ -45,16 +45,15 @@ public class SaveManager : SMono<SaveManager>
     /// </summary>
     /// <param name="gameData"></param>
     /// <returns></returns>
-    public static Coroutine AutoSave(GameData gameData)
-    {
-        return I.StartCoroutine(AutoSaveWhenIsNotBusy(gameData));
+    public static Coroutine AutoSave(GameData gameData) => R.Start(AutoSaveWhenIsNotBusy(gameData));
 
-        IEnumerator AutoSaveWhenIsNotBusy(GameData gameDataValue)
+    private static IEnumerator AutoSaveWhenIsNotBusy(GameData gameData)
+    {
+        while (IsBusy)
         {
-            while (IsBusy)
-                yield return null;
-            SaveData.Save(gameDataValue);
+            yield return null;
         }
+        SaveData.Save(gameData);
     }
 
     /// <summary>
@@ -65,9 +64,8 @@ public class SaveManager : SMono<SaveManager>
     {
         _gameDataLoaded = null;
         SaveData.Load();
-        return I.StartCoroutine(AutoLoadAndWaitForLoadedCoroutine());
+        return R.Start(AutoLoadAndWaitForLoadedCoroutine());
 
-        //自动加载和等待被加载的协程
         IEnumerator AutoLoadAndWaitForLoadedCoroutine()
         {
             while (_gameDataLoaded == null)

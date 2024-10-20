@@ -29,14 +29,12 @@ public class SaveData : SMono<SaveData>
     /// <returns></returns>
     public static bool Save(GameData data)
     {
-        $"保存成功,路径：{SaveDataFilePath}".Log();
         byte[] buffer = GetBuffer(data);
         bool result;
         try
         {
             if (!Directory.Exists(SaveDataPath))
                 Directory.CreateDirectory(SaveDataPath);
-
             using FileStream fileStream = File.OpenWrite(SaveDataFilePath);
             using BinaryWriter binaryWriter = new BinaryWriter(fileStream, Encoding.UTF8);
             binaryWriter.Write(buffer);
@@ -48,6 +46,7 @@ public class SaveData : SMono<SaveData>
             result = false;
         }
 
+        $"保存成功,路径：{SaveDataFilePath}".Log();
         return result;
     }
 

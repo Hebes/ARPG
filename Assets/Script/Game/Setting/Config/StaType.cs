@@ -49,6 +49,8 @@ public enum PlayerStaEnum
     
     DoubleFlash,//双闪
     AtkFlashRollEnd,//攻击翻滚结束
+    
+    Cast1,//投射攻击
 
     Flash,//闪
     Flash2,//闪2

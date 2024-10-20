@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// 玩家效果同步 -》攻击的效果
@@ -13,8 +14,18 @@ public class PlayerEffectSync : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         _playerAnimationController = R.Player.GetComponent<PlayerAnimationController>();
+    }
+    
+    private void OnEnable()
+    {
         GameEvent.OnPlayerTurnRound.Register(StopFollow);
         GameEvent.OnPlayerAnimChange.Register(StopFollow);
+    }
+    
+    private void OnDisable()
+    {
+        GameEvent.OnPlayerTurnRound.UnRegister(StopFollow);
+        GameEvent.OnPlayerAnimChange.UnRegister(StopFollow);
     }
 
     private void Update()
@@ -24,10 +35,19 @@ public class PlayerEffectSync : MonoBehaviour
 
     private void StopFollow(object obj)
     {
-        transform.parent = R.Effect.transform;
-        if (isLoop)
+        try
         {
-            EffectController.TerminateEffect(gameObject);
+            transform.parent = R.Effect.transform;
+            if (isLoop)
+            {
+                EffectController.TerminateEffect(gameObject);
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
     }
 }

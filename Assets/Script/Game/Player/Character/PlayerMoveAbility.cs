@@ -34,7 +34,7 @@ public class PlayerMoveAbility : CharacterState
     /// <param name="canTurn"></param>
     private void DealAirFric(float maxSpeed, bool canTurn)
     {
-        Vector2 currentSpeed = R.Player.TimeController.GetCurrentSpeed();
+        Vector2 currentSpeed = TimeController.GetCurrentSpeed();
         //X轴
         float num = currentSpeed.x;
         num = Mathf.Clamp(Mathf.Abs(num) - airFric * Time.fixedDeltaTime, 0f, float.MaxValue) * Mathf.Sign(num);
@@ -50,18 +50,22 @@ public class PlayerMoveAbility : CharacterState
         currentSpeed.x = Mathf.Clamp(Mathf.Abs(num) - airFric * Time.fixedDeltaTime, 0f, maxSpeed) * Mathf.Sign(num);
         if (!Attribute.isOnGround)
         {
-            Collider2D[] array = Physics2D.OverlapAreaAll(Action.transform.position + new Vector3(0.5f * Attribute.faceDir, 0f, 0f),
-                Action.transform.position + new Vector3(0.6f * Attribute.faceDir, 2.2f, 0f), LayerManager.WallMask);
+            Vector2 pointA = Action.transform.position + new Vector3(0.5f * Attribute.faceDir, 0f, 0f);
+            Vector2 pointB = Action.transform.position + new Vector3(0.6f * Attribute.faceDir, 2.2f, 0f);
+            Collider2D[] array = Physics2D.OverlapAreaAll(pointA, pointB, LayerManager.WallMask);
             int num4 = 0;
             for (var i = 0; i < array.Length; i++)
             {
-                if (array[i].gameObject.layer == LayerManager.WallLayerID || array[i].gameObject.layer == LayerManager.GroundLayerID)
+                int layer = array[i].gameObject.layer;
+                if (layer == LayerManager.WallLayerID || layer == LayerManager.GroundLayerID)
                     num4++;
             }
 
-            bool flag = num4 > 0;
-            if (flag)
+            if (num4 > 0)
+            {
                 currentSpeed.x = Mathf.Sign(currentSpeed.x) * -1f * 0.1f;
+            }
+
             num4 = 0;
             for (int j = 0; j < array.Length; j++)
             {
@@ -69,12 +73,11 @@ public class PlayerMoveAbility : CharacterState
                     num4++;
             }
 
-            bool flag2 = num4 > 0;
-            if (flag2 && currentSpeed.y > 0f)
+            if (num4 > 0 && currentSpeed.y > 0f)
                 currentSpeed.y = 0f;
         }
 
-        R.Player.TimeController.SetSpeed(currentSpeed);
+        TimeController.SetSpeed(currentSpeed);
     }
 
     /// <summary>
@@ -157,11 +160,11 @@ public class PlayerMoveAbility : CharacterState
     /// <returns></returns>
     private Vector2 EdgeCheck(Vector2 speed)
     {
-        // Vector3 position = Action.transform.position;
-        // if (position.x >= GameArea.PlayerRange.max.x - PAttribute.bounds.size.x / 2f)
-        //     speed.x = speed.x <= 0f ? speed.x : 0f;
-        // if (position.x <= GameArea.PlayerRange.min.x + PAttribute.bounds.size.x / 2f)
-        //     speed.x = speed.x >= 0f ? speed.x : 0f;
+        Vector3 position = Action.transform.position;//玩家的位置
+        if (position.x >= GameArea.PlayerRange.max.x - Attribute.bounds.size.x / 2f)
+            speed.x = speed.x <= 0f ? speed.x : 0f;
+        if (position.x <= GameArea.PlayerRange.min.x + Attribute.bounds.size.x / 2f)
+            speed.x = speed.x >= 0f ? speed.x : 0f;
         return speed;
     }
 
@@ -172,14 +175,13 @@ public class PlayerMoveAbility : CharacterState
     /// <returns></returns>
     private Vector2 SlopeCheck(Vector2 speed)
     {
-        // if (Action.IsInNormalState())
-        // {
-        //     PlatformMovement component = Action.GetComponent<PlatformMovement>();
-        //     Vector2 groundNormal = component.GetGroundNormal();
-        //     Vector2 vector = Vector3.ProjectOnPlane(speed, groundNormal);
-        //     float d = Mathf.Clamp(Mathf.Abs(vector.x), Mathf.Abs(speed.x / 2f), Mathf.Abs(speed.x));
-        //     speed = speed.y > 0f ? vector.normalized * d : vector;
-        // }
+        if (StateMachine.IsSta(PlayerAction.NormalSta))
+        {
+            Vector2 groundNormal = R.Player.PlatformMovement.GetGroundNormal();
+            Vector2 vector = VU.ProjectOnPlane(speed, groundNormal);;
+            float d = Mathf.Clamp(Mathf.Abs(vector.x), Mathf.Abs(speed.x / 2f), Mathf.Abs(speed.x));
+            speed = speed.y > 0f ? vector.normalized * d : vector;
+        }
 
         return speed;
     }
@@ -193,8 +195,7 @@ public class PlayerMoveAbility : CharacterState
     {
         if (args.nextState.IsInArray(PlayerAction.NormalSta) && !args.lastState.IsInArray(PlayerAction.NormalSta))
         {
-            var assessmentEventArgs = new AssessmentEventArgs(AssessmentEventArgs.EventType.CurrentComboFinish);
-            GameEvent.Assessment.Trigger((this, assessmentEventArgs));
+            GameEvent.Assessment.Trigger(new AssessmentEventArgs(AssessmentEventArgs.EventType.CurrentComboFinish));
         }
     }
 }

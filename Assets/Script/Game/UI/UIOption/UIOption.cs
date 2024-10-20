@@ -56,7 +56,7 @@ public class UIOption : SMono<UIOption>
     private void OnQuit(PointerEventData obj)
     {
         Panel.FadeTo(0);
-        if (LevelManager.SceneName.Equals(CScene.InitScene))
+        if (LevelManager.IsScene(CScene.InitScene))
         {
             StartCoroutine(UIStart.I.canvasGroup.DOUIFade(0, 1, GameSetting.UISplashScreenTimer)) ;
         }

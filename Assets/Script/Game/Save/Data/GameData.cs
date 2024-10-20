@@ -82,7 +82,7 @@ public class GameData
         $"存档".Log();
         if (!justSaveData)
         {
-            if (LevelManager.SceneName == CScene.InitScene)
+            if (LevelManager.IsScene(CScene.InitScene))
             {
                 "不能在开始界面存档".Log();
                 return null;
@@ -103,7 +103,7 @@ public class GameData
     public YieldInstruction Load()
     {
         //是否存在自动保存数据
-        return SaveManager.IsAutoSaveDataExists ? LoadCoroutine().StartIEnumerator() : null;
+        return SaveManager.IsAutoSaveDataExists ? R.Start(LoadCoroutine()) : null;
     }
 
     private IEnumerator LoadCoroutine()

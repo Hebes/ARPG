@@ -106,6 +106,9 @@ public class DB
                 { "3", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Atk3}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
                 { "4", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.DoubleFlash}" }, { "nextID", "-1" }, { "nextCirtID", "5" }, } },
                 { "5", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.AtkFlashRollEnd}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
+                //"12":{"anim":"AtkHv1Push","nextID":"-1","nextCirtID":"10"},
+                { "12", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Cast1}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
+                
             }
         },
         {
@@ -127,6 +130,8 @@ public class DB
             AchievementManager.Language, new Dictionary<int, AchievementInfo>()
             {
                 { 1, new AchievementInfo(1, "第一次游戏", "第一次玩游戏的成就") },
+                { 2, new AchievementInfo(1, "破坏王", "杀死敌人100") },
+                { 3, new AchievementInfo(1, "通关者", "打通游戏") },
             }
         }
     };
@@ -491,6 +496,23 @@ public class DB
         },
         {
             PlayerStaEnum.AtkFlashRollEnd.ToString(), new Dictionary<string, string>
+            {
+                { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
+                { PlayerAtkDataType.interval.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.hitType.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
+                { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.AtkFlashRollEnd.ToString() }, //攻击名称
+                { PlayerAtkDataType.shakeClip.ToString(), "10" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0.4" }, //振动速度
+                { PlayerAtkDataType.shakeOffset.ToString(), "0.4" }, //振动偏移
+                { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
+                { PlayerAtkDataType.frozenClip.ToString(), "10" }, //冻结帧
+                { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
+                { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
+            }
+        },
+        {
+            PlayerStaEnum.Cast1.ToString(), new Dictionary<string, string>
             {
                 { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
                 { PlayerAtkDataType.interval.ToString(), "0" }, //间隔

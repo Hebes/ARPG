@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UITrophyItem : MonoBehaviour
 {
     private int _trophyId;
-    
+
     [SerializeField] private CanvasGroup cg;
     [SerializeField] private Image _trophyIcon;
     [SerializeField] private Text _trophyName;
@@ -50,18 +50,13 @@ public class UITrophyItem : MonoBehaviour
         set => _trophyDetail.text = value;
     }
 
-    private void OnEnable()
-    {
-        //DataBind();
-    }
-
     /// <summary>
     /// 数据绑定
     /// </summary>
-    private void DataBind()
+    public void DataBind()
     {
-        AchievementInfo achievementInfo = AchievementManager.I.GetAchievementInfo(TrophyId);//成就信息
-        bool achievementUnlockState = AchievementManager.I.GetAchievementUnlockState(TrophyId);//是否解锁成就
+        AchievementInfo achievementInfo = AchievementManager.I.GetAchievementInfo(TrophyId); //成就信息
+        bool achievementUnlockState = AchievementManager.I.GetAchievementUnlockState(TrophyId); //是否解锁成就
         TrophyName = achievementInfo.Name;
         TrophyDetail = achievementInfo.Detail;
         //TrophyIconSprite =  $"{TrophyId}{(!achievementUnlockState ? "_l" : string.Empty)}";

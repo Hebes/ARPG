@@ -63,8 +63,10 @@ public class SceneGateManager : SMono<SceneGateManager>
         }
         else
         {
-            SwitchLevelGateData data2 = new SwitchLevelGateData();
-            data2.SelfPosition = data.TargetPosition;
+            SwitchLevelGateData data2 = new SwitchLevelGateData
+            {
+                SelfPosition = data.TargetPosition
+            };
             Exit(data2, 0f, SceneGate.OpenType.None);
         }
     }
@@ -77,23 +79,20 @@ public class SceneGateManager : SMono<SceneGateManager>
     /// <returns></returns>
     public Coroutine Enter(SwitchLevelGateData data, bool needProgressBar = false)
     {
-        //通过门触发事件
-        PassGateEventArgs passGateEventArgs = new PassGateEventArgs(PassGateEventArgs.PassGateStatus.Enter, data, LevelManager.SceneName);
-        GameEvent.PassGate.Trigger((gameObject, passGateEventArgs));
-        $"从 大门Gate {data.MyId} 离开 {LevelManager.SceneName}".Log();
+        GameEvent.PassGate.Trigger(new PassGateEventArgs(PassGateEventArgs.PassGateStatus.Enter, data, LevelManager.SceneName));
+        $"从大门Gate{data.MyId}离开{LevelManager.SceneName}".Log();
         return StartCoroutine(EnterCoroutine(data, needProgressBar));
+    }
 
-        //进入携程
-        IEnumerator EnterCoroutine(SwitchLevelGateData dataValue, bool needProgressBarValue)
-        {
-            R.SceneData.CanAIRun = false; //是否跑AI
-            InputSetting.Stop(false);
-            IsLocked = true;
-            if (!needProgressBarValue)
-                yield return UIBlackPanel.I.FadeBlack();
-            IsLocked = false;
-            yield return StartCoroutine(LoadLevelCoroutine(dataValue, needProgressBarValue));
-        }
+    private IEnumerator EnterCoroutine(SwitchLevelGateData dataValue, bool needProgressBarValue)
+    {
+        R.SceneData.CanAIRun = false; //是否跑AI
+        InputSetting.Stop(false);
+        IsLocked = true;
+        if (!needProgressBarValue)
+            yield return UIBlackPanel.I.FadeBlack();
+        IsLocked = false;
+        yield return StartCoroutine(LoadLevelCoroutine(dataValue, needProgressBarValue));
     }
 
     /// <summary>
@@ -105,7 +104,7 @@ public class SceneGateManager : SMono<SceneGateManager>
     /// <returns></returns>
     public Coroutine Exit(SwitchLevelGateData data, float groundDis, SceneGate.OpenType enterGateOpenType)
     {
-        GameEvent.PassGate.Trigger((gameObject, new PassGateEventArgs(PassGateEventArgs.PassGateStatus.Exit, data, LevelManager.SceneName)));
+        GameEvent.PassGate.Trigger(new PassGateEventArgs(PassGateEventArgs.PassGateStatus.Exit, data, LevelManager.SceneName));
         (string.Format("从 Gate {1} 进入 {0}", LevelManager.SceneName, data.MyId)).Log();
         return StartCoroutine(ExitCoroutine(data, groundDis, enterGateOpenType));
     }

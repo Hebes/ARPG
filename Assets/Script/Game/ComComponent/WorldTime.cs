@@ -106,7 +106,7 @@ public class WorldTime : SMono<WorldTime>
         _slowEnd = Time.time + slowTime * slowScale; //Time.time：获取自游戏开始以来的累计时间
         IsSlow = true;
         Time.timeScale = slowScale;
-        _slowRecover = (1f - slowScale) / 7f;//缓慢的恢复
+        _slowRecover = (1f - slowScale) / 7f; //缓慢的恢复
     }
 
     /// <summary>
@@ -231,9 +231,14 @@ public class WorldTime : SMono<WorldTime>
         return (int)(second / Time.fixedDeltaTime);
     }
 
+    /// <summary>
+    /// 等待秒签时间刻度
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <returns></returns>
     public static Coroutine WaitForSecondsIgnoreTimeScale(float seconds)
     {
-        return I.StartCoroutine(WaitForSecondsIgnoreTimeScaleCoroutine(seconds));
+        return R.Start(WaitForSecondsIgnoreTimeScaleCoroutine(seconds));
     }
 
     /// <summary>

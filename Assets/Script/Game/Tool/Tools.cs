@@ -537,6 +537,17 @@ public static class StringUtils
 public static class VU
 {
     /// <summary>
+    /// https://blog.csdn.net/weixin_38531633/article/details/120172778 向量的平面投影
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <param name="planeNormal"></param>
+    /// <returns></returns>
+    public static Vector3 ProjectOnPlane(Vector3 vector, Vector3 planeNormal)
+    {
+       return Vector3.ProjectOnPlane(vector, planeNormal);
+    }
+    
+    /// <summary>
     /// 两个向量的点乘,大于0则面对，否则则背对着
     /// 点乘得到你当前的面朝向的方向和你到敌人的方向的所成的角度大小
     /// 点积的结果可以用来判断两个向量的方向关系：

@@ -90,31 +90,18 @@ public class LayerManager
         }
 
         public static float NNear = -5f;
-
         public static float MNear = -4f;
-
         public static float NMiddle = -0.003f;
-
         public static float MMiddle_P = -0.002f;
-
         private static float MMiddle_E = -0.001f;
-
         private static float MMiddle_E_Elite = -0.0009f;
-
         private static float MMiddle_E_Boss = -0.0008f;
-
         public static float TempEnemy = -0.003f;
-
         public static float FMiddle;
-
         public static float NFar = 10f;
-
         public static float MFar = 20f;
-
         public static float FFar = 30f;
-
         public static float BgFar = 50f;
-
         public static float Fx = -0.2f;
     }
 

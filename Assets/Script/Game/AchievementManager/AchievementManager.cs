@@ -10,7 +10,7 @@ public class AchievementManager : SMono<AchievementManager>
     /// <summary>
     /// 成就信息字典
     /// </summary>
-    private Dictionary<string, Dictionary<int, AchievementInfo>> _achievementInfoDic => DB.AchievementInfoDic;
+    public Dictionary<string, Dictionary<int, AchievementInfo>> AchievementInfoDic => DB.AchievementInfoDic;
 
     /// <summary>
     /// 奖杯最大数量
@@ -57,7 +57,7 @@ public class AchievementManager : SMono<AchievementManager>
     /// <returns></returns>
     public AchievementInfo GetAchievementInfo(int index)
     {
-        return _achievementInfoDic[Language][index];
+        return AchievementInfoDic[Language][index];
     }
 
     /// <summary>

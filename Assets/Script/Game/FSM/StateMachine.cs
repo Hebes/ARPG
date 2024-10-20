@@ -17,6 +17,12 @@ public class StateMachine :MonoBehaviour
     
     public string currentState { get; private set; }
 
+    /// <summary>
+    /// 是否是某个状态
+    /// </summary>
+    /// <returns></returns>
+    public bool IsSta(string[] array) => currentState.IsInArray(array);
+
     public void Awake()
     {
         currentState = "__Empty__";
