@@ -10,26 +10,16 @@ public class EnemyBaseAIConditional
     [TaskCategory("Enemy/Base条件")]
     public class IsInNormalState : Conditional
     {
+        private EnemyBaseAction action;
+
         public override void OnAwake()
         {
             action = GetComponent<EnemyBaseAction>();
-            if (action == null)
-            {
-                "EnemyBaseAIAction必须使用在有EnmeyBaseAction的对象上".Error();
-            }
         }
-
         public override TaskStatus OnUpdate()
         {
-            if (action.IsInNormalState())
-            {
-                return TaskStatus.Success;
-            }
-
-            return TaskStatus.Failure;
+            return action.IsInNormalState() ? TaskStatus.Success : TaskStatus.Failure;
         }
-
-        private EnemyBaseAction action;
     }
 
     [TaskCategory("Enemy/Base条件")]

@@ -64,7 +64,7 @@ public class UIBossHpBar : SMono<UIBossHpBar>
 
     private void Awake()
     {
-        if (!LevelManager.SceneName.Equals(CScene.InitScene))return;
+        if (!LevelManager.SceneName.Equals(CScene.InitScene01))return;
         cursorTweenAlpha = cursorSprite;
         StartCoroutine(HPValueHistoryRecorder());
         StartCoroutine(HPChangeAnim());

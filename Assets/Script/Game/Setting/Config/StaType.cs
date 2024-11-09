@@ -8,13 +8,16 @@ public enum EnemyStaEnum
     Idle3, //等待3
     Death, //死亡
     Run, //跑
+    
     Hurt, //受伤
+    
     Land, //着陆
     Atk1, //攻击1轻攻击类型1
     Atk2, //攻击2轻攻击类型2
     Atk3, //攻击3轻攻击类型3
     Atk4, //攻击4一般是重攻击
     AtkRemote, //远程攻击
+    SlammedOn,//猛踩
     Jump, //跳跃
     Jumping, //跳跃中
     Fall, //落下
@@ -24,6 +27,7 @@ public enum EnemyStaEnum
     UnderAtkHitToFly, //受伤倒飞
     HitGround,//攻击地面
     HitToFly1,//在空中受伤1
+    HitToFly2,//在空中受伤1
     HitToFly3,//在空中受伤3
     FallHitGround,//降落攻击地面
 }
@@ -41,9 +45,8 @@ public enum PlayerStaEnum
 
     AtkRemote, //远程攻击
     
-    HitGroundStart,//下劈开始
-    HitGrounding, //下劈
-    HitGroundEnd, //下劈结束
+    HitGround1,//下劈开始
+    HitGround2, //结束
     
     UpRising,//上升攻击
     
@@ -64,14 +67,17 @@ public enum PlayerStaEnum
     Idle3, //等待3
     GetUp,//起立
     
+    UnderAtk1, //受伤
+    UnderAtkHitToFly, //受到攻击起飞
+    UnderAtkFlyToFall, //受伤攻击掉落
+    UnderAtkHitGround, //受伤攻击在地面
+    UnderAtkGetUp, //受伤攻击起立
+    
     Death, //死亡
-    Hurt, //受伤
     Jump, //跳跃
     Jumping, //跳跃中
     Fall1, //落下
     Falling, //落下中
     HitToFly3,
     JumpBack, //往后跳
-    UnderAtk1, //受伤
-    UnderAtkHitToFly, //受伤倒飞
 }

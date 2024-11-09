@@ -19,7 +19,7 @@ public class UISaveCircle : SMono<UISaveCircle>
 
     public void StartShow()
     {
-        _coroutine ??= Fade().StartIEnumerator();
+        _coroutine ??= R.StartCoroutine(Fade());
     }
 
     private IEnumerator Fade()

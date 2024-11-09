@@ -46,7 +46,7 @@ public class UIStart : SMono<UIStart>
 
         GameBtn();
 
-        if (!LevelManager.SceneName.Equals(CScene.InitScene)) return;
+        if (!LevelManager.SceneName.Equals(CScene.InitScene01)) return;
         UIStartRe();
         GameEvent.AfterSwitchingWorlds.Register(OnAfterSwitchingWorlds);
     }
@@ -73,8 +73,8 @@ public class UIStart : SMono<UIStart>
         canvasGroup.FadeTo(1);
         GameBtn();
         //_black.color = Color.black;
-        R.Camera.Controller.IsFollowPivot = false;
-        R.Camera.Controller.MovableCamera.position = Vector3.zero.SetZ(-10f);
+        R.Camera.CameraController.IsFollowPivot = false;
+        R.Camera.CameraController.MovableCamera.position = Vector3.zero.SetZ(-10f);
         R.Mode.Reset();
         R.Mode.EnterMode(Mode.AllMode.UI);
         UIPause.I.Enabled = false;
@@ -91,7 +91,7 @@ public class UIStart : SMono<UIStart>
 
     private void OnAfterSwitchingWorlds(object udata)
     {
-        if (LevelManager.SceneName.Equals(CScene.InitScene))
+        if (LevelManager.SceneName.Equals(CScene.InitScene01))
         {
             UIStartRe();
         }
@@ -102,7 +102,7 @@ public class UIStart : SMono<UIStart>
         R.SaveReset();
         R.Mode.EnterMode(Mode.AllMode.UI);
         //R.Ui.Pause.Enabled = false;
-        LevelManager.LoadLevelByGateId(CScene.InitScene);
+        LevelManager.LoadLevelByGateId(CScene.InitScene01);
         GameBtn();
     }
 

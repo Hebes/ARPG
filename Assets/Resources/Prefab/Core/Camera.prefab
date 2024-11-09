@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 7039127145601622747}
   - component: {fileID: 6541272649479016084}
   - component: {fileID: 3097264783565323351}
+  - component: {fileID: 3057439277831629376}
+  - component: {fileID: 1381328847083143414}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -186,3 +188,40 @@ MonoBehaviour:
   _isLock: 0
   _smoothTime: 0.4
   ManualOffsetY: 0
+--- !u!114 &3057439277831629376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841584001048461210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8ba378fde740eaa07a1f9c51fb76f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCShader: {fileID: 4800000, guid: 5cf937dc5e31417a86c401060be0bea4, type: 3}
+  NoiseTexture: {fileID: 2800000, guid: b1fb74a05e5042d69246e337e5add265, type: 3}
+  _AlphaHexa: 1
+  TimeX: 1
+  HexaSize: 2.5
+  _BorderSize: 1
+  _BorderColor: {r: 0.75, g: 0.75, b: 1, a: 1}
+  _HexaColor: {r: 0, g: 0.5, b: 1, a: 1}
+  _SpotSize: 2.5
+  _NoiseSpeed: 1
+  _NoiseAlpha: 0.3
+  center: {x: 0.5, y: 0.5}
+  Radius: 0.25
+--- !u!114 &1381328847083143414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841584001048461210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9b754bfbd543259ab1ca22f4d734b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

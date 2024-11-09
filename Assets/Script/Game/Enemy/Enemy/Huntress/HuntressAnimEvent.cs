@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,8 +8,6 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class HuntressAnimEvent : MonoBehaviour
 {
-    #region 组件
-
     private Transform Player => R.Player.Transform;
     private EnemyAtk _atk;
     private OnionCreator _onion;
@@ -18,7 +16,10 @@ public class HuntressAnimEvent : MonoBehaviour
     private EnemyAttribute _eAttr;
     private Animator _animator;
 
-    private void GetComponent()
+    [SerializeField] private GameObject[] onionObj; //闪用
+    private JsonData _atkData;
+
+    private void Awake()
     {
         _atk = transform.FindComponent<EnemyAtk>();
         _onion = GetComponent<OnionCreator>();
@@ -26,30 +27,9 @@ public class HuntressAnimEvent : MonoBehaviour
         _eAttr = GetComponent<EnemyAttribute>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-
-        // _atk = transform.parent.GetComponent<EnemyAtk>();
-        // _onion = transform.parent.GetComponent<OnionCreator>();
-        // _eAction = transform.parent.GetComponent<HuntressAction>();
-        // _eAttr = transform.parent.GetComponent<EnemyAttribute>();
-        // _rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
-    }
-
-    #endregion
-
-
-    private Transform gun;
-    private Transform gunPos;
-    private Transform gunAssistant;
-    [SerializeField] private GameObject[] onionObj; //闪用
-    private Dictionary<string, Dictionary<PlayerHurtDataType, string>> _atkData;
-
-
-    private void Awake()
-    {
-        GetComponent();
         //动画监听
         _animator.UnAnimatorAddEventAll();
-        _animator.AddAnimatorEvent(EnemyStaEnum.Atk2.ToString(), 0, nameof(SetAtkData), 53);
+        _animator.AddAnimatorEvent(EnemyStaEnum.Atk2.ToString(), 0, nameof(SetAtkData));
         _animator.AddAnimatorEvent(EnemyStaEnum.Atk2.ToString(), 2, nameof(PlaySound), 53);
         _animator.AddAnimatorEvent(EnemyStaEnum.Atk2.ToString(), 4, nameof(TestOnChangeState), EnemyStaEnum.Idle.ToString());
         _animator.AddAnimatorEvent(EnemyStaEnum.AtkRemote.ToString(), 5, nameof(PlaySound), 204);
@@ -63,7 +43,7 @@ public class HuntressAnimEvent : MonoBehaviour
     private void Start()
     {
         _rollLoopTimes = 2;
-        _atkData = DB.PlayerHurtData[EnemyType.女猎手];
+        _atkData = DB.PlayerHurtData[EnemyType.女猎手.ToString()];
     }
 
     private void Update()
@@ -111,10 +91,6 @@ public class HuntressAnimEvent : MonoBehaviour
         _eAction.ChangeState(sta);
     }
 
-    public void OnChangeState(EnemyStaEnum sta)
-    {
-        _eAction.ChangeState(sta.ToString());
-    }
 
     public void PlaySound(int index)
     {
@@ -288,6 +264,9 @@ public class HuntressAnimEvent : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 射击
+    /// </summary>
     public void Shoot()
     {
         "Shoot".Log();
@@ -321,14 +300,15 @@ public class HuntressAnimEvent : MonoBehaviour
         if (angle >= 45f)
         {
             //gun.GetComponent<SkeletonUtilityBone>().mode = SkeletonUtilityBone.Mode.Override;
-            Vector3 startEuler = gun.localEulerAngles;
-            float targetAngle = Mathf.Clamp(angle - 8f, 37f, 128f);
-            for (int i = 0; i < 40; i++)
-            {
-                gun.localEulerAngles = Vector3.Lerp(startEuler, new Vector3(0f, 0f, targetAngle), i / 39f);
-                yield return null;
-            }
+            // Vector3 startEuler = gun.localEulerAngles;
+            // float targetAngle = Mathf.Clamp(angle - 8f, 37f, 128f);
+            // for (int i = 0; i < 40; i++)
+            // {
+            //     gun.localEulerAngles = Vector3.Lerp(startEuler, new Vector3(0f, 0f, targetAngle), i / 39f);
+            //     yield return null;
+            // }
         }
+        yield return null;
     }
 
     /// <summary>

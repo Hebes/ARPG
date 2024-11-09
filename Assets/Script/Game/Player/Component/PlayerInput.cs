@@ -29,21 +29,21 @@ public class PlayerInput : MonoBehaviour
                 //左闪
                 if (Input.Game.Flash.Left.OnPressed)
                 {
-                    _abilities.flash.FlashLeft();
+                    _abilities.Flash.FlashLeft();
                     return;
                 }
 
                 //右闪
                 if (Input.Game.Flash.Right.OnPressed)
                 {
-                    _abilities.flash.FlashRight();
+                    _abilities.Flash.FlashRight();
                     return;
                 }
 
                 //按照角色的防线闪
                 if (Input.Game.Flash.FaceDirection.OnPressed)
                 {
-                    _abilities.flash.FlashFace();
+                    _abilities.Flash.FlashFace();
                     return;
                 }
             }
@@ -51,13 +51,13 @@ public class PlayerInput : MonoBehaviour
             //上挑
             if (Input.Game.UpRising.OnPressed && Setting.GetFlag(InputType.UpRising))
             {
-                _abilities.upRising.UpJumpAttack();
+                _abilities.UpRising.UpJumpAttack();
             }
 
             //攻击地面
             if (Input.Game.HitGround.OnPressed)
             {
-                _abilities.hitGround.HitGround();
+                _abilities.HitGround.HitGround();
             }
 
             // if (Input.Game.FlashAttack.OnPressed && pab.flashAttack.PressFlashAttack())
@@ -72,44 +72,44 @@ public class PlayerInput : MonoBehaviour
 
             //跳跃
             if (Input.Game.Jump.OnPressed && Setting.GetFlag(InputType.Jump))
-                _abilities.jump.Jump();
+                _abilities.Jump.Jump();
 
             //平常攻击
             if (Input.Game.Atk.OnClick && Setting.GetFlag(InputType.Attack))
             {
                 if (Input.Game.MoveLeft.Pressed)
-                    _abilities.attack.PlayerAttack(-1, false);
+                    _abilities.Attack.PlayerAttack(-1, false);
                 else if (Input.Game.MoveRight.Pressed)
-                    _abilities.attack.PlayerAttack(1, false);
+                    _abilities.Attack.PlayerAttack(1, false);
                 else
-                    _abilities.attack.PlayerAttack(3, false);
+                    _abilities.Attack.PlayerAttack(3, false);
             }
 
             //重攻击
             if (Input.Game.CirtAtk.OnClick && Setting.GetFlag(InputType.Attack))
             {
                 if (Input.Game.MoveLeft.Pressed)
-                    _abilities.attack.PlayerAttack(-1, true);
+                    _abilities.Attack.PlayerAttack(-1, true);
                 else if (Input.Game.MoveRight.Pressed)
-                    _abilities.attack.PlayerAttack(1, true);
+                    _abilities.Attack.PlayerAttack(1, true);
                 else
-                    _abilities.attack.PlayerAttack(3, true);
+                    _abilities.Attack.PlayerAttack(3, true);
             }
 
             //重攻击长按
             if (Input.Game.CirtAtk.LongPressed && Setting.GetFlag(InputType.Attack))
             {
                 if (Input.Game.MoveLeft.Pressed)
-                    _abilities.attack.PlayerCirtPressAttack(-1);
+                    _abilities.Attack.PlayerCirtPressAttack(-1);
                 else if (Input.Game.MoveRight.Pressed)
-                    _abilities.attack.PlayerCirtPressAttack(1);
+                    _abilities.Attack.PlayerCirtPressAttack(1);
                 else
-                    _abilities.attack.PlayerCirtPressAttack(3);
+                    _abilities.Attack.PlayerCirtPressAttack(3);
             }
 
             //重攻击按钮释放
             if (Input.Game.CirtAtk.OnReleased && Setting.GetFlag(InputType.Attack))
-                _abilities.attack.PlayerCirtPressAttackReleasd();
+                _abilities.Attack.PlayerCirtPressAttackReleasd();
 
             //充能
             // if (Input.Game.Charging.LongPressed && Setting.GetFlag(InputType.Charging))
@@ -120,9 +120,9 @@ public class PlayerInput : MonoBehaviour
         if (Setting.GetFlag(InputType.Move))
         {
             if (Input.Game.MoveLeft.Pressed)
-                _abilities.move.Move(-1);
+                _abilities.Move.Move(-1);
             else if (Input.Game.MoveRight.Pressed)
-                _abilities.move.Move(1);
+                _abilities.Move.Move(1);
             if (Input.Game.MoveLeft.OnReleased || Input.Game.MoveRight.OnReleased)
                 R.Player.Action.tempDir = 3;
         } //能够移动

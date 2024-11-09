@@ -20,11 +20,12 @@ public class PlayerAnimEvent : MonoBehaviour
 
     private void Awake()
     {
-        _claymore = R.Player.GetComponent<Claymore>();
-        Animator animator = GetComponent<Animator>();
+        _claymore = R.Player.Claymore;
+        Animator animator = R.Player.GetComponent<Animator>();
 
         animator.UnAnimatorAddEventAll();
 
+        //攻击1轻攻击类型1
         animator.AddAnimatorEvent(PlayerStaEnum.Atk1.ToString(), 0, nameof(PlayEffect), 98);
         animator.AddAnimatorEvent(PlayerStaEnum.Atk1.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk1.ToString(), 0, nameof(SetAttackId));
@@ -33,6 +34,7 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.Atk1.ToString(), 9, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk1.ToString(), 12, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //攻击2轻攻击类型2
         animator.AddAnimatorEvent(PlayerStaEnum.Atk2.ToString(), 0, nameof(PlayEffect), 99);
         animator.AddAnimatorEvent(PlayerStaEnum.Atk2.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk2.ToString(), 0, nameof(SetAttackId));
@@ -41,37 +43,46 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.Atk2.ToString(), 9, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk2.ToString(), 11, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //攻击3轻攻击类型3
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(PlayEffect), 98);
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 0, nameof(PlayAtkSound));
-        animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 8, nameof(CanPlayNextAttack)); 
+        animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 8, nameof(CanPlayNextAttack));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 10, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.Atk3.ToString(), 14, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //闪
         //animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAtkData));
         //animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(SetAttackId));
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 0, nameof(OpenOnion)); //打开幻影
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 1, nameof(PlayFlashSound));
         animator.AddAnimatorEvent(PlayerStaEnum.Flash.ToString(), 3, nameof(FlashPositionSet));
 
+        //闪2
         animator.AddAnimatorEvent(PlayerStaEnum.Flash2.ToString(), 4, nameof(PlayAnim), PlayerStaEnum.Fall1.ToString());
 
+        //闪结束
         animator.AddAnimatorEvent(PlayerStaEnum.FlashEnd.ToString(), 1, nameof(CanChangeState));
         animator.AddAnimatorEvent(PlayerStaEnum.FlashEnd.ToString(), 2, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
-        animator.AddAnimatorEvent(PlayerStaEnum.Hurt.ToString(), 0, nameof(_claymore.AirAttackReset));
-        animator.AddAnimatorEvent(PlayerStaEnum.Hurt.ToString(), 2, nameof(PlayHurtSoundLight));
-        animator.AddAnimatorEvent(PlayerStaEnum.Hurt.ToString(), 5, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
+        //受伤
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtk1.ToString(), 0, nameof(_claymore.AirAttackReset));
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtk1.ToString(), 2, nameof(PlayHurtSoundLight));
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtk1.ToString(), 5, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //跑
         animator.AddAnimatorEvent(PlayerStaEnum.Run.ToString(), 0, nameof(PlayRunSound));
         animator.AddAnimatorEvent(PlayerStaEnum.Run.ToString(), 3, nameof(PlayRunSound));
         animator.AddAnimatorEvent(PlayerStaEnum.Run.ToString(), 6, nameof(PlayRunSound));
 
+        //跑步慢下来
         animator.AddAnimatorEvent(PlayerStaEnum.RunSlow.ToString(), 2, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //跳跃
         animator.AddAnimatorEvent(PlayerStaEnum.Jump.ToString(), 0, nameof(PlayerSound), 22);
 
+        //空中攻击1
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk1.ToString(), 0, nameof(PlayEffect), 103);
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk1.ToString(), 0, nameof(AirPhysic), 0);
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk1.ToString(), 5, nameof(SetAtkData));
@@ -81,6 +92,7 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk1.ToString(), 7, nameof(CanPlayNextAirAttack));
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk1.ToString(), 10, nameof(AirAttackFinish));
 
+        //空中攻击2
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk2.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk2.ToString(), 0, nameof(PlayEffect), 104);
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk2.ToString(), 0, nameof(AirPhysic), 0);
@@ -90,6 +102,7 @@ public class PlayerAnimEvent : MonoBehaviour
         //animator.AddAnimatorEvent(PlayerStaEnum.AirAtk2, 4, nameof(CanPlayNextAirAttack));
         animator.AddAnimatorEvent(PlayerStaEnum.AirAtk2.ToString(), 7, nameof(AirAttackFinish));
 
+        //落下
         animator.AddAnimatorEvent(PlayerStaEnum.Fall1.ToString(), 0, nameof(Falling));
         animator.AddAnimatorEvent(PlayerStaEnum.Fall1.ToString(), 0, nameof(PhysicReset));
 
@@ -99,35 +112,34 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.GetUp.ToString(), 0, nameof(AirAttackReset));
         animator.AddAnimatorEvent(PlayerStaEnum.GetUp.ToString(), 5, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //上升攻击
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(AirAttackReset));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(PhysicReset));
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 0, nameof(PlayEffect), 106);
         animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 1, nameof(SetAttackId));
-        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 6, nameof(Speed), "{\"x\":0,\"y\":15}");
-        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 6, nameof(PlayerSound), 32);
-        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 13, nameof(FallDown));
-        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 13, nameof(TurnRoundChild));
+        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 2, nameof(Speed), "{\"x\":0,\"y\":15}");
+        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 2, nameof(PlayerSound), 32);
+        animator.AddAnimatorEvent(PlayerStaEnum.UpRising.ToString(), 5, nameof(FallDown)); //检查落下
 
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":-60}");
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(AirPhysic), 0);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":5}"); //10
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 3, nameof(AirPhysic), 0);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 8, nameof(SetAtkData));
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 8, nameof(SetAttackId));
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 9, nameof(AirPhysic), 1);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 9, nameof(Speed), "{\"x\":0,\"y\":-20}"); //-80
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundStart.ToString(), 10, nameof(PlayAnim), PlayerStaEnum.HitGrounding.ToString());
+        //下劈开始
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(HitGroundCheck));
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":-60}");
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(AirPhysic), 0);
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(Speed), "{\"x\":0,\"y\":5}"); //10
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(SetAtkData));
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 0, nameof(SetAttackId));
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 4, nameof(AirPhysic), 1);
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround1.ToString(), 8, nameof(Speed), "{\"x\":0,\"y\":-20}"); //-80
 
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGrounding.ToString(), 0, nameof(HitGroundCheck));
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGrounding.ToString(), 0, nameof(AirAttackReset));
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGrounding.ToString(), 0, nameof(PlayerSound), 33);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGrounding.ToString(), 0, nameof(FlashReset));
+        //结束
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround2.ToString(), 0, nameof(AirAttackReset));
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround2.ToString(), 0, nameof(PlayerSound), 33);
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround2.ToString(), 0, nameof(FlashReset));
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround2.ToString(), 9, nameof(PlayEffect), 166);
+        animator.AddAnimatorEvent(PlayerStaEnum.HitGround2.ToString(), 9, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 0, nameof(FlashReset));
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayEffect), 166);
-        animator.AddAnimatorEvent(PlayerStaEnum.HitGroundEnd.ToString(), 9, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
-
+        //双闪
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayEffect), 183);
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 0, nameof(PlayerSound), 201);
@@ -137,16 +149,32 @@ public class PlayerAnimEvent : MonoBehaviour
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.DoubleFlash.ToString(), 7, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
 
+        //攻击翻滚结束
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayerSound), 151);
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(PlayEffect), 184);
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 1, nameof(Speed), "{\"x\":0,\"y\":20}");
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 3, nameof(Speed), "{\"x\":0,\"y\":-80}");
         animator.AddAnimatorEvent(PlayerStaEnum.AtkFlashRollEnd.ToString(), 15, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
-        
+
+        //投射攻击
         animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 0, nameof(SetAtkData));
         animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 18, nameof(AttackFinish));
         animator.AddAnimatorEvent(PlayerStaEnum.Cast1.ToString(), 19, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
+
+        //受到攻击起飞
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkHitToFly.ToString(), 0, nameof(AirAttackReset));
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkHitToFly.ToString(), 3, nameof(PlayHurtSoundHeavy));
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkHitToFly.ToString(), 6, nameof(FlyHit));
+
+        //受伤攻击掉落
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkFlyToFall.ToString(), 0);
+
+        //受伤攻击在地面
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkHitGround.ToString(), 1, nameof(HitGetUp));
+
+        //受伤攻击起立
+        animator.AddAnimatorEvent(PlayerStaEnum.UnderAtkGetUp.ToString(), 5, nameof(PlayAnim), PlayerStaEnum.Idle.ToString());
     }
 
     private void Start()
@@ -163,53 +191,10 @@ public class PlayerAnimEvent : MonoBehaviour
 
     private void Update()
     {
-        if (_playerTimeController.isPause) return;
-
-        //开始落下 下降并且当前速度小于3 
-        if (checkFallDown && _playerTimeController.GetCurrentSpeed().y <= 3f)
-        {
-            checkFallDown = false;
-            _playerAction.ChangeState(PlayerStaEnum.Fall1);
-            isFalling = true;
-        }
-
-        //正常落下
-        if (isFalling && _attribute.isOnGround)
-        {
-            "着陆".Log();
-            isFalling = false;
-            checkFallDown = false;
-            PhysicReset();
-            PlayerSound(21);
-            _playerAction.ChangeState(PlayerStaEnum.GetUp);
-        }
-
-        //受伤掉落
-        if (flyHitFlag && _playerTimeController.GetCurrentSpeed().y <= 0f && _stateMachine.currentState.IsInArray(PlayerAction.HurtSta))
-        {
-            flyHitFlag = false;
-            _playerAction.ChangeState(PlayerStaEnum.Hurt);
-            flyHitGround = true;
-        }
-
-        //受伤掉落到地面
-        if (flyHitGround && _attribute.isOnGround)
-        {
-            hitJump = false;
-            flyHitGround = false;
-            PhysicReset();
-            Vector2 currentSpeed = _playerTimeController.GetCurrentSpeed();
-            currentSpeed.x /= 2f;
-            _playerTimeController.SetSpeed(currentSpeed);
-            //pm.PAction.ChangeState(PlayerAction.StateEnum.UnderAtkHitGround);//受伤掉落地面的动画
-        }
-
-        UpdateFlashEnd();
+        
     }
-    public void CameraShake(int frame)
-    {
-        //R.Camera.Controller.CameraShake((float)frame / 60f, 0.1f, CameraController.ShakeTypeEnum.Vertical, false);
-    }
+
+
     public void CameraShake(AnimationEvent animationEvent)
     {
         // int intParameter = animationEvent.intParameter;
@@ -229,12 +214,12 @@ public class PlayerAnimEvent : MonoBehaviour
         int slowFrame = jsonData.Get<int>("slowFrame");
         float slowScale = jsonData.Get<float>("slowScale");
         float second = jsonData.Get<float>("second");
-        float strength = jsonData.Get<float>("strength");//强烈成都
+        float strength = jsonData.Get<float>("strength"); //强烈程度
         ShakeTypeEnum shakeType = (ShakeTypeEnum)jsonData.Get<int>("ShakeType");
         WorldTime.I.TimeSlowByFrameOn60Fps(slowFrame, slowScale); //时间按帧慢速在60Fps
-        R.Camera.Controller.CameraShake(second, shakeType, strength); //相机抖动
+        R.Camera.CameraController.CameraShake(second, shakeType, strength); //相机抖动
     }
-    
+
     /// <summary>
     /// 相机效果
     /// </summary>
@@ -244,10 +229,10 @@ public class PlayerAnimEvent : MonoBehaviour
     /// <param name="type">晃动类型</param>
     /// <param name="strength">强烈程度</param>
     /// <param name="isLoop"></param>
-    public void CameraEffect(int slowFrame, float slowScale,float second, ShakeTypeEnum type, float strength = 0.2f, bool isLoop = false)
+    public void CameraEffect(int slowFrame, float slowScale, float second, ShakeTypeEnum type, float strength = 0.2f, bool isLoop = false)
     {
         WorldTime.I.TimeSlowByFrameOn60Fps(slowFrame, slowScale); //时间按帧慢速在60Fps
-        R.Camera.Controller.CameraShake(second, type, strength); //相机抖动
+        R.Camera.CameraController.CameraShake(second, type, strength); //相机抖动
     }
 
     /// <summary>
@@ -306,12 +291,6 @@ public class PlayerAnimEvent : MonoBehaviour
             throw new NullReferenceException($"当前状态的{_stateMachine.currentState}没有玩家的PlayerAtkData数据");
         JsonData jsonData = DB.PlayerAtkData[_stateMachine.currentState];
         _playerAtk.SetData(jsonData, Incrementor.GetNextId());
-    }
-
-    public void TurnRoundChild()
-    {
-        //因为动画往左边的原因,的特殊处理
-        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     /// <summary>
@@ -471,7 +450,7 @@ public class PlayerAnimEvent : MonoBehaviour
 
     public IEnumerator FlashPositionSet()
     {
-        "FlashPositionSet打开".Log();
+        "闪的位置设置".Log();
         float x = 0f;
         float y = 0f;
         PlayerStaEnum nextSta = PlayerStaEnum.Flash2;
@@ -562,7 +541,7 @@ public class PlayerAnimEvent : MonoBehaviour
     /// <param name="audioIndex"></param>
     public void PlayerSound(int audioIndex)
     {
-        "音频播放audioIndex".Log();
+        $"音频播放{audioIndex}".Log();
         R.Audio.PlayEffect(audioIndex, transform.position);
     }
 
@@ -601,7 +580,7 @@ public class PlayerAnimEvent : MonoBehaviour
     }
 
     /// <summary>
-    /// 飞了
+    /// 起飞
     /// </summary>
     public void FlyHit()
     {
@@ -613,12 +592,9 @@ public class PlayerAnimEvent : MonoBehaviour
 
     public void HitGetUp()
     {
-        if (!_attribute.isDead && getUp)
-        {
-            getUp = true;
-            $"HitGetUp".Log();
-            _playerAction.ChangeState(PlayerStaEnum.Idle); //UnderAtkGetUp
-        }
+        if (_attribute.isDead || !getUp) return;
+        getUp = true;
+        _playerAction.ChangeState(PlayerStaEnum.UnderAtkGetUp);
     }
 
     public IEnumerator HitJumpBack()
@@ -692,7 +668,7 @@ public class PlayerAnimEvent : MonoBehaviour
     /// <summary>
     /// 更新闪的结束
     /// </summary>
-    private void UpdateFlashEnd()
+    public void UpdateFlashEnd()
     {
         if (_flashEndCount > 0)
         {
@@ -717,9 +693,9 @@ public class PlayerAnimEvent : MonoBehaviour
         }
 
         zero.y = transform.position.y + 2f;
-        R.Camera.Controller.CameraShake(0.25f, ShakeTypeEnum.Rect, 0.6f);
-        CameraController.I.OpenMotionBlur(0.13333334f, 1f, transform.position);
-        CameraController.I.CameraZoom(new Vector3(zero.x, zero.y, Camera.main.transform.parent.position.z + 3f), 0.166666672f);
+        R.Camera.CameraController.CameraShake(0.25f, ShakeTypeEnum.Rect, 0.6f);
+        R.Camera.CameraEffect.OpenMotionBlur(0.13333334f, 1f, transform.position);
+        R.Camera.CameraController.CameraZoom(new Vector3(zero.x, zero.y, R.Camera.Transform.parent.position.z + 3f), 0.166666672f);
     }
 
     public void StartExecute()
@@ -735,7 +711,7 @@ public class PlayerAnimEvent : MonoBehaviour
 
     public void ExecuteTimeSlow()
     {
-        SingletonMono<WorldTime>.I.TimeSlowByFrameOn60Fps(30, 0.5f);
+        WorldTime.I.TimeSlowByFrameOn60Fps(30, 0.5f);
     }
 
     public void Execute2_1Hit()

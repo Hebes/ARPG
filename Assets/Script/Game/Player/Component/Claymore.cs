@@ -322,10 +322,7 @@ public class Claymore : MonoBehaviour
     /// </summary>
     public void HandleUpRising()
     {
-        "处理上升".Log();
-        R.Player.AnimEvent.PhysicReset();
-        AirAttackReset();
-        _playerAction.ChangeState(PlayerStaEnum.UpRising);
+        
     }
 
     public void HandleHitGround()

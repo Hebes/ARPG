@@ -85,7 +85,7 @@ public class LevelManager
 
     public static Coroutine OnRoundOver()
     {
-        return RoundOverCoroutine().StartIEnumerator();
+        return R.StartCoroutine(RoundOverCoroutine());
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class LevelManager
     /// <returns></returns>
     public static Coroutine OnPlayerDie(bool recordDeath = true)
     {
-        return LoadGame(recordDeath).StartIEnumerator();
+        return R.StartCoroutine(LoadGame(recordDeath));
     }
 
     private static IEnumerator RoundOverCoroutine()
@@ -122,7 +122,7 @@ public class LevelManager
 
         R.Player.Transform.position = R.GameData.PlayerPosition;
         R.Player.Action.TurnRound(R.GameData.PlayerAttributeGameData.faceDir);
-        R.Camera.Controller.CameraResetPostionAfterSwitchScene();
+        R.Camera.CameraController.CameraResetPostionAfterSwitchScene();
         PlayerAction.Reborn();
     }
 

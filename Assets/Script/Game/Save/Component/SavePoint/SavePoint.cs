@@ -35,7 +35,7 @@ public class SavePoint : BaseBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag(CTag.Player) || _hasSaved) return;
+        if (!collision.CompareTag(ConfigTag.Player) || _hasSaved) return;
         _hasSaved = true;
         if (!_hasRecovered)
         {
@@ -47,13 +47,13 @@ public class SavePoint : BaseBehaviour
         //测试成就
         AchievementManager.I.AwardAchievement(1);
         //测试提示程序
-        UITutorial.I.ShowTutorial().StartIEnumerator();
+        R.StartCoroutine(UITutorial.I.ShowTutorial());
         UISaveCircle.I.StartShow();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.CompareTag(CTag.Player)) return;
+        if (!collision.CompareTag(ConfigTag.Player)) return;
         if (Input.Game.Search.OnClick)
         {
             //_prompt.FadeOut();

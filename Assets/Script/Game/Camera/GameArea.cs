@@ -5,7 +5,7 @@ using UnityEngine;
 /// 游戏区
 /// </summary>
 [ExecuteInEditMode]
-public class GameArea : SingletonMono<GameArea>
+public class GameArea : SingletonMono<GameArea> 
 {
     [HideInInspector] public static Rect MapRange;
     [HideInInspector] public static Rect CameraRange;

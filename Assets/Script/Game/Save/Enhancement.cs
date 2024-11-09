@@ -181,7 +181,7 @@ public class Enhancement
     public int FlashAttack;
     public int HitGround;//技能下劈
     public int Knockout;
-    public int MaxEnergy;
+    public int MaxEnergy;//最大能量
     public int MaxHp;
     public int ShadeAttack;
     public int TripleAttack;

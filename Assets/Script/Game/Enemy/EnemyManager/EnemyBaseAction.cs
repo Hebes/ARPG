@@ -12,7 +12,7 @@ public abstract class EnemyBaseAction : MonoBehaviour
     [SerializeField] protected GameObject weakThunder; //虚弱动画
     [SerializeField] public Transform hurtBox;
     [SerializeField] protected Transform atkBox;
-    protected EnemyAnimationController EnemyAnim;
+    protected EnemyAnimationController enemyAnim;
 
     public Transform player => R.Player.Transform;
 
@@ -23,7 +23,7 @@ public abstract class EnemyBaseAction : MonoBehaviour
 
     protected virtual void Awake()
     {
-        EnemyAnim = GetComponentInChildren<EnemyAnimationController>();
+        enemyAnim = GetComponentInChildren<EnemyAnimationController>();
         eAttr = GetComponent<EnemyAttribute>();
         stateMachine = GetComponent<StateMachine>();
     }
@@ -48,7 +48,7 @@ public abstract class EnemyBaseAction : MonoBehaviour
             isAutoMoveing = false;
         }
 
-        if (!isAutoMoveing || SingletonMono<WorldTime>.I.IsFrozen)
+        if (!isAutoMoveing || WorldTime.I.IsFrozen)
         {
             return;
         }
@@ -237,9 +237,19 @@ public abstract class EnemyBaseAction : MonoBehaviour
         ChangeFace(dir);
     }
 
-    public virtual void Attack2(int dir) => Attack1(dir);
-    public virtual void Attack3(int dir) => Attack1(dir);
-    public virtual void Attack4(int dir) => Attack1(dir);
+    public virtual void Attack2(int dir)
+    {
+        if (eAttr.isDead) return;
+        if (!IsInNormalState()) return;
+        ChangeFace(dir);
+    }
+
+    public virtual void Attack3(int dir)
+    {
+        if (eAttr.isDead) return;
+        if (!IsInNormalState()) return;
+        ChangeFace(dir);
+    }
 
     public virtual void AtkRemote(int dir)
     {

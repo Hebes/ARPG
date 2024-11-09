@@ -25,11 +25,11 @@ public class PlayerAtk : BaseBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(CTag.EnemyHurtBox))
+        if (other.name.Equals(ConfigGameObject.EnemyHurtBox))
         {
             GameEvent.EnemyHurtAtk.Trigger(EventArgs(other, true));
         }
-        else if (other.CompareTag(CTag.EnemyBullet))
+        else if (other.CompareTag(ConfigTag.EnemyBullet))
         {
             BreakBullet(other);
         }
@@ -40,7 +40,7 @@ public class PlayerAtk : BaseBehaviour
         if (WorldTime.I.IsFrozen || _hitType == HitType.Once || data == null) return;
         _interval -= Time.deltaTime;
         if (_interval > 0f) return;
-        if (other.CompareTag(CTag.EnemyHurtBox))
+        if (other.name.Equals(ConfigGameObject.EnemyHurtBox))
         {
             HitType hitType = _hitType;
             switch (hitType)
@@ -108,8 +108,8 @@ public class PlayerAtk : BaseBehaviour
             component2.HitBullet();
         }
 
-        SingletonMono<WorldTime>.I.TimeFrozenByFixedFrame(7);
-        R.Camera.Controller.CameraShake(0.166666672f, ShakeTypeEnum.Rect);
+        WorldTime.I.TimeFrozenByFixedFrame(7);
+        R.Camera.CameraController.CameraShake(0.166666672f, ShakeTypeEnum.Rect);
     }
 
     private Vector2 HurtPos(Bounds enemyBound)
@@ -128,7 +128,7 @@ public class PlayerAtk : BaseBehaviour
         EnemyHurtAtkEventArgs.PlayerNormalAtkData playerNormalAtkData =
             new EnemyHurtAtkEventArgs.PlayerNormalAtkData(data, firstHurt);
 
-        return new EnemyHurtAtkEventArgs(enemyBody.transform.parent.gameObject,
+        return new EnemyHurtAtkEventArgs(enemyBody.transform.parent.parent.gameObject,
             gameObject, attackId, HurtPos(enemyBody.bounds),
             HurtCheck.BodyType.Body, playerNormalAtkData);
     }

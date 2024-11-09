@@ -4,9 +4,9 @@ public class TrainingDummyHurt : EnemyBaseHurt
 {
     private TrainingDummyAnimEvent _anim;
 
-    protected override void Init()
+    protected override void Start()
     {
-        base.Init();
+        base.Start();
         _anim = transform.FindComponent<TrainingDummyAnimEvent>();
         hurtData = DB.EnemyHurtData[EnemyType.稻草人.ToString()];
     }

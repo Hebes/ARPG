@@ -9,10 +9,10 @@ public class PlayerAttackAbility : CharacterState
 
     public override void Update()
     {
-        if (Listener.airAtkDown && Attribute.isOnGround)
+        if (AnimEvent.airAtkDown && Attribute.isOnGround)
         {
-            Listener.airAtkDown = false;
-            Listener.PhysicReset();
+            AnimEvent.airAtkDown = false;
+            AnimEvent.PhysicReset();
             TimeController.SetSpeed(Vector2.zero);
             "空中重攻击5".Log();
             //PlayerAction.ChangeState(PlayerAction.StateEnum.AirAtkHv5); //空中重攻击5
@@ -30,14 +30,14 @@ public class PlayerAttackAbility : CharacterState
         if (StateMachine.currentState.IsInArray(PlayerAction.AttackSta))
         {
             "正常攻击".Log();
-            if (weapon.canChangeAtkAnim)
+            if (Weapon.canChangeAtkAnim)
             {
-                weapon.cirtAttack = cirtAtk;
-                weapon.CanPlayNextAttack();
+                Weapon.cirtAttack = cirtAtk;
+                Weapon.CanPlayNextAttack();
             }
             else
             {
-                weapon.HandleAttack(cirtAtk);
+                Weapon.HandleAttack(cirtAtk);
             }
 
             return;
@@ -46,14 +46,14 @@ public class PlayerAttackAbility : CharacterState
         //空中攻击
         if (StateMachine.currentState.IsInArray(PlayerAction.AirAttackSta))
         {
-            if (weapon.canChangeAirAtkAnim)
+            if (Weapon.canChangeAirAtkAnim)
             {
-                weapon.cirtAttack = cirtAtk;
-                weapon.CanPlayNextAirAttack();
+                Weapon.cirtAttack = cirtAtk;
+                Weapon.CanPlayNextAirAttack();
             }
             else
             {
-                weapon.HandleAirAttack(cirtAtk);
+                Weapon.HandleAirAttack(cirtAtk);
             }
 
             return;
@@ -65,16 +65,16 @@ public class PlayerAttackAbility : CharacterState
             if (attackDir != 3)
                 Action.TurnRound(attackDir);
 
-            Listener.PhysicReset();
+            AnimEvent.PhysicReset();
             if (Attribute.isOnGround)
             {
                 TimeController.SetSpeed(Vector2.zero);
-                weapon.HandleAttack(cirtAtk);
+                Weapon.HandleAttack(cirtAtk);
             }
             else
             {
-                Listener.checkFallDown = false;
-                weapon.HandleAirAttack(cirtAtk);
+                AnimEvent.checkFallDown = false;
+                Weapon.HandleAirAttack(cirtAtk);
             }
         }
     }
@@ -87,18 +87,18 @@ public class PlayerAttackAbility : CharacterState
     {
         //"玩家按下重攻击".Error();
         if (TimeController.isPause)return;
-        if ( StateMachine.IsSta(CanAttackSta) && _pressRelease)
+        if ( StateMachine.currentState.IsInArray(CanAttackSta) && _pressRelease)
         {
         	if (attackDir != 3)
         	{
         		Action.TurnRound(attackDir);
         	}
-        	Listener.PhysicReset();
+        	AnimEvent.PhysicReset();
         	R.Player.TimeController.SetSpeed(Vector2.zero);
-        	if (StateMachine.IsSta(PlayerAction.NormalSta))
+        	if (StateMachine.currentState.IsInArray(PlayerAction.NormalSta))
         	{
         		R.Player.TimeController.SetSpeed(Vector2.zero);
-        		weapon.CirtAttackHold();
+        		Weapon.CirtAttackHold();
         	}
             "空中重攻击".Log();
         	// else
@@ -120,7 +120,7 @@ public class PlayerAttackAbility : CharacterState
         //Listener.atkBox.localPosition = Vector3.zero;
         if (args.lastState.IsInArray(PlayerAction.AirAttackSta) && !args.nextState.IsInArray(PlayerAction.AirAttackSta))
         {
-            weapon.AirAttackRecover();
+            Weapon.AirAttackRecover();
         }
     }
 

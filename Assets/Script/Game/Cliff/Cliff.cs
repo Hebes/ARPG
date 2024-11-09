@@ -8,7 +8,7 @@ public class Cliff : MonoBehaviour
 {
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(CTag.Player))
+        if (other.CompareTag(ConfigTag.Player))
         {
             RebornPoint = transform;
         }

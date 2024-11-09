@@ -68,7 +68,7 @@ public class SceneGate : MonoBehaviour
     {
         bool flag = R.SceneGate.IsLocked || //加载场景的时候被锁定
                     R.Player == null || //玩家是空的
-                    !collision.CompareTag(CTag.Player) || //不是玩家
+                    !collision.CompareTag(ConfigTag.Player) || //不是玩家
                     openType == OpenType.None ||
                     R.Mode.CheckMode(Mode.AllMode.Battle) || //如果是战斗状态
                     R.Player.Action.NotAllowPassSceneGate || !InputSetting.IsWorking() ||

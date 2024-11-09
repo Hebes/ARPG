@@ -18,7 +18,7 @@ public class AnimMoveController : MonoBehaviour
     private void Awake()
     {
         pm = R.Player;
-        _isPlayer = gameObject.CompareTag(CTag.Player);
+        _isPlayer = gameObject.CompareTag(ConfigTag.Player);
         platform ??= GetComponent<PlatformMovement>();
     }
 

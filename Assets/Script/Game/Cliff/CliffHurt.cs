@@ -9,7 +9,7 @@ public class CliffHurt : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(CTag.Player))
+        if (other.CompareTag(ConfigTag.Player))
         {
             StartCoroutine(PlayerReset());
         }
@@ -35,7 +35,7 @@ public class CliffHurt : MonoBehaviour
         if (!pAttr.isDead)
         {
             R.Player.GetComponent<Rigidbody2D>().gravityScale = 0f;
-            R.Player.Action.ChangeState(PlayerStaEnum.Hurt, 1f); //UnderAtk1
+            R.Player.Action.ChangeState(PlayerStaEnum.UnderAtk1, 1f);
             yield return new WaitForSeconds(0.2f);
             R.Player.Transform.position = Cliff.RebornPoint.position + Vector3.up * 3f;
         }

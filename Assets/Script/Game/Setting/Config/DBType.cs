@@ -192,12 +192,12 @@ public enum PlayerHurtDataType
     /// <summary>
     /// 伤害百分比
     /// </summary>
-    damagerPercent,
+    damagePercent,
 
     /// <summary>
-    /// 护盾的损伤
+    /// 盾伤害
     /// </summary>
-    shidelDamage,
+    shieldDamage,
 }
 
 public enum AudioMapType

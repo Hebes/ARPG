@@ -34,6 +34,7 @@ public class DB
     public static JsonData PlayerAtkData; //玩家攻击数据
     public static JsonData LevelEnemyData; //关卡敌人
     public static JsonData EnemyHurtData; //敌人受伤数据
+    public static JsonData PlayerHurtData; //玩家受伤数据
 
     public static void Preload()
     {
@@ -42,6 +43,7 @@ public class DB
         PlayerAtkData = JsonMapper.ToObject(JsonMapper.ToJson(PlayerAtkDataTemp));
         LevelEnemyData = JsonMapper.ToObject(JsonMapper.ToJson(LevelEnemyDataTemp));
         EnemyHurtData = JsonMapper.ToObject(JsonMapper.ToJson(EnemyHurtDataTemp));
+        PlayerHurtData = JsonMapper.ToObject(JsonMapper.ToJson(PlayerHurtDataTemp));
         AudioClipDataDic = CSVHelper.Csv2Dictionary("AudioClipData", int.Parse, AudioClipData.SetValue);
         //CameraEffectProxyPrefabDataDic = CSVHelper.Csv2Dictionary("CameraEffectProxyPrefabData", int.Parse, CameraEffectProxyPrefabData.SetValue);
         EnemyAttrDataList = CSVHelper.Csv2List("EnemyAttrData", EnemyAttrData.SetValue);
@@ -55,8 +57,19 @@ public class DB
         return Asset.LoadFromResources<T>("conf/", name);
     }
 
+    #region 场景路牌名称
+
+    public static readonly Dictionary<string, string> GuideboardNameDic = new()
+    {
+        { CScene.Game02, "初始之地" },
+    };
+
+    #endregion
+
+    #region 玩家连击
 
     /// <summary>
+    /// 连击
     /// {
     ///   "normalAttack":{
     ///        "1":{"anim":"Atk1","nextID":"2","nextCirtID":"-1"},
@@ -108,7 +121,6 @@ public class DB
                 { "5", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.AtkFlashRollEnd}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
                 //"12":{"anim":"AtkHv1Push","nextID":"-1","nextCirtID":"10"},
                 { "12", new Dictionary<string, string> { { "anim", $"{PlayerStaEnum.Cast1}" }, { "nextID", "-1" }, { "nextCirtID", "-1" }, } },
-                
             }
         },
         {
@@ -120,6 +132,10 @@ public class DB
             }
         },
     };
+
+    #endregion
+
+    #region 成就
 
     /// <summary>
     /// 成就
@@ -135,6 +151,26 @@ public class DB
             }
         }
     };
+
+    /// <summary>
+    /// 关卡敌人数据
+    /// </summary>
+    /// <returns></returns>
+    private static readonly Dictionary<string, LevelEnemyData> LevelEnemyDataTemp = new Dictionary<string, LevelEnemyData>
+    {
+        {
+            CScene.Game02, new LevelEnemyData
+            {
+                enemyQueueData = new EnemyQueueData(),
+                enemyJsonObject = new[]
+                {
+                    new EnemyJsonObject("女猎手1", new Vector2(-13.69f, -3.31f), "0-0"),
+                },
+            }
+        }
+    };
+
+    #endregion
 
     /// <summary>
     /// 振动数据
@@ -159,142 +195,147 @@ public class DB
         new float[] { 0.9f, 0.9f, 0.9f, 0f },
     };
 
+    #region 效果
+
     /// <summary>
     /// 效果
     /// </summary>
     public static readonly List<EffectAttr> EffectAttrList = new()
     {
-        new EffectAttr(0, FXRotationCondition.Preference, "EnemyAppear", new Vector3(1.2f, 1.2f, 1f), "敌人出现特效", 3, false, 20),
-        new EffectAttr(1, FXRotationCondition.HaveEnemyDirectionY, "SparkEffectOld", new Vector3(1f, 1f, 1f), "机器人被击中特效", 3, false, 20),
-        new EffectAttr(6, FXRotationCondition.RandomRotationZ, "EnemyFall", new Vector3(1f, 1f, 1f), "机器人坠地尘土", 4, false, 20),
-        new EffectAttr(9, FXRotationCondition.Preference, "BlueExplosion", new Vector3(1f, 1f, 1f), "蓝色爆炸", 3, false, 20),
-        new EffectAttr(14, FXRotationCondition.Preference, "NormalKillSparkEffect", new Vector3(1f, 1f, 1f), "敌人普通死亡蓝色火星", 1, false, 20),
-        new EffectAttr(17, FXRotationCondition.Preference, "HaloEffect", new Vector3(3f, 3f, 3f), "BOSS吼叫的圈", 1, true, 20),
-        new EffectAttr(22, FXRotationCondition.Preference, "PlayerFall", new Vector3(1f, 1f, 1f), "主角尘土", 3, false, 20),
-        new EffectAttr(23, FXRotationCondition.Preference, "DistortionCore-PS4", new Vector3(1f, 1f, 0.7f), "空气扭曲", 2, false, 20),
-        new EffectAttr(40, FXRotationCondition.Preference, "DustEffect", new Vector3(1f, 1f, 1f), "后退尘土", 2, false, 20),
-        new EffectAttr(48, FXRotationCondition.Preference, "Flash_Distort", new Vector3(2.5f, 2.5f, 1f), "飞燕特效", 5, false, 20),
-        new EffectAttr(49, FXRotationCondition.Preference, "DistortionCore-PS4", new Vector3(1f, 1f, 0.7f), "普通扭曲空气特效", 2, false, 20),
-        new EffectAttr(61, FXRotationCondition.Preference, "PaoSisterDust", new Vector3(1f, 1f, 1f), "炮姐发射尘土", 1, false, 20),
-        new EffectAttr(70, FXRotationCondition.RandomRotationZ, "EnemyHitEffect", new Vector3(1f, 1f, 1f), "主角被攻击黄色特效", 3, false, 20),
-        new EffectAttr(71, FXRotationCondition.Preference, "EnemyHurt", new Vector3(1f, 1f, 1f), "机器人被攻击动画", 3, false, 20),
-        new EffectAttr(76, FXRotationCondition.Preference, "PlayerArmorSpark01", new Vector3(1f, 1f, 1f), "主角护盾火星", 5, true, 10),
-        new EffectAttr(80, FXRotationCondition.Preference, "PlayerArmorSpark02", new Vector3(1f, 1f, 1f), "主角护盾火星2", 3, true, 10),
-        new EffectAttr(90, FXRotationCondition.Preference, "BulletExplosion", new Vector3(1f, 1f, 1f), "无属性子弹爆炸", 2, false, 10),
-        new EffectAttr(91, FXRotationCondition.Preference, "EnergyBallBlue2", new Vector3(0.4f, 0.4f, 1f), "蓝色能量球特效", 7, false, 30),
-        new EffectAttr(92, FXRotationCondition.Preference, "BlockParticle_Enemy", new Vector3(1f, 1f, 1f), "敌人死亡小方块", 7, false, 20),
-        new EffectAttr(95, FXRotationCondition.Preference, "LightGunHitGroundSpark", new Vector3(1f, 1f, 1f), "主角轻攻击子弹击中地面", 10, false, 20),
-        new EffectAttr(98, FXRotationCondition.Preference, "NewATK1", new Vector3(1f, 1f, 1f), "透明刀光ATK1", 1, true, 5),
-        new EffectAttr(99, FXRotationCondition.Preference, "NewATK2", new Vector3(1f, 1f, 1f), "刀光ATK2", 1, true, 5),
-        new EffectAttr(100, FXRotationCondition.Preference, "NewATK15", new Vector3(1f, 1f, 1f), "刀光ATK15", 1, true, 5),
-        new EffectAttr(101, FXRotationCondition.Preference, "NewATK5", new Vector3(1f, 1f, 1f), "刀光ATK5", 1, true, 5),
-        new EffectAttr(102, FXRotationCondition.Preference, "NewATK23", new Vector3(1f, 1f, 1f), "刀光ATK23", 1, true, 5),
-        new EffectAttr(103, FXRotationCondition.Preference, "NewAirATK1", new Vector3(1f, 1f, 1f), "透明刀光ATK4", 1, true, 5),
-        new EffectAttr(104, FXRotationCondition.Preference, "NewAirATK2", new Vector3(1f, 1f, 1f), "透明刀光ATK5", 1, true, 5),
-        new EffectAttr(105, FXRotationCondition.Preference, "NewAirATK6", new Vector3(1f, 1f, 1f), "空中刀光ATK6", 1, true, 5),
-        new EffectAttr(106, FXRotationCondition.Preference, "NewUpRising", new Vector3(1f, 1f, 1f), "刀光上挑", 1, true, 5),
-        new EffectAttr(107, FXRotationCondition.Preference, "NewATKHv1", new Vector3(1f, 1f, 1f), "突刺刀光1", 1, true, 5),
-        new EffectAttr(108, FXRotationCondition.Preference, "NewATKHv2", new Vector3(1f, 1f, 1f), "突刺刀光2", 1, true, 5),
-        new EffectAttr(109, FXRotationCondition.Preference, "NewATKHv3", new Vector3(1f, 1f, 1f), "突刺刀光3", 1, true, 5),
-        new EffectAttr(110, FXRotationCondition.Preference, "NewAirATKHv1", new Vector3(1f, 1f, 1f), "透明刀光ATK7_5", 1, true, 5),
-        new EffectAttr(111, FXRotationCondition.Preference, "NewAirATKHv2", new Vector3(1f, 1f, 1f), "透明刀光ATK7_6", 1, true, 5),
-        new EffectAttr(112, FXRotationCondition.Preference, "NewAirATKHv5", new Vector3(1f, 1f, 1f), "透明刀光ATK7_7", 1, true, 5),
-        new EffectAttr(114, FXRotationCondition.Preference, "NewATK16", new Vector3(1f, 1f, 1f), "枪刃空中刀光ATK1", 1, true, 5),
-        new EffectAttr(116, FXRotationCondition.Preference, "NewATKRollEnd", new Vector3(1f, 1f, 1f), "刀光ATKRollEnd", 1, true, 5),
-        new EffectAttr(117, FXRotationCondition.Preference, "NewATKHv1Push", new Vector3(1f, 1f, 0.1f), "上挑刀光", 1, true, 5),
-        new EffectAttr(118, FXRotationCondition.Preference, "NewATKRollGround", new Vector3(1f, 1f, 1f), "下劈刀光", 1, true, 5),
-        new EffectAttr(121, FXRotationCondition.FollowPlayer, "Charging1", new Vector3(1f, 1f, 1f), "蓄力1", 1, false, 3),
-        new EffectAttr(124, FXRotationCondition.Preference, "ChargingScreenEffect", new Vector3(1f, 1f, 1f), "蓄力攻击", 1, false, 3),
-        new EffectAttr(125, FXRotationCondition.Preference, "ChipAbsorb", new Vector3(1f, 1f, 1f), "芯片吸收", 3, false, 10),
-        new EffectAttr(126, FXRotationCondition.Preference, "EnemyChip", new Vector3(0.2f, 0.17f, 1f), "蓄力攻击", 3, true, 10),
-        new EffectAttr(127, FXRotationCondition.Preference, "ChipExplosion", new Vector3(1f, 1f, 1f), "芯片生成飞出", 3, false, 10),
-        new EffectAttr(128, FXRotationCondition.Preference, "Warning", new Vector3(1f, 1f, 1f), "警告", 3, false, 10),
-        new EffectAttr(131, FXRotationCondition.Preference, "DahalBullet", new Vector3(0.15f, 0.15f, 1f), "DahalBullet", 3, false, 10),
-        new EffectAttr(133, FXRotationCondition.Preference, "BeelzebubATK3", new Vector3(1f, 1f, 1f), "暴食ATK3", 3, false, 10),
-        new EffectAttr(134, FXRotationCondition.HaveEnemyDirectionY, "BeelzebubATK1_1", new Vector3(1f, 1f, 1f), "暴食ATK1", 3, true, 10),
-        new EffectAttr(139, FXRotationCondition.HaveEnemyDirectionY, "BeelzebubATK1_2", new Vector3(1f, 1f, 1f), "暴食技能ATK1_2", 1, true, 6),
-        new EffectAttr(142, FXRotationCondition.Preference, "IceExplosion", new Vector3(1f, 1f, 1f), "使用技能召唤暴食砸到地面的爆炸", 1, false, 6),
-        new EffectAttr(144, FXRotationCondition.HaveEnemyDirectionY, "SparkEffectLongTime", new Vector3(1f, 1f, 1f), "小怪被处决死的时候顺着裂缝散落的粒子", 1, false, 6),
-        new EffectAttr(145, FXRotationCondition.FollowPlayer, "IceExplosion", new Vector3(1f, 1f, 1f), "暴食自己砸到地面的爆炸", 1, false, 6),
-        new EffectAttr(148, FXRotationCondition.Preference, "DahalAtk4Bullet", new Vector3(1f, 1f, 1f), "达哈尔火箭", 1, false, 6),
-        new EffectAttr(149, FXRotationCondition.Preference, "DahalATK6FallSpark", new Vector3(1f, 1f, 1f), "达哈尔ATK6下落火星", 1, false, 3),
-        new EffectAttr(150, FXRotationCondition.Preference, "DahalTansferSpark", new Vector3(1f, 1f, 1f), "达哈尔切换状态火星", 1, false, 3),
-        new EffectAttr(151, FXRotationCondition.RandomRotationZ, "EnemyHitEffect02", new Vector3(1f, 1f, 1f), "敌人受伤特效", 1, false, 5),
-        new EffectAttr(152, FXRotationCondition.FollowTargeRotation, "CloseEnemyEffect", new Vector3(1f, 1f, 1f), "主角聚怪特效", 1, true, 5),
-        new EffectAttr(153, FXRotationCondition.FollowTargeRotation, "CloseEnemyEffectBlast", new Vector3(1f, 1f, 1f), "主角聚怪后冲刺特效", 1, false, 5),
-        new EffectAttr(154, FXRotationCondition.Preference, "BeeLaser", new Vector3(1f, 1f, 1f), "激光特效", 1, false, 5),
-        new EffectAttr(155, FXRotationCondition.Preference, "BeeLaser2", new Vector3(1f, 1f, 1f), "激光特效", 1, false, 5),
-        new EffectAttr(156, FXRotationCondition.Preference, "HeavyHitEffect", new Vector3(1f, 1f, 1f), "重击特效", 1, false, 1),
-        new EffectAttr(157, FXRotationCondition.Preference, "EnemyBlockEffect", new Vector3(1f, 1f, 1f), "敌人防御特效", 1, true, 1),
-        new EffectAttr(158, FXRotationCondition.Preference, "PlayerBlockEffect", new Vector3(1f, 1f, 1f), "主角防御特效", 1, true, 1),
-        new EffectAttr(159, FXRotationCondition.Preference, "RedMoneyHalo", new Vector3(1f, 1f, 1f), "场景中的红色货币光晕", 4, true, 10),
-        new EffectAttr(160, FXRotationCondition.Preference, "BreakShieldEnemy", new Vector3(1f, 1f, 1f), "敌人破盾特效", 4, false, 10),
-        new EffectAttr(161, FXRotationCondition.Preference, "BreakShield", new Vector3(1f, 1f, 1f), "主角破盾特效", 4, false, 10),
-        new EffectAttr(162, FXRotationCondition.Preference, "EnemyExplosion001", new Vector3(1f, 1f, 1f), "BOSS爆炸特效", 1, false, 2),
-        new EffectAttr(163, FXRotationCondition.Preference, "DeadEffect", new Vector3(1f, 1f, 1f), "怪物消失", 1, true, 2),
-        new EffectAttr(164, FXRotationCondition.Preference, "TwirlEffect", new Vector3(3f, 3f, 1f), "开启扭曲", 1, false, 2),
-        new EffectAttr(165, FXRotationCondition.Preference, "ShadeAtk", new Vector3(1f, 1f, 1f), "分身斩特效", 1, false, 2),
-        new EffectAttr(166, FXRotationCondition.Preference, "NewATKHitGround2", new Vector3(1f, 1f, 1f), "主角匝地", 1, true, 6),
-        new EffectAttr(168, FXRotationCondition.Preference, "NewAirATKRoll", new Vector3(1f, 1f, 1f), "主角空中下劈转", 1, true, 6),
-        new EffectAttr(169, FXRotationCondition.Preference, "NewHitGround", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
-        new EffectAttr(170, FXRotationCondition.Preference, "NewATK3", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
-        new EffectAttr(171, FXRotationCondition.Preference, "NewATK14", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
-        new EffectAttr(172, FXRotationCondition.Preference, "NewRoll", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 1),
-        new EffectAttr(173, FXRotationCondition.Preference, "NewATKUpRising", new Vector3(1f, 1f, 1f), "主角ATK上挑", 1, true, 6),
-        new EffectAttr(174, FXRotationCondition.Preference, "NewRollEnd", new Vector3(1f, 1f, 1f), "主角ATK上挑", 1, true, 6),
-        new EffectAttr(175, FXRotationCondition.Preference, "NewAirATK7", new Vector3(1f, 1f, 1f), "主角空中ATK7", 1, true, 6),
-        new EffectAttr(176, FXRotationCondition.Preference, "NewAirATKHv1Push", new Vector3(1f, 1f, 1f), "主角空中ATKHv1Push", 1, true, 6),
-        new EffectAttr(177, FXRotationCondition.Preference, "ShadeAtk_ToLeftAir", new Vector3(1f, 1f, 1f), "Dahal处决分身斩", 1, true, 6),
-        new EffectAttr(178, FXRotationCondition.Preference, "DahalQTEHurt", new Vector3(1f, 1f, 1f), "DahalQTE受伤", 1, true, 6),
-        new EffectAttr(179, FXRotationCondition.Preference, "BeelzebubQTEHurt", new Vector3(1f, 1f, 1f), "暴食QTE受伤分身斩", 1, true, 6),
-        new EffectAttr(180, FXRotationCondition.Preference, "ShadeAtk_Down", new Vector3(1f, 1f, 1f), "骑兵QTE死亡分身斩", 1, true, 6),
-        new EffectAttr(181, FXRotationCondition.FollowPlayer, "AirCharging1", new Vector3(1f, 1f, 1f), "空中蓄力1", 1, true, 6),
-        new EffectAttr(182, FXRotationCondition.Preference, "ShadeAtk_Chase", new Vector3(1f, 1f, 1f), "追击分身斩", 3, true, 6),
-        new EffectAttr(183, FXRotationCondition.Preference, "NewDoubelFlash", new Vector3(1f, 1f, 1f), "左右穿梭刀光", 1, true, 6),
-        new EffectAttr(184, FXRotationCondition.Preference, "NewRollEndFrameGround", new Vector3(1f, 1f, 1f), "地面下劈刀光", 1, true, 6),
-        new EffectAttr(185, FXRotationCondition.Preference, "NewRollEndFrame1", new Vector3(1f, 1f, 1f), "空中下劈2刀光", 1, true, 6),
-        new EffectAttr(186, FXRotationCondition.Preference, "NewRollEndFrame", new Vector3(1f, 1f, 1f), "空中下劈2刀光", 1, true, 6),
-        new EffectAttr(188, FXRotationCondition.Preference, "SupplyBoxScreenEffect_Energy", new Vector3(1f, 1f, 1f), "Supply Box add Energy", 1, true, 6),
-        new EffectAttr(189, FXRotationCondition.Preference, "SupplyBoxScreenEffect_EnergyMatrix", new Vector3(1f, 1f, 1f), "Supply Box add Energy Matrix", 1, true, 6),
-        new EffectAttr(191, FXRotationCondition.Preference, "ShadeAtk_Skill", new Vector3(1f, 1f, 1f), "分身斩技能", 1, false, 6),
-        new EffectAttr(192, FXRotationCondition.Preference, "CoinGenerator", new Vector3(1f, 1f, 1f), "宝箱喷金币", 1, false, 6),
-        new EffectAttr(193, FXRotationCondition.Preference, "NewATKRollGround", new Vector3(1f, 1f, 1f), "大风车特效", 1, true, 6),
-        new EffectAttr(194, FXRotationCondition.Preference, "NewATKHv4", new Vector3(1f, 1f, 1f), "主角突刺特效", 1, true, 6),
-        new EffectAttr(195, FXRotationCondition.Preference, "HammerATK1DustEffect", new Vector3(1f, 1f, 1f), "大锤尘土", 1, false, 5),
-        new EffectAttr(197, FXRotationCondition.Preference, "Missile", new Vector3(0.25f, 0.25f, 1f), "锤子导弹", 1, false, 10),
-        new EffectAttr(198, FXRotationCondition.Preference, "MissileExplosion", new Vector3(1f, 1f, 1f), "锤子导弹爆炸效果", 1, false, 10),
-        new EffectAttr(200, FXRotationCondition.Preference, "JackAim", new Vector3(0.7f, 0.7f, 1f), "Jack瞄准特效", 6, false, 20),
-        new EffectAttr(201, FXRotationCondition.Preference, "JackAimEffect1", new Vector3(0.7f, 0.7f, 1f), "Jack真瞄准特效", 3, false, 6),
-        new EffectAttr(202, FXRotationCondition.Preference, "JackAimExplosion", new Vector3(1f, 1f, 1f), "Jack瞄准爆炸特效", 3, false, 10),
-        new EffectAttr(203, FXRotationCondition.Preference, "GiantRobotLaser", new Vector3(1f, 1f, 1f), "巨型机器人激光", 1, false, 5),
-        new EffectAttr(204, FXRotationCondition.Preference, "GiantRobotLaser 1", new Vector3(1f, 1f, 1f), "巨型机器人激光", 1, false, 5),
-        new EffectAttr(205, FXRotationCondition.Preference, "JudgesLaser", new Vector3(1f, 1f, 1f), "犹大激光", 1, false, 5),
-        new EffectAttr(206, FXRotationCondition.Preference, "EnemyExplosion002", new Vector3(1f, 1f, 1f), "音乐播放器爆炸特效", 1, false, 1),
-        new EffectAttr(207, FXRotationCondition.Preference, "FireShotGun01", new Vector3(1f, 1f, 1f), "霰弹利刃的霰弹", 1, false, 20),
-        new EffectAttr(208, FXRotationCondition.Preference, "Dahal", new Vector3(1f, 1f, 1f), "达哈尔感谢", 1, false, 20),
-        new EffectAttr(209, FXRotationCondition.Preference, "StickerAtk2Effect", new Vector3(1f, 1f, 1f), "珠子攻击2", 1, false, 20),
-        new EffectAttr(210, FXRotationCondition.Preference, "EatingBossAtk4Effect", new Vector3(1f, 1f, 1f), "卡洛斯Atk4特效", 1, false, 20),
-        new EffectAttr(211, FXRotationCondition.Preference, "JudgesLightingEffect", new Vector3(1f, 1f, 1f), "犹大攻击2", 1, false, 20),
-        new EffectAttr(212, FXRotationCondition.Preference, "NewPlayerAirJumpEffect", new Vector3(1f, 1f, 1f), "跳跃特效", 10, false, 20),
-        new EffectAttr(213, FXRotationCondition.Preference, "ExecuteBlack", new Vector3(1f, 1f, 1f), "敌人处决黑屏1", 2, false, 5),
-        new EffectAttr(214, FXRotationCondition.Preference, "EnemyExecute", new Vector3(1f, 1f, 1f), "敌人处决屏幕特效1", 2, false, 5),
-        new EffectAttr(215, FXRotationCondition.Preference, "CloseScreenEffect", new Vector3(1f, 1f, 1f), "e26关屏幕", 1, false, 20),
-        new EffectAttr(216, FXRotationCondition.Preference, "PlayerHurt", new Vector3(1f, 1f, 1f), "受伤蜂窝特效", 1, false, 2),
-        new EffectAttr(217, FXRotationCondition.Preference, "Onion", new Vector3(1f, 1f, 1f), "主角洋葱皮", 10, false, 20),
-        new EffectAttr(218, FXRotationCondition.Preference, "Onion_DaoBrother", new Vector3(1f, 1f, 1f), "怪物洋葱皮", 10, false, 20),
-        new EffectAttr(219, FXRotationCondition.Preference, "DaoBrotherAndPaoSisterPartA", new Vector3(1f, 1f, 1f), "刀哥碎片", 2, false, 5),
-        new EffectAttr(220, FXRotationCondition.Preference, "DaoBrotherAndPaoSisterPartB", new Vector3(1f, 1f, 1f), "刀哥碎片", 2, false, 5),
-        new EffectAttr(221, FXRotationCondition.Preference, "DaoPaoPartA", new Vector3(1f, 1f, 1f), "刀炮碎片", 2, false, 5),
-        new EffectAttr(222, FXRotationCondition.Preference, "DaoPaoPartB", new Vector3(1f, 1f, 1f), "刀炮碎片", 2, false, 5),
-        new EffectAttr(223, FXRotationCondition.Preference, "BombKillerIIPartA", new Vector3(1f, 1f, 1f), "半身自爆碎片", 2, false, 4),
-        new EffectAttr(224, FXRotationCondition.Preference, "BombKillerIIPartB", new Vector3(1f, 1f, 1f), "半身自爆碎片", 2, false, 4),
-        new EffectAttr(225, FXRotationCondition.Preference, "FooterPartA", new Vector3(1f, 1f, 1f), "大脚碎片", 1, false, 5),
-        new EffectAttr(226, FXRotationCondition.Preference, "FooterPartB", new Vector3(1f, 1f, 1f), "大脚碎片", 1, false, 5),
-        new EffectAttr(227, FXRotationCondition.Preference, "JumperPartA", new Vector3(1f, 1f, 1f), "跳拳碎片", 2, false, 5),
-        new EffectAttr(228, FXRotationCondition.Preference, "JumperPartB", new Vector3(1f, 1f, 1f), "跳拳碎片", 2, false, 5),
-        new EffectAttr(229, FXRotationCondition.Preference, "Onion1", new Vector3(1f, 1f, 1f), "主角幻影动画版", 10, false, 20),
+        new EffectAttr(0, FXRotationCondition.Preference, "Prefab/Effect", "EnemyAppear", new Vector3(1.2f, 1.2f, 1f), "敌人出现特效", 3, false, 20),
+        new EffectAttr(1, FXRotationCondition.HaveEnemyDirectionY, "Prefab/Effect", "SparkEffectOld", new Vector3(1f, 1f, 1f), "机器人被击中特效", 3, false, 20),
+        new EffectAttr(6, FXRotationCondition.RandomRotationZ, "Prefab/Effect", "EnemyFall", new Vector3(1f, 1f, 1f), "机器人坠地尘土", 4, false, 20),
+        new EffectAttr(9, FXRotationCondition.Preference, "Prefab/Effect", "BlueExplosion", new Vector3(1f, 1f, 1f), "蓝色爆炸", 3, false, 20),
+        new EffectAttr(14, FXRotationCondition.Preference, "Prefab/Effect", "NormalKillSparkEffect", new Vector3(1f, 1f, 1f), "敌人普通死亡蓝色火星", 1, false, 20),
+        new EffectAttr(17, FXRotationCondition.Preference, "Prefab/Effect", "HaloEffect", new Vector3(3f, 3f, 3f), "BOSS吼叫的圈", 1, true, 20),
+        new EffectAttr(22, FXRotationCondition.Preference, "Prefab/Effect", "PlayerFall", new Vector3(1f, 1f, 1f), "主角尘土", 3, false, 20),
+        new EffectAttr(23, FXRotationCondition.Preference, "Prefab/Effect", "DistortionCore-PS4", new Vector3(1f, 1f, 0.7f), "空气扭曲", 2, false, 20),
+        new EffectAttr(40, FXRotationCondition.Preference, "Prefab/Effect", "DustEffect", new Vector3(1f, 1f, 1f), "后退尘土", 2, false, 20),
+        new EffectAttr(48, FXRotationCondition.Preference, "Prefab/Effect", "Flash_Distort", new Vector3(2.5f, 2.5f, 1f), "飞燕特效", 5, false, 20),
+        new EffectAttr(49, FXRotationCondition.Preference, "Prefab/Effect", "DistortionCore-PS4", new Vector3(1f, 1f, 0.7f), "普通扭曲空气特效", 2, false, 20),
+        new EffectAttr(61, FXRotationCondition.Preference, "Prefab/Effect", "PaoSisterDust", new Vector3(1f, 1f, 1f), "炮姐发射尘土", 1, false, 20),
+        new EffectAttr(70, FXRotationCondition.RandomRotationZ, "Prefab/Effect", "EnemyHitEffect", new Vector3(1f, 1f, 1f), "主角被攻击黄色特效", 3, false, 20),
+        new EffectAttr(71, FXRotationCondition.Preference, "Prefab/Effect", "EnemyHurt", new Vector3(1f, 1f, 1f), "机器人被攻击动画", 3, false, 20),
+        new EffectAttr(76, FXRotationCondition.Preference, "Prefab/Effect", "PlayerArmorSpark01", new Vector3(1f, 1f, 1f), "主角护盾火星", 5, true, 10),
+        new EffectAttr(80, FXRotationCondition.Preference, "Prefab/Effect", "PlayerArmorSpark02", new Vector3(1f, 1f, 1f), "主角护盾火星2", 3, true, 10),
+        new EffectAttr(90, FXRotationCondition.Preference, "Prefab/Effect", "BulletExplosion", new Vector3(1f, 1f, 1f), "无属性子弹爆炸", 2, false, 10),
+        new EffectAttr(91, FXRotationCondition.Preference, "Prefab/Effect", "EnergyBallBlue2", new Vector3(0.4f, 0.4f, 1f), "蓝色能量球特效", 7, false, 30),
+        new EffectAttr(92, FXRotationCondition.Preference, "Prefab/Effect", "BlockParticle_Enemy", new Vector3(1f, 1f, 1f), "敌人死亡小方块", 7, false, 20),
+        new EffectAttr(95, FXRotationCondition.Preference, "Prefab/Effect", "LightGunHitGroundSpark", new Vector3(1f, 1f, 1f), "主角轻攻击子弹击中地面", 10, false, 20),
+        new EffectAttr(98, FXRotationCondition.Preference, "Prefab/Effect", "NewATK1", new Vector3(1f, 1f, 1f), "透明刀光ATK1", 1, true, 5),
+        new EffectAttr(99, FXRotationCondition.Preference, "Prefab/Effect", "NewATK2", new Vector3(1f, 1f, 1f), "刀光ATK2", 1, true, 5),
+        new EffectAttr(100, FXRotationCondition.Preference, "Prefab/Effect", "NewATK15", new Vector3(1f, 1f, 1f), "刀光ATK15", 1, true, 5),
+        new EffectAttr(101, FXRotationCondition.Preference, "Prefab/Effect", "NewATK5", new Vector3(1f, 1f, 1f), "刀光ATK5", 1, true, 5),
+        new EffectAttr(102, FXRotationCondition.Preference, "Prefab/Effect", "NewATK23", new Vector3(1f, 1f, 1f), "刀光ATK23", 1, true, 5),
+        new EffectAttr(103, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATK1", new Vector3(1f, 1f, 1f), "透明刀光ATK4", 1, true, 5),
+        new EffectAttr(104, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATK2", new Vector3(1f, 1f, 1f), "透明刀光ATK5", 1, true, 5),
+        new EffectAttr(105, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATK6", new Vector3(1f, 1f, 1f), "空中刀光ATK6", 1, true, 5),
+        new EffectAttr(106, FXRotationCondition.Preference, "Prefab/Effect", "NewUpRising", new Vector3(1f, 1f, 1f), "刀光上挑", 1, true, 5),
+        new EffectAttr(107, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHv1", new Vector3(1f, 1f, 1f), "突刺刀光1", 1, true, 5),
+        new EffectAttr(108, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHv2", new Vector3(1f, 1f, 1f), "突刺刀光2", 1, true, 5),
+        new EffectAttr(109, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHv3", new Vector3(1f, 1f, 1f), "突刺刀光3", 1, true, 5),
+        new EffectAttr(110, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATKHv1", new Vector3(1f, 1f, 1f), "透明刀光ATK7_5", 1, true, 5),
+        new EffectAttr(111, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATKHv2", new Vector3(1f, 1f, 1f), "透明刀光ATK7_6", 1, true, 5),
+        new EffectAttr(112, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATKHv5", new Vector3(1f, 1f, 1f), "透明刀光ATK7_7", 1, true, 5),
+        new EffectAttr(114, FXRotationCondition.Preference, "Prefab/Effect", "NewATK16", new Vector3(1f, 1f, 1f), "枪刃空中刀光ATK1", 1, true, 5),
+        new EffectAttr(116, FXRotationCondition.Preference, "Prefab/Effect", "NewATKRollEnd", new Vector3(1f, 1f, 1f), "刀光ATKRollEnd", 1, true, 5),
+        new EffectAttr(117, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHv1Push", new Vector3(1f, 1f, 0.1f), "上挑刀光", 1, true, 5),
+        new EffectAttr(118, FXRotationCondition.Preference, "Prefab/Effect", "NewATKRollGround", new Vector3(1f, 1f, 1f), "下劈刀光", 1, true, 5),
+        new EffectAttr(121, FXRotationCondition.FollowPlayer, "Prefab/Effect", "Charging1", new Vector3(1f, 1f, 1f), "蓄力1", 1, false, 3),
+        new EffectAttr(124, FXRotationCondition.Preference, "Prefab/Effect", "ChargingScreenEffect", new Vector3(1f, 1f, 1f), "蓄力攻击", 1, false, 3),
+        new EffectAttr(125, FXRotationCondition.Preference, "Prefab/Effect", "ChipAbsorb", new Vector3(1f, 1f, 1f), "芯片吸收", 3, false, 10),
+        new EffectAttr(126, FXRotationCondition.Preference, "Prefab/Effect", "EnemyChip", new Vector3(0.2f, 0.17f, 1f), "蓄力攻击", 3, true, 10),
+        new EffectAttr(127, FXRotationCondition.Preference, "Prefab/Effect", "ChipExplosion", new Vector3(1f, 1f, 1f), "芯片生成飞出", 3, false, 10),
+        new EffectAttr(128, FXRotationCondition.Preference, "Prefab/Effect", "Warning", new Vector3(1f, 1f, 1f), "警告", 3, false, 10),
+        new EffectAttr(131, FXRotationCondition.Preference, "Prefab/Effect", "DahalBullet", new Vector3(0.15f, 0.15f, 1f), "DahalBullet", 3, false, 10),
+        new EffectAttr(133, FXRotationCondition.Preference, "Prefab/Effect", "BeelzebubATK3", new Vector3(1f, 1f, 1f), "暴食ATK3", 3, false, 10),
+        new EffectAttr(134, FXRotationCondition.HaveEnemyDirectionY, "Prefab/Effect", "BeelzebubATK1_1", new Vector3(1f, 1f, 1f), "暴食ATK1", 3, true, 10),
+        new EffectAttr(139, FXRotationCondition.HaveEnemyDirectionY, "Prefab/Effect", "BeelzebubATK1_2", new Vector3(1f, 1f, 1f), "暴食技能ATK1_2", 1, true, 6),
+        new EffectAttr(142, FXRotationCondition.Preference, "Prefab/Effect", "IceExplosion", new Vector3(1f, 1f, 1f), "使用技能召唤暴食砸到地面的爆炸", 1, false, 6),
+        new EffectAttr(144, FXRotationCondition.HaveEnemyDirectionY, "Prefab/Effect", "SparkEffectLongTime", new Vector3(1f, 1f, 1f), "小怪被处决死的时候顺着裂缝散落的粒子", 1, false, 6),
+        new EffectAttr(145, FXRotationCondition.FollowPlayer, "Prefab/Effect", "IceExplosion", new Vector3(1f, 1f, 1f), "暴食自己砸到地面的爆炸", 1, false, 6),
+        new EffectAttr(148, FXRotationCondition.Preference, "Prefab/Effect", "DahalAtk4Bullet", new Vector3(1f, 1f, 1f), "达哈尔火箭", 1, false, 6),
+        new EffectAttr(149, FXRotationCondition.Preference, "Prefab/Effect", "DahalATK6FallSpark", new Vector3(1f, 1f, 1f), "达哈尔ATK6下落火星", 1, false, 3),
+        new EffectAttr(150, FXRotationCondition.Preference, "Prefab/Effect", "DahalTansferSpark", new Vector3(1f, 1f, 1f), "达哈尔切换状态火星", 1, false, 3),
+        new EffectAttr(151, FXRotationCondition.RandomRotationZ, "Prefab/Effect", "EnemyHitEffect02", new Vector3(1f, 1f, 1f), "敌人受伤特效", 1, false, 5),
+        new EffectAttr(152, FXRotationCondition.FollowTargeRotation, "Prefab/Effect", "CloseEnemyEffect", new Vector3(1f, 1f, 1f), "主角聚怪特效", 1, true, 5),
+        new EffectAttr(153, FXRotationCondition.FollowTargeRotation, "Prefab/Effect", "CloseEnemyEffectBlast", new Vector3(1f, 1f, 1f), "主角聚怪后冲刺特效", 1, false, 5),
+        new EffectAttr(154, FXRotationCondition.Preference, "Prefab/Effect", "BeeLaser", new Vector3(1f, 1f, 1f), "激光特效", 1, false, 5),
+        new EffectAttr(155, FXRotationCondition.Preference, "Prefab/Effect", "BeeLaser2", new Vector3(1f, 1f, 1f), "激光特效", 1, false, 5),
+        new EffectAttr(156, FXRotationCondition.Preference, "Prefab/Effect", "HeavyHitEffect", new Vector3(1f, 1f, 1f), "重击特效", 1, false, 1),
+        new EffectAttr(157, FXRotationCondition.Preference, "Prefab/Effect", "EnemyBlockEffect", new Vector3(1f, 1f, 1f), "敌人防御特效", 1, true, 1),
+        new EffectAttr(158, FXRotationCondition.Preference, "Prefab/Effect", "PlayerBlockEffect", new Vector3(1f, 1f, 1f), "主角防御特效", 1, true, 1),
+        new EffectAttr(159, FXRotationCondition.Preference, "Prefab/Effect", "RedMoneyHalo", new Vector3(1f, 1f, 1f), "场景中的红色货币光晕", 4, true, 10),
+        new EffectAttr(160, FXRotationCondition.Preference, "Prefab/Effect", "BreakShieldEnemy", new Vector3(1f, 1f, 1f), "敌人破盾特效", 4, false, 10),
+        new EffectAttr(161, FXRotationCondition.Preference, "Prefab/Effect", "BreakShield", new Vector3(1f, 1f, 1f), "主角破盾特效", 4, false, 10),
+        new EffectAttr(162, FXRotationCondition.Preference, "Prefab/Effect", "EnemyExplosion001", new Vector3(1f, 1f, 1f), "BOSS爆炸特效", 1, false, 2),
+        new EffectAttr(163, FXRotationCondition.Preference, "Prefab/Effect", "DeadEffect", new Vector3(1f, 1f, 1f), "怪物消失", 1, true, 2),
+        new EffectAttr(164, FXRotationCondition.Preference, "Prefab/Effect", "TwirlEffect", new Vector3(3f, 3f, 1f), "开启扭曲", 1, false, 2),
+        new EffectAttr(165, FXRotationCondition.Preference, "Prefab/Effect", "ShadeAtk", new Vector3(1f, 1f, 1f), "分身斩特效", 1, false, 2),
+        new EffectAttr(166, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHitGround2", new Vector3(1f, 1f, 1f), "主角匝地", 1, true, 6),
+        new EffectAttr(168, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATKRoll", new Vector3(1f, 1f, 1f), "主角空中下劈转", 1, true, 6),
+        new EffectAttr(169, FXRotationCondition.Preference, "Prefab/Effect", "NewHitGround", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
+        new EffectAttr(170, FXRotationCondition.Preference, "Prefab/Effect", "NewATK3", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
+        new EffectAttr(171, FXRotationCondition.Preference, "Prefab/Effect", "NewATK14", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 6),
+        new EffectAttr(172, FXRotationCondition.Preference, "Prefab/Effect", "NewRoll", new Vector3(1f, 1f, 1f), "主角劈转", 1, true, 1),
+        new EffectAttr(173, FXRotationCondition.Preference, "Prefab/Effect", "NewATKUpRising", new Vector3(1f, 1f, 1f), "主角ATK上挑", 1, true, 6),
+        new EffectAttr(174, FXRotationCondition.Preference, "Prefab/Effect", "NewRollEnd", new Vector3(1f, 1f, 1f), "主角ATK上挑", 1, true, 6),
+        new EffectAttr(175, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATK7", new Vector3(1f, 1f, 1f), "主角空中ATK7", 1, true, 6),
+        new EffectAttr(176, FXRotationCondition.Preference, "Prefab/Effect", "NewAirATKHv1Push", new Vector3(1f, 1f, 1f), "主角空中ATKHv1Push", 1, true, 6),
+        new EffectAttr(177, FXRotationCondition.Preference, "Prefab/Effect", "ShadeAtk_ToLeftAir", new Vector3(1f, 1f, 1f), "Dahal处决分身斩", 1, true, 6),
+        new EffectAttr(178, FXRotationCondition.Preference, "Prefab/Effect", "DahalQTEHurt", new Vector3(1f, 1f, 1f), "DahalQTE受伤", 1, true, 6),
+        new EffectAttr(179, FXRotationCondition.Preference, "Prefab/Effect", "BeelzebubQTEHurt", new Vector3(1f, 1f, 1f), "暴食QTE受伤分身斩", 1, true, 6),
+        new EffectAttr(180, FXRotationCondition.Preference, "Prefab/Effect", "ShadeAtk_Down", new Vector3(1f, 1f, 1f), "骑兵QTE死亡分身斩", 1, true, 6),
+        new EffectAttr(181, FXRotationCondition.FollowPlayer, "Prefab/Effect", "AirCharging1", new Vector3(1f, 1f, 1f), "空中蓄力1", 1, true, 6),
+        new EffectAttr(182, FXRotationCondition.Preference, "Prefab/Effect", "ShadeAtk_Chase", new Vector3(1f, 1f, 1f), "追击分身斩", 3, true, 6),
+        new EffectAttr(183, FXRotationCondition.Preference, "Prefab/Effect", "NewDoubelFlash", new Vector3(1f, 1f, 1f), "左右穿梭刀光", 1, true, 6),
+        new EffectAttr(184, FXRotationCondition.Preference, "Prefab/Effect", "NewRollEndFrameGround", new Vector3(1f, 1f, 1f), "地面下劈刀光", 1, true, 6),
+        new EffectAttr(185, FXRotationCondition.Preference, "Prefab/Effect", "NewRollEndFrame1", new Vector3(1f, 1f, 1f), "空中下劈2刀光", 1, true, 6),
+        new EffectAttr(186, FXRotationCondition.Preference, "Prefab/Effect", "NewRollEndFrame", new Vector3(1f, 1f, 1f), "空中下劈2刀光", 1, true, 6),
+        new EffectAttr(188, FXRotationCondition.Preference, "Prefab/Effect", "SupplyBoxScreenEffect_Energy", new Vector3(1f, 1f, 1f), "Supply Box add Energy", 1, true, 6),
+        new EffectAttr(189, FXRotationCondition.Preference, "Prefab/Effect", "SupplyBoxScreenEffect_EnergyMatrix", new Vector3(1f, 1f, 1f), "Supply Box add Energy Matrix", 1, true, 6),
+        new EffectAttr(191, FXRotationCondition.Preference, "Prefab/Effect", "ShadeAtk_Skill", new Vector3(1f, 1f, 1f), "分身斩技能", 1, false, 6),
+        new EffectAttr(192, FXRotationCondition.Preference, "Prefab/Effect", "CoinGenerator", new Vector3(1f, 1f, 1f), "宝箱喷金币", 1, false, 6),
+        new EffectAttr(193, FXRotationCondition.Preference, "Prefab/Effect", "NewATKRollGround", new Vector3(1f, 1f, 1f), "大风车特效", 1, true, 6),
+        new EffectAttr(194, FXRotationCondition.Preference, "Prefab/Effect", "NewATKHv4", new Vector3(1f, 1f, 1f), "主角突刺特效", 1, true, 6),
+        new EffectAttr(195, FXRotationCondition.Preference, "Prefab/Effect", "HammerATK1DustEffect", new Vector3(1f, 1f, 1f), "大锤尘土", 1, false, 5),
+        new EffectAttr(197, FXRotationCondition.Preference, "Prefab/Effect", "Missile", new Vector3(0.25f, 0.25f, 1f), "锤子导弹", 1, false, 10),
+        new EffectAttr(198, FXRotationCondition.Preference, "Prefab/Effect", "MissileExplosion", new Vector3(1f, 1f, 1f), "锤子导弹爆炸效果", 1, false, 10),
+        new EffectAttr(200, FXRotationCondition.Preference, "Prefab/Effect", "JackAim", new Vector3(0.7f, 0.7f, 1f), "Jack瞄准特效", 6, false, 20),
+        new EffectAttr(201, FXRotationCondition.Preference, "Prefab/Effect", "JackAimEffect1", new Vector3(0.7f, 0.7f, 1f), "Jack真瞄准特效", 3, false, 6),
+        new EffectAttr(202, FXRotationCondition.Preference, "Prefab/Effect", "JackAimExplosion", new Vector3(1f, 1f, 1f), "Jack瞄准爆炸特效", 3, false, 10),
+        new EffectAttr(203, FXRotationCondition.Preference, "Prefab/Effect", "GiantRobotLaser", new Vector3(1f, 1f, 1f), "巨型机器人激光", 1, false, 5),
+        new EffectAttr(204, FXRotationCondition.Preference, "Prefab/Effect", "GiantRobotLaser 1", new Vector3(1f, 1f, 1f), "巨型机器人激光", 1, false, 5),
+        new EffectAttr(205, FXRotationCondition.Preference, "Prefab/Effect", "JudgesLaser", new Vector3(1f, 1f, 1f), "犹大激光", 1, false, 5),
+        new EffectAttr(206, FXRotationCondition.Preference, "Prefab/Effect", "EnemyExplosion002", new Vector3(1f, 1f, 1f), "音乐播放器爆炸特效", 1, false, 1),
+        new EffectAttr(207, FXRotationCondition.Preference, "Prefab/Effect", "FireShotGun01", new Vector3(1f, 1f, 1f), "霰弹利刃的霰弹", 1, false, 20),
+        new EffectAttr(208, FXRotationCondition.Preference, "Prefab/Effect", "Dahal", new Vector3(1f, 1f, 1f), "达哈尔感谢", 1, false, 20),
+        new EffectAttr(209, FXRotationCondition.Preference, "Prefab/Effect", "StickerAtk2Effect", new Vector3(1f, 1f, 1f), "珠子攻击2", 1, false, 20),
+        new EffectAttr(210, FXRotationCondition.Preference, "Prefab/Effect", "EatingBossAtk4Effect", new Vector3(1f, 1f, 1f), "卡洛斯Atk4特效", 1, false, 20),
+        new EffectAttr(211, FXRotationCondition.Preference, "Prefab/Effect", "JudgesLightingEffect", new Vector3(1f, 1f, 1f), "犹大攻击2", 1, false, 20),
+        new EffectAttr(212, FXRotationCondition.Preference, "Prefab/Effect", "NewPlayerAirJumpEffect", new Vector3(1f, 1f, 1f), "跳跃特效", 10, false, 20),
+        new EffectAttr(213, FXRotationCondition.Preference, "Prefab/Effect", "ExecuteBlack", new Vector3(1f, 1f, 1f), "敌人处决黑屏1", 2, false, 5),
+        new EffectAttr(214, FXRotationCondition.Preference, "Prefab/Effect", "EnemyExecute", new Vector3(1f, 1f, 1f), "敌人处决屏幕特效1", 2, false, 5),
+        new EffectAttr(215, FXRotationCondition.Preference, "Prefab/Effect", "CloseScreenEffect", new Vector3(1f, 1f, 1f), "e26关屏幕", 1, false, 20),
+        new EffectAttr(216, FXRotationCondition.Preference, "Prefab/cameraeffectproxy/shakeprefab", "PlayerHurt", new Vector3(1f, 1f, 1f), "受伤蜂窝特效", 1, false, 2),
+        new EffectAttr(217, FXRotationCondition.Preference, "Prefab/Effect", "Onion", new Vector3(1f, 1f, 1f), "主角洋葱皮", 10, false, 20),
+        new EffectAttr(218, FXRotationCondition.Preference, "Prefab/Effect", "Onion_DaoBrother", new Vector3(1f, 1f, 1f), "怪物洋葱皮", 10, false, 20),
+        new EffectAttr(219, FXRotationCondition.Preference, "Prefab/Effect", "DaoBrotherAndPaoSisterPartA", new Vector3(1f, 1f, 1f), "刀哥碎片", 2, false, 5),
+        new EffectAttr(220, FXRotationCondition.Preference, "Prefab/Effect", "DaoBrotherAndPaoSisterPartB", new Vector3(1f, 1f, 1f), "刀哥碎片", 2, false, 5),
+        new EffectAttr(221, FXRotationCondition.Preference, "Prefab/Effect", "DaoPaoPartA", new Vector3(1f, 1f, 1f), "刀炮碎片", 2, false, 5),
+        new EffectAttr(222, FXRotationCondition.Preference, "Prefab/Effect", "DaoPaoPartB", new Vector3(1f, 1f, 1f), "刀炮碎片", 2, false, 5),
+        new EffectAttr(223, FXRotationCondition.Preference, "Prefab/Effect", "BombKillerIIPartA", new Vector3(1f, 1f, 1f), "半身自爆碎片", 2, false, 4),
+        new EffectAttr(224, FXRotationCondition.Preference, "Prefab/Effect", "BombKillerIIPartB", new Vector3(1f, 1f, 1f), "半身自爆碎片", 2, false, 4),
+        new EffectAttr(225, FXRotationCondition.Preference, "Prefab/Effect", "FooterPartA", new Vector3(1f, 1f, 1f), "大脚碎片", 1, false, 5),
+        new EffectAttr(226, FXRotationCondition.Preference, "Prefab/Effect", "FooterPartB", new Vector3(1f, 1f, 1f), "大脚碎片", 1, false, 5),
+        new EffectAttr(227, FXRotationCondition.Preference, "Prefab/Effect", "JumperPartA", new Vector3(1f, 1f, 1f), "跳拳碎片", 2, false, 5),
+        new EffectAttr(228, FXRotationCondition.Preference, "Prefab/Effect", "JumperPartB", new Vector3(1f, 1f, 1f), "跳拳碎片", 2, false, 5),
+        new EffectAttr(229, FXRotationCondition.Preference, "Prefab/Effect", "Onion1", new Vector3(1f, 1f, 1f), "主角幻影动画版", 10, false, 20),
     };
 
+    #endregion
+
+    #region 玩家攻击受伤数据
 
     /// <summary>
     /// 玩家攻击数据
@@ -461,23 +502,6 @@ public class DB
             }
         },
         {
-            PlayerStaEnum.HitGroundStart.ToString(), new Dictionary<string, string>
-            {
-                { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
-                { PlayerAtkDataType.interval.ToString(), "0" }, //间隔
-                { PlayerAtkDataType.hitType.ToString(), "0" }, //间隔
-                { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
-                { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.HitGroundStart.ToString() }, //攻击名称
-                { PlayerAtkDataType.shakeClip.ToString(), "0" }, //振动帧
-                { PlayerAtkDataType.shakeSpeed.ToString(), "0" }, //振动速度
-                { PlayerAtkDataType.shakeOffset.ToString(), "0.2" }, //振动偏移
-                { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
-                { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
-                { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
-                { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
-            }
-        },
-        {
             PlayerStaEnum.DoubleFlash.ToString(), new Dictionary<string, string>
             {
                 { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
@@ -528,26 +552,79 @@ public class DB
                 { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
             }
         },
+        {
+            PlayerStaEnum.HitGround1.ToString(), new Dictionary<string, string>
+            {
+                { PlayerAtkDataType.hitTimes.ToString(), "0" }, //命中次数
+                { PlayerAtkDataType.interval.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.hitType.ToString(), "0" }, //间隔
+                { PlayerAtkDataType.damagePercent.ToString(), "0.4" }, //伤害百分比
+                { PlayerAtkDataType.atkName.ToString(), PlayerStaEnum.HitGround1.ToString() }, //攻击名称
+                { PlayerAtkDataType.shakeClip.ToString(), "2" }, //振动帧
+                { PlayerAtkDataType.shakeSpeed.ToString(), "0.2" }, //振动速度
+                { PlayerAtkDataType.shakeOffset.ToString(), "0.2" }, //振动偏移
+                { PlayerAtkDataType.shakeType.ToString(), "0" }, //振动类型
+                { PlayerAtkDataType.frozenClip.ToString(), "0" }, //冻结帧
+                { PlayerAtkDataType.frameShakeClip.ToString(), "8" }, //帧振动次数
+                { PlayerAtkDataType.joystickShakeNum.ToString(), "-1" }, //摇杆摇数
+            }
+        },
     };
-
 
     /// <summary>
-    /// 关卡敌人数据
+    /// 敌人攻击玩家,玩家的受伤数据
+    /// {"DaoAtk1":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
+    /// "DaoAtk2":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":0.800000011920929,"shieldDamage":3},
+    /// "DaoAtk3":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
+    /// "DaoAtk4":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.5,"shieldDamage":2},
+    /// "DaoAtk5":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":5},
+    /// "DaoAtk6_1":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
+    /// "DaoAtk6_2":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.5,"shieldDamage":3},
+    /// "Bullet":{"xSpeed":5.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":7.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":2}}
     /// </summary>
-    /// <returns></returns>
-    public static readonly Dictionary<string, LevelEnemyData> LevelEnemyDataTemp = new Dictionary<string, LevelEnemyData>
+    private static readonly Dictionary<string, Dictionary<string, Dictionary<string, string>>> PlayerHurtDataTemp = new()
     {
         {
-            CScene.Game2, new LevelEnemyData
+            EnemyType.女猎手.ToString(), new Dictionary<string, Dictionary<string, string>>()
             {
-                enemyQueueData = new EnemyQueueData(),
-                enemyJsonObject = new[]
                 {
-                    new EnemyJsonObject("女猎手1", new Vector2(-13.69f, -3.31f), "0-0"),
+                    EnemyStaEnum.Atk2.ToString(), new Dictionary<string, string>()
+                    {
+                        { PlayerHurtDataType.xSpeed.ToString(), "3.0" },
+                        { PlayerHurtDataType.ySpeed.ToString(), "0.0" },
+                        { PlayerHurtDataType.airXSpeed.ToString(), "5.0" },
+                        { PlayerHurtDataType.airYSpeed.ToString(), "3.0" },
+                        { PlayerHurtDataType.animName.ToString(), PlayerStaEnum.UnderAtk1.ToString() },
+                        { PlayerHurtDataType.airAnimName.ToString(), PlayerStaEnum.UnderAtkHitToFly.ToString() },
+                        { PlayerHurtDataType.damagePercent.ToString(), "1" },
+                        { PlayerHurtDataType.shieldDamage.ToString(), "3" },
+                    }
                 },
             }
-        }
+        },
+        {
+            EnemyType.弥诺陶洛斯.ToString(), new Dictionary<string, Dictionary<string, string>>()
+            {
+                {
+                    EnemyStaEnum.Atk1.ToString(), new Dictionary<string, string>()
+                    {
+                        { PlayerHurtDataType.xSpeed.ToString(), "3.0" },
+                        { PlayerHurtDataType.ySpeed.ToString(), "0.0" },
+                        { PlayerHurtDataType.airXSpeed.ToString(), "5.0" },
+                        { PlayerHurtDataType.airYSpeed.ToString(), "3.0" },
+                        { PlayerHurtDataType.animName.ToString(), PlayerStaEnum.UnderAtk1.ToString() },
+                        { PlayerHurtDataType.airAnimName.ToString(), PlayerStaEnum.UnderAtkHitToFly.ToString() },
+                        { PlayerHurtDataType.damagePercent.ToString(), "1" },
+                        { PlayerHurtDataType.shieldDamage.ToString(), "3" },
+                    }
+                },
+            }
+        },
     };
+
+    #endregion
+
+    #region 敌人攻击受伤数据
 
     /// <summary>
     /// 敌人攻击数据
@@ -652,7 +729,7 @@ public class DB
     /// "Charge1EndLevel3":{"xSpeed":1.0,"ySpeed":20.0,"airXSpeed":0.0,"airYSpeed":12.0,"normalAtkType":"HitToFly1","airAtkType":"HitToFly2"},
     /// "ShadeAtkSkill":{"xSpeed":0.0,"ySpeed":0.0,"airXSpeed":0.0,"airYSpeed":0.0,"normalAtkType":"Hit1","airAtkType":"HitToFly2"}}
     /// </summary>
-    public static readonly Dictionary<string, Dictionary<string, Dictionary<string, string>>> EnemyHurtDataTemp = new()
+    private static readonly Dictionary<string, Dictionary<string, Dictionary<string, string>>> EnemyHurtDataTemp = new()
     {
         {
             EnemyType.女猎手.ToString(), new Dictionary<string, Dictionary<string, string>>
@@ -665,7 +742,7 @@ public class DB
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
                 {
@@ -676,7 +753,7 @@ public class DB
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
                 {
@@ -687,7 +764,7 @@ public class DB
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
             }
@@ -703,94 +780,96 @@ public class DB
                         { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
+                    }
+                },
+            }
+        },
+        {
+            EnemyType.弥诺陶洛斯.ToString(), new Dictionary<string, Dictionary<string, string>>
+            {
+                {
+                    PlayerStaEnum.Atk1.ToString(), new Dictionary<string, string>()
+                    {
+                        { EnemyHurtDataType.xSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
                 {
                     PlayerStaEnum.Atk2.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "1.0" },
-                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
                 {
                     PlayerStaEnum.Atk3.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "0" },
                         { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
                         { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
                         { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
                 {
                     PlayerStaEnum.UpRising.ToString(), new Dictionary<string, string>()
                     {
-                        { EnemyHurtDataType.xSpeed.ToString(), "2.0" },
+                        { EnemyHurtDataType.xSpeed.ToString(), "0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "15.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "15.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.HitToFly1.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly1.ToString() },
+                    }
+                },
+                {
+                    PlayerStaEnum.AirAtk1.ToString(), new Dictionary<string, string>()
+                    {
+                        { EnemyHurtDataType.xSpeed.ToString(), "0.0" },
                         { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.airXSpeed.ToString(), "5.0" },
-                        { EnemyHurtDataType.airYSpeed.ToString(), "3.0" },
-                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
-                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.Hurt.ToString() },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.HitToFly1.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly1.ToString() },
+                    }
+                },
+                {
+                    PlayerStaEnum.AirAtk2.ToString(), new Dictionary<string, string>()
+                    {
+                        { EnemyHurtDataType.xSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "5.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.HitToFly1.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
+                    }
+                },
+                {
+                    PlayerStaEnum.HitGround1.ToString(), new Dictionary<string, string>()
+                    {
+                        { EnemyHurtDataType.xSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.ySpeed.ToString(), "-30.0" },
+                        { EnemyHurtDataType.airXSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.airYSpeed.ToString(), "0.0" },
+                        { EnemyHurtDataType.normalAtkType.ToString(), EnemyStaEnum.Fall.ToString() },
+                        { EnemyHurtDataType.airAtkType.ToString(), EnemyStaEnum.HitToFly2.ToString() },
                     }
                 },
             }
         },
     };
 
-
-    /// <summary>
-    /// 敌人攻击玩家,玩家的受伤数据
-    /// {"DaoAtk1":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
-    /// "DaoAtk2":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":0.800000011920929,"shieldDamage":3},
-    /// "DaoAtk3":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
-    /// "DaoAtk4":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.5,"shieldDamage":2},
-    /// "DaoAtk5":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":5},
-    /// "DaoAtk6_1":{"xSpeed":3.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":3},
-    /// "DaoAtk6_2":{"xSpeed":5.0,"ySpeed":7.0,"airXSpeed":5.0,"airYSpeed":3.0,"animName":"UnderAtkHitToFly","airAnimName":"UnderAtkHitToFly","damagePercent":1.5,"shieldDamage":3},
-    /// "Bullet":{"xSpeed":5.0,"ySpeed":0.0,"airXSpeed":5.0,"airYSpeed":7.0,"animName":"UnderAtk1","airAnimName":"UnderAtkHitToFly","damagePercent":1.0,"shieldDamage":2}}
-    /// </summary>
-    public static readonly Dictionary<EnemyType, Dictionary<string, Dictionary<PlayerHurtDataType, string>>> PlayerHurtData =
-        new Dictionary<EnemyType, Dictionary<string, Dictionary<PlayerHurtDataType, string>>>()
-        {
-            {
-                EnemyType.女猎手, new Dictionary<string, Dictionary<PlayerHurtDataType, string>>()
-                {
-                    {
-                        PlayerStaEnum.Atk2.ToString(), new Dictionary<PlayerHurtDataType, string>()
-                        {
-                            { PlayerHurtDataType.xSpeed, "3.0" },
-                            { PlayerHurtDataType.ySpeed, "0.0" },
-                            { PlayerHurtDataType.airXSpeed, "5.0" },
-                            { PlayerHurtDataType.airYSpeed, "3.0" },
-                            { PlayerHurtDataType.animName, EnemyStaEnum.Hurt.ToString() },
-                            { PlayerHurtDataType.airAnimName, EnemyStaEnum.Hurt.ToString() },
-                            { PlayerHurtDataType.damagerPercent, "1" },
-                            { PlayerHurtDataType.shidelDamage, "3" },
-                        }
-                    },
-                    {
-                        PlayerStaEnum.AtkRemote.ToString(), new Dictionary<PlayerHurtDataType, string>()
-                        {
-                            { PlayerHurtDataType.xSpeed, "3.0" },
-                            { PlayerHurtDataType.ySpeed, "0.0" },
-                            { PlayerHurtDataType.airXSpeed, "5.0" },
-                            { PlayerHurtDataType.airYSpeed, "3.0" },
-                            { PlayerHurtDataType.animName, EnemyStaEnum.Hurt.ToString() },
-                            { PlayerHurtDataType.airAnimName, EnemyStaEnum.Hurt.ToString() },
-                            { PlayerHurtDataType.damagerPercent, "1" },
-                            { PlayerHurtDataType.shidelDamage, "5" },
-                        }
-                    }
-                }
-            },
-        };
-
+    #endregion
 
     /// <summary>
     /// 音乐映射列表

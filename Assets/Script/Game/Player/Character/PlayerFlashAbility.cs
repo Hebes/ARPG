@@ -100,7 +100,7 @@ public class PlayerFlashAbility : CharacterState
         if (R.Player.TimeController.isPause) return;
         if ((StateMachine.currentState.IsInArray(CanFlashSta) || Action.canChangeAnim) && FlashLevelCheck())
         {
-            nameof(Listener.FlashPositionSet).StopIEnumerator();
+            R.StopIEnumerator(nameof(AnimEvent.FlashPositionSet));
             if (dir is 1 or -4 or 4)
             {
                 Action.TurnRound(1);
@@ -111,7 +111,7 @@ public class PlayerFlashAbility : CharacterState
                 Action.TurnRound(-1);
             }
 
-            Listener.flashDir = dir;
+            AnimEvent.flashDir = dir;
             switch (dir + 5)
             {
                 case 0:
@@ -136,7 +136,7 @@ public class PlayerFlashAbility : CharacterState
 
             GameEvent.Assessment.Trigger(new AssessmentEventArgs(AssessmentEventArgs.EventType.CurrentComboFinish));
             StateInit();
-            Listener.FlashStart();
+            AnimEvent.FlashStart();
             Attribute.currentFlashTimes = Mathf.Clamp(Attribute.currentFlashTimes - 1, 0, Attribute.flashTimes);
             //R.Ui.Flash.OnFlash(PAttr.currentFlashTimes);
         }
@@ -144,12 +144,12 @@ public class PlayerFlashAbility : CharacterState
 
     private void StateInit()
     {
-        Listener.isFalling = false;
-        Listener.airAtkDown = false;
-        Listener.checkFallDown = false;
-        Listener.checkHitGround = false;
+        AnimEvent.isFalling = false;
+        AnimEvent.airAtkDown = false;
+        AnimEvent.checkFallDown = false;
+        AnimEvent.checkHitGround = false;
         TimeController.SetSpeed(Vector2.zero);
-        Listener.AirPhysic(0f);
+        AnimEvent.AirPhysic(0f);
     }
 
     /// <summary>
@@ -192,7 +192,7 @@ public class PlayerFlashAbility : CharacterState
         PlayerStaEnum.AirAtk1.ToString(), //空中攻击1
         PlayerStaEnum.AirAtk2.ToString(), //空中攻击2
         PlayerStaEnum.AirAtk3.ToString(), //空中攻击3
-        PlayerStaEnum.Hurt.ToString(), //受伤
+        
         PlayerStaEnum.Atk1.ToString(), //攻击1轻攻击类型1
         PlayerStaEnum.Atk2.ToString(), //攻击2轻攻击类型2
         PlayerStaEnum.Atk3.ToString(), //攻击3轻攻击类型3
@@ -202,9 +202,5 @@ public class PlayerFlashAbility : CharacterState
         PlayerStaEnum.Jump.ToString(), //跳跃
         PlayerStaEnum.Jumping.ToString(), //跳跃中
         PlayerStaEnum.JumpBack.ToString(), //往后跳
-        
-        PlayerStaEnum.HitToFly3.ToString(),
-        PlayerStaEnum.UnderAtk1.ToString(), //受伤
-        PlayerStaEnum.UnderAtkHitToFly.ToString(), //受伤倒飞 
     };
 }

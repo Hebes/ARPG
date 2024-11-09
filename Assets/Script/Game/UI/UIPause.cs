@@ -179,6 +179,6 @@ public class UIPause : SMono<UIPause>
         R.Ui.Reset();
         R.Player.Action.ChangeState(PlayerStaEnum.Idle);
         // R.Audio.StopVoiceOver();
-        LevelManager.LoadLevelByGateId(CScene.InitScene);
+        LevelManager.LoadLevelByGateId(CScene.InitScene01);
     }
 }

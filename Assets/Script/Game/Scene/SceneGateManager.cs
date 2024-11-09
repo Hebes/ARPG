@@ -42,7 +42,7 @@ public class SceneGateManager : SMono<SceneGateManager>
     private IEnumerator LoadLevelCoroutine(SwitchLevelGateData data, bool needProgressBar)
     {
         IsLocked = true;
-        R.Player.StateMachine.SetState(PlayerStaEnum.Idle);
+        R.Player.StateMachine.SetState(PlayerStaEnum.Idle); 
         var player2Ground = Physics2D.Raycast(R.Player.Transform.position, Vector2.down, 100f, LayerManager.GroundMask).distance;
         Async = LevelManager.LoadScene(data.ToLevelId);
         Async.allowSceneActivation = false;
@@ -80,7 +80,7 @@ public class SceneGateManager : SMono<SceneGateManager>
     public Coroutine Enter(SwitchLevelGateData data, bool needProgressBar = false)
     {
         GameEvent.PassGate.Trigger(new PassGateEventArgs(PassGateEventArgs.PassGateStatus.Enter, data, LevelManager.SceneName));
-        $"从大门Gate{data.MyId}离开{LevelManager.SceneName}".Log();
+        $"从大门Gate{data.MyId}离开{LevelManager.SceneName}".Log(); 
         return StartCoroutine(EnterCoroutine(data, needProgressBar));
     }
 
@@ -151,7 +151,7 @@ public class SceneGateManager : SMono<SceneGateManager>
         if (!InputSetting.IsWorking())
             InputSetting.Resume();
 
-        R.Camera.Controller.CameraResetPostionAfterSwitchScene();
+        R.Camera.CameraController.CameraResetPostionAfterSwitchScene();
         yield return new WaitForFixedUpdate();
         if (enterGateOpenType != SceneGate.OpenType.Left)
         {

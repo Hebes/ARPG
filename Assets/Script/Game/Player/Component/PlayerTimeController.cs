@@ -104,19 +104,12 @@ public class PlayerTimeController : MonoBehaviour, IPlatformPhysics
     private void ClipResume(object obj)
     {
         FrozenArgs value = (FrozenArgs)obj;
-        switch (value.Type)
-        {
-            case FrozenArgs.FrozenType.Enemy: return;
-            case FrozenArgs.FrozenType.Target:
-                if (gameObject != value.Target)
-                    return;
-                break;
-        }
 
-        if (isPause) return;
+        if (value.Type == FrozenArgs.FrozenType.Enemy) return;
+        if (value.Type == FrozenArgs.FrozenType.Target && gameObject != value.Target)return;
         if (!isPause) return;
         _platform.isKinematic = false;
-        _animator.speed = 1;
+        _animator.speed = 1;//恢复动画
         isPause = false;
     }
 }

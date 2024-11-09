@@ -113,6 +113,16 @@ public static class R
     public static UIController Ui => UIController.I;
     public static AudioManager Audio => AudioManager.I;
 
-    public static Coroutine Start(IEnumerator routine) => CoroutineProxy.I.StartCoroutine(routine);
-    public static void Stop(string methodName) => CoroutineProxy.I.StopCoroutine(methodName);
+    public static Coroutine StartCoroutine(IEnumerator routine, object value = null)
+    {
+        return CoroutineProxy.I.StartCoroutine(routine);
+    }
+    public static void StopIEnumerator(Coroutine routine)
+    {
+        CoroutineProxy.I.StopCoroutine(routine);
+    }
+    public static void StopIEnumerator(string methodName)
+    {
+        CoroutineProxy.I.StopCoroutine(methodName);
+    }
 }

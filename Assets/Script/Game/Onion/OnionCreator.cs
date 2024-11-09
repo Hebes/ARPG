@@ -203,4 +203,9 @@ public class OnionCreator : MonoBehaviour
         Distance,
         Time
     }
+
+    public void InitAwake()
+    {
+        
+    }
 }

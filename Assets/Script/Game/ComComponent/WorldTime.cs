@@ -238,7 +238,7 @@ public class WorldTime : SMono<WorldTime>
     /// <returns></returns>
     public static Coroutine WaitForSecondsIgnoreTimeScale(float seconds)
     {
-        return R.Start(WaitForSecondsIgnoreTimeScaleCoroutine(seconds));
+        return R.StartCoroutine(WaitForSecondsIgnoreTimeScaleCoroutine(seconds));
     }
 
     /// <summary>
@@ -291,7 +291,9 @@ public class WorldTime : SMono<WorldTime>
     /// </summary>
     private float _slowRecover;
 
-
+    /// <summary>
+    /// 每秒帧数
+    /// </summary>
     private class FramesPerSecond
     {
         internal void Start()
@@ -334,6 +336,9 @@ public class WorldTime : SMono<WorldTime>
 
         private const float PhysicsUpdateInterval = 0.5f;
 
+        /// <summary>
+        /// 最后间隔
+        /// </summary>
         private float _physicsLastInterval;
 
         private int _physicsFrames;

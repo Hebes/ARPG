@@ -37,8 +37,7 @@ public class EnemyBulletLaucher : BaseBehaviour
     {
         if (other.name == "PlayerHurtBox")
         {
-            PlayerHurtAtkEventArgs args = new PlayerHurtAtkEventArgs(R.Player.GameObject, gameObject, attacker.gameObject, damage,
-                Incrementor.GetNextId(), atkData);
+            var args = new PlayerHurtAtkEventArgs(R.Player.GameObject, gameObject, attacker.gameObject, damage, Incrementor.GetNextId(), atkData);
             GameEvent.PlayerHurtAtk.Trigger(args);
             if (!beAtked)
             {
@@ -78,7 +77,7 @@ public class EnemyBulletLaucher : BaseBehaviour
     public void SetAtkData(JsonData data)
     {
         $"子弹类型伤害设置".Log();
-        //atkData = data;
+        atkData = data;
     }
 
     [SerializeField] public float speed;
@@ -89,7 +88,7 @@ public class EnemyBulletLaucher : BaseBehaviour
     [SerializeField] private int disablePlayEffect = -1;
     [SerializeField] public bool beAtked;
 
-    private Dictionary<PlayerHurtDataType, string> atkData;
+    private JsonData atkData;
 
     public int damage;
 

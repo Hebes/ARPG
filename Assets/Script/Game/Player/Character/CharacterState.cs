@@ -9,8 +9,8 @@ public abstract class CharacterState
     protected PlayerAction Action;
     protected PlayerAttribute Attribute;
     protected StateMachine StateMachine;
-    protected Claymore weapon;
-    protected PlayerAnimEvent Listener;
+    protected Claymore Weapon;
+    protected PlayerAnimEvent AnimEvent;
     protected PlayerAbilities Abilities;
     protected PlayerTimeController TimeController;
 
@@ -21,8 +21,8 @@ public abstract class CharacterState
         Action = R.Player.Action;
         Attribute = R.Player.Attribute;
         StateMachine = R.Player.StateMachine;
-        Listener = R.Player.AnimEvent;
-        weapon = R.Player.Claymore;
+        AnimEvent = R.Player.AnimEvent;
+        Weapon = R.Player.Claymore;
     }
 
     public virtual void Start()
@@ -59,25 +59,5 @@ public abstract class CharacterState
 
     public virtual void OnStateExit(object sender, StateEventArgs args)
     {
-    }
-    
-    /// <summary>
-    /// 启用携程
-    /// </summary>
-    /// <param name="routine"></param>
-    /// <returns></returns>
-    protected Coroutine StartCoroutine(IEnumerator routine)
-    {
-        return Action.StartCoroutine(routine);
-    }
-
-    /// <summary>
-    /// 停止携程
-    /// </summary>
-    /// <param name="routine"></param>
-    /// <returns></returns>
-    protected void StopIEnumerator()
-    {
-        
     }
 }

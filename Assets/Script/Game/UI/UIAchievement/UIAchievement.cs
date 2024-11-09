@@ -77,7 +77,7 @@ public class UIAchievement : SMono<UIAchievement>
     {
         //_analogTv.enabled = true;
         UIPause.I.Enabled = true;
-        if (LevelManager.IsScene(CScene.InitScene))
+        if (LevelManager.IsScene(CScene.InitScene01))
         {
             UIStart.I.canvasGroup.FadeTo(1f);
         }

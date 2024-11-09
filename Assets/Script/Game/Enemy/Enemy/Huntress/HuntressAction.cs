@@ -6,18 +6,9 @@ using UnityEngine;
 /// </summary>
 public class HuntressAction : EnemyBaseAction
 {
-    #region 组件
-
-    private void GetComponent()
-    {
-        atkBox = transform.FindChildByName("AtkBox 攻击区");
-    }
-
-    #endregion
-
     protected override void Start()
     {
-        GetComponent();
+        atkBox = transform.FindChildByName("AtkBox 攻击区");
         stateMachine.AddStates(typeof(EnemyStaEnum).ToArray());
         stateMachine.OnEnter += OnMyStateEnter;
         stateMachine.OnTransfer += OnStateTransfer;
@@ -67,7 +58,7 @@ public class HuntressAction : EnemyBaseAction
             case EnemyStaEnum.Idle:
             case EnemyStaEnum.Jumping:
             case EnemyStaEnum.Falling:
-                EnemyAnim.Play(enemySta.ToString(), true, false, eAttr.atkSpeed);
+                enemyAnim.Play(enemySta.ToString(), true, false, eAttr.atkSpeed);
                 break;
             case EnemyStaEnum.Atk1:
             case EnemyStaEnum.Hurt:
@@ -79,7 +70,7 @@ public class HuntressAction : EnemyBaseAction
             case EnemyStaEnum.AtkRemote:
             case EnemyStaEnum.Jump:
             case EnemyStaEnum.Fall:
-                EnemyAnim.Play(enemySta.ToString(), false, true, eAttr.atkSpeed);
+                enemyAnim.Play(enemySta.ToString(), false, true, eAttr.atkSpeed);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

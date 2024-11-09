@@ -138,7 +138,7 @@ public class UIDeath : SMono<UIDeath>
 	private IEnumerator OpenWithAnimCoroutine()
 	{
 		R.Audio.StopBGM();
-		yield return LevelManager.LoadLevelByGateId("empty");
+		yield return LevelManager.LoadLevelByGateId(CScene.Empty);
 		Open();
 		// AnalogTV analogTV = R.Ui.CameraGO.GetComponent<AnalogTV>();
 		// analogTV.Scale = 0f;

@@ -178,8 +178,8 @@ GameObject:
   - component: {fileID: 5127608665172892704}
   - component: {fileID: 1247635607940266965}
   - component: {fileID: 5747010592942875984}
-  m_Layer: 0
-  m_Name: "AtkBox \u653B\u51FB\u533A\u57DF"
+  m_Layer: 10
+  m_Name: AtkBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,8 +268,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2205618295842445554}
   - component: {fileID: 7013579008444441640}
-  m_Layer: 0
-  m_Name: "HurtBox \u53D7\u4F24\u533A"
+  m_Layer: 10
+  m_Name: PlayerHurtBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 3890725730426849445}
   - component: {fileID: 7926613906276767980}
   - component: {fileID: 3714072360272291937}
+  - component: {fileID: 914667496539926496}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -654,6 +655,18 @@ MonoBehaviour:
   generatorMode: 0
   executionMode: 1
   _onionId: 229
+--- !u!114 &914667496539926496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668766493681289516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e313b41ccb14eb9bd5735dbbae7d84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7577902460860091979
 GameObject:
   m_ObjectHideFlags: 0

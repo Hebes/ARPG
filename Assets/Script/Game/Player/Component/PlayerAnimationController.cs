@@ -12,7 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void GetComponent()
     {
-        m_animation = R.Player.GetComponentInChildren<Animator>();
+        
     }
 
     #endregion
@@ -22,7 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent();
+        m_animation = R.Player.GetComponent<Animator>();
     }
 
     /// <summary>

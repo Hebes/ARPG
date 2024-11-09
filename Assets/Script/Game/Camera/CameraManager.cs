@@ -5,25 +5,26 @@
 /// </summary>
 public class CameraManager
 {
-    /// <summary>
-    /// 在视野中
-    /// </summary>
-    /// <param name="go"></param>
-    /// <returns></returns>
     public bool IsInView(GameObject go)
     {
-        Vector3 vector = Camera.WorldToViewportPoint(go.transform.position);
-        return vector.x > 0f && vector.x < 1f;
+        float x = Camera.WorldToViewportPoint(go.transform.position).x;
+        return x is > 0f and < 1f;
     }
-    
+
+    public T AddComponent<T>() where T : Component
+    {
+        return GameObject.AddComponent<T>();
+    }
+
     private Camera _camera;
     private GameObject _gameObject;
     private Transform _transform;
-    
-    private GameObject GameObject=>_gameObject ??= Camera.gameObject;
-    public Transform Transform=>_transform ??= Camera.transform;
+    private CameraEffect _cameraEffect;
+    private CameraController _cameraController;
+
     private Camera Camera => _camera ??= Camera.main;
-    public CameraController Controller => CameraController.I;
-    public T GetComponent<T>() => GameObject.GetComponent<T>();
-    public T AddComponent<T>() where T : Component => GameObject.AddComponent<T>();
+    private GameObject GameObject => _gameObject ??= Camera.gameObject;
+    public Transform Transform => _transform ??= Camera.transform;
+    public CameraController CameraController => _cameraController ?? Camera.transform.FindComponent<CameraController>();
+    public CameraEffect CameraEffect => _cameraEffect ?? Camera.transform.FindComponent<CameraEffect>();
 }

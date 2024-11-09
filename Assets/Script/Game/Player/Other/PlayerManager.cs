@@ -21,10 +21,10 @@ public class PlayerManager
     private PlayerAnimEvent _animEvent;
 
     public Enhancement Enhancement => R.GameData.Enhancement;
-    
+
     public readonly PlayerAttribute Attribute = new PlayerAttribute(); // 玩家属性
-    public GameObject GameObject => _gameObject ??= GameObject.FindGameObjectsWithTag(CTag.Player)[0];
-    
+    public GameObject GameObject => _gameObject ??= GameObject.FindGameObjectsWithTag(ConfigTag.Player)[0];
+
     public Rigidbody2D Rigidbody2D => _rigidbody2D ??= GetComponent<Rigidbody2D>();
     public BoxCollider2D BoxCollider2D => _boxCollider2D ??= GetComponent<BoxCollider2D>();
     public Transform Transform => _transform ??= _gameObject.transform;
@@ -33,15 +33,13 @@ public class PlayerManager
     public PlayerAbilities Abilities => _abilities ??= GetComponent<PlayerAbilities>();
     public PlayerTimeController TimeController => _timeController ??= GetComponent<PlayerTimeController>();
     public Claymore Claymore => _claymore ??= GetComponent<Claymore>();
-    public PlayerAnimEvent AnimEvent => _animEvent ??= GetComponentInChildren<PlayerAnimEvent>();
+    public PlayerAnimEvent AnimEvent => _animEvent ??= GetComponent<PlayerAnimEvent>();
     public PlatformMovement PlatformMovement => _platformMovement ??= GetComponent<PlatformMovement>();
     public PlayerAnimationController PAnimationController => _playerAnimationController ??= GetComponent<PlayerAnimationController>();
 
+    public T GetComponent<T>() where T : UnityEngine.Object => this.GameObject.transform.FindComponent<T>();
 
-    public T GetComponent<T>() => GameObject.GetComponent<T>();
-    public T GetComponentInChildren<T>() => GameObject.GetComponentInChildren<T>();
-    
-    
+
     /// <summary>
     /// 在现场门附近吗?
     /// </summary>
@@ -56,6 +54,7 @@ public class PlayerManager
                 return true;
             }
         }
+
         return false;
     }
 }

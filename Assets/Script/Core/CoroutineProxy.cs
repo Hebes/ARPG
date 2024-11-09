@@ -14,6 +14,12 @@ public class CoroutineProxy : SMono<CoroutineProxy>
 {
     private readonly Dictionary<string, Coroutine> _coroutineDic = new Dictionary<string, Coroutine>();
 
+    /// <summary>
+    /// 使用这个方法，开启的携程请携程方法结束的时候再次调用StopIEnumerator方法
+    /// </summary>
+    /// <param name="routine"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public Coroutine StartIEnumerator(IEnumerator routine)
     {
         string temp = routine.GetType().FullName;
@@ -22,16 +28,6 @@ public class CoroutineProxy : SMono<CoroutineProxy>
         Coroutine coroutine = StartCoroutine(routine);
         _coroutineDic.Add(temp, coroutine);
         return coroutine;
-    }
-
-    private void Update()
-    {
-        //检查空删除
-        foreach (KeyValuePair<string, Coroutine> data in _coroutineDic)
-        {
-            if (data.Value != null) continue;
-            _coroutineDic.Remove(data.Key);
-        }
     }
 
     public void StopIEnumerator(IEnumerator routine)
@@ -55,9 +51,19 @@ public class CoroutineProxy : SMono<CoroutineProxy>
 
 public static class CoroutineTool
 {
+    //官方
+    public static Coroutine StartCoroutine(this IEnumerator routine, [UnityEngine.Internal.DefaultValue("null")] object value)
+    {
+        string temp = routine.GetType().FullName;
+        return CoroutineProxy.I.StartCoroutine(temp, value);
+    }
+
+    public static void StopIEnumerator(this IEnumerator routine)
+    {
+        string temp = routine.GetType().FullName;
+        CoroutineProxy.I.StopCoroutine(temp);
+    }
+
+    //自己
     public static Coroutine StartIEnumerator(this IEnumerator routine) => CoroutineProxy.I.StartIEnumerator(routine);
-    public static Coroutine StartCoroutine(this IEnumerator routine) => CoroutineProxy.I.StartCoroutine(routine);
-    public static Coroutine StartIEnumerator(this string methodName) => CoroutineProxy.I.StartCoroutine(methodName);
-    public static void StopIEnumerator(this IEnumerator routine) => CoroutineProxy.I.StopIEnumerator(routine);
-    public static void StopIEnumerator(this string methodName) => CoroutineProxy.I.StopCoroutine(methodName);
 }

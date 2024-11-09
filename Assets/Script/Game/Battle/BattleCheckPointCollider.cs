@@ -14,7 +14,7 @@ public class BattleCheckPointCollider : BaseBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!collider.CompareTag(CTag.Player))return;
+        if (!collider.CompareTag(ConfigTag.Player))return;
         //没有战斗结束 //开放战场
         if (!parent.isBattleOver && !parent.isOpenBattleZone)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -23,7 +24,7 @@ public class GetComponentScript
         string str1 = GetComponent<TweenColor>();
         string str2 = GetValue<TweenColor>();
         Debug.Log(str1 + "\n" + str2);
-        Copy(str1 + "\n" + str2);
+        $"{str1}\n{str2}".Copy();
     }
 
     #endregion
@@ -39,7 +40,7 @@ public class GetComponentScript
 
     [MenuItem("GameObject/获取变量/Text", false, 1)]
     private static void GetValue1() => GetValue<Text>();
-    
+
     [MenuItem("GameObject/获取变量/CanvasGroup", false, 1)]
     private static void GetValue2() => GetValue<CanvasGroup>();
 
@@ -97,7 +98,7 @@ public class GetComponentScript
 
         //打印
         Debug.Log(sb.ToString());
-        Copy(sb.ToString());
+        sb.ToString().Copy();
         return sb.ToString();
     }
 
@@ -151,17 +152,6 @@ public class GetComponentScript
         return sb.ToString();
     }
 
-    /// <summary>
-    /// 复制
-    /// </summary>
-    /// <param name="str"></param>
-    private static void Copy(string str)
-    {
-        TextEditor te = new TextEditor { text = str };
-        te.SelectAll();
-        te.Copy();
-    }
-
 
     /// <summary>
     /// [SerializeField]
@@ -187,7 +177,7 @@ public class GetComponentScript
 
         //打印
         Debug.Log(sb.ToString());
-        Copy(sb.ToString());
+        sb.ToString().Copy();
         return sb.ToString();
     }
 }
@@ -222,7 +212,7 @@ public class SpriteRenderTools
     }
 }
 
-public class SceneTools : Editor
+public class SceneTools : UnityEditor.Editor
 {
     [MenuItem("GameObject/场景/切换/00Splash", false, 1)]
     public static void Switch00Splash() => SwitchScene($"Assets/Scenes/00Splash.unity");
@@ -251,7 +241,79 @@ public class SceneTools : Editor
     }
 }
 
-public class PrefabTools : Editor
+public class GenerateTools
+{
+    [MenuItem("Tools/生成/Tags", false, 1)]
+    public static void Generate1()
+    {
+        string[] tags = UnityEditorInternal.InternalEditorUtility.tags;
+        string str = GetConfig(tags);
+        str.Log();
+    }
+
+    [MenuItem("Tools/生成/Layer", false, 1)]
+    public static void Generate2()
+    {
+        string[] layers = UnityEditorInternal.InternalEditorUtility.layers;
+        string str = GetConfig(layers);
+        str.Log();
+    }
+
+    [MenuItem("Tools/生成/sortingLayer", false, 1)]
+    public static void Generate3()
+    {
+        System.Reflection.BindingFlags bf = System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic;
+        System.Reflection.PropertyInfo sortingLayersProperty = typeof(UnityEditorInternal.InternalEditorUtility).GetProperty("sortingLayerNames", bf);
+        string[] sortingLayers = (string[])sortingLayersProperty.GetValue(null, new object[0]);
+        string str = GetConfig(sortingLayers);
+        str.Log();
+    }
+
+
+    [MenuItem("Tools/生成/GameObject", false, 1)]
+    public static void Generate4()
+    {
+        //GenerateGameObject($"{Application.dataPath}/Resources", "*.prefab");
+    }
+
+    [MenuItem("Tools/生成/Scene", false, 1)]
+    public static void Generate5()
+    {
+        string[] temp = GenerateGameObject($"{Application.dataPath}", "*.unity");
+        string str = GetConfig(temp);
+        str.Log();
+    }
+
+    private static string[] GenerateGameObject(string path, string suffix)
+    {
+        string[] strings = Directory.GetFiles(path, suffix, SearchOption.AllDirectories);
+        string[] value = new string[strings.Length];
+        for (var i = 0; i < strings.Length; i++)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(strings[i]);
+            value[i] = fileName;
+        }
+
+        return value;
+    }
+
+    private static string GetConfig(params string[] value)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (string c in value)
+            sb.AppendLine($"\tpublic const string {c} = \"{c}\";");
+        sb.ToString().Copy();
+        return sb.ToString();
+    }
+
+    private string ReplaceStr(string str)
+    {
+        return str.Replace(" ", String.Empty);
+    }
+}
+
+public class PrefabTools : UnityEditor.Editor
+
 {
     [MenuItem("GameObject/实例化/Player", false, 1)]
     public static void LoadInstantiatePrefab1() => InstantiatePrefab("Assets/Resources/Prefab/Core/Player.prefab");
@@ -307,7 +369,10 @@ public class PrefabTools : Editor
     }
 }
 
-public class EditorTool
+/// <summary>
+/// https://blog.csdn.net/final5788/article/details/129914973 语言国际化工具,生成多语言Excel自
+/// </summary>
+public static class EditorTool
 {
     public static List<GameObject> ScanPrefab()
     {
@@ -354,5 +419,16 @@ public class EditorTool
         }
 
         return keyList;
+    }
+
+    /// <summary>
+    /// 复制
+    /// </summary>
+    /// <param name="str"></param>
+    public static void Copy(this string str)
+    {
+        TextEditor te = new TextEditor { text = str };
+        te.SelectAll();
+        te.Copy();
     }
 }

@@ -74,7 +74,7 @@ public class Story2 : BaseBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(CTag.Player))
+        if (other.CompareTag(ConfigTag.Player))
         {
             _isInCollision = false;
         }
@@ -82,7 +82,7 @@ public class Story2 : BaseBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(CTag.Player))
+        if (other.CompareTag(ConfigTag.Player))
         {
             _isInCollision = true;
         }

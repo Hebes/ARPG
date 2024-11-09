@@ -144,7 +144,9 @@ public class EnemyAttribute : MonoBehaviour
 
     protected void Awake()
     {
-        timeController = transform.FindComponent<TimeController>();
+        Transform tr = transform;
+        timeController = tr.FindComponent<TimeController>();
+
         currentSp = maxSP;
         currentHp = maxHp;
     }
@@ -180,10 +182,6 @@ public class EnemyAttribute : MonoBehaviour
         Debug.DrawLine(transform.position, hit.point, Color.red); // 在场景中绘制射线
         Debug.DrawLine(transform.position + Vector3.right * bounds.size.x / 2f, hit.point, Color.red); // 在场景中绘制射线
         Debug.DrawLine(transform.position - Vector3.right * bounds.size.x / 2f, hit.point, Color.red); // 在场景中绘制射线
-    }
-
-    protected virtual void Update()
-    {
     }
 
     protected void OnEnable()
@@ -257,13 +255,13 @@ public class EnemyAttribute : MonoBehaviour
     public Bounds bounds;
 
     [Header("看到玩家,X点前面最远的距离")] [SerializeField]
-    private float _viewXFront;
+    private float _viewXFront = 12f;
 
     [Header("看到玩家,X点后面最远的距离")] [SerializeField]
-    private float _viewXBack;
+    private float _viewXBack = 10f;
 
-    [SerializeField] private float _viewYTop;
-    [SerializeField] private float _viewYDown;
+    [SerializeField] private float _viewYTop = 6f;
+    [SerializeField] private float _viewYDown = 6f;
     [Header("敌人的朝向")] public int faceDir;
     [Header("硬直时间")] public float stiffTime;
     [Header("是否被玩家看到")] public bool playerInView;
@@ -302,80 +300,28 @@ public class EnemyAttribute : MonoBehaviour
     [Header("是否在虚弱状态中")] public bool inWeakState;
     [Header("是否加入世界数据")] public bool InTheWorld = true;
 
-    /// <summary>
-    /// 接受执行
-    /// </summary>
-    public bool accpectExecute;
 
-    /// <summary>
-    /// 接受空中执行
-    /// </summary>
-    public bool accpectAirExecute;
+    [Header("接受执行")] public bool accpectExecute;
+    [Header("接受空中执行")] public bool accpectAirExecute;
+    [Header("是否进入弱模式")] public bool enterWeakMod;
+    [Header("将被执行")] public bool willBeExecute;
+    [Header("可以被追赶")] public bool canBeChased;
+    [Header("是否正在飞起来")] [HideInInspector] public bool isFlyingUp;
+    [Header("是否是左边的处理")] public bool followLeftHand;
+    [Header("检查击中地面")] [HideInInspector] public bool checkHitGround;
+    [Header("飞向坠落")] [HideInInspector] public bool flyToFall;
+    [Header("海拔高度")] public float altitude = 0.2f;
+    [Header("敌人的重力")] public GameObject enemyGravity;
 
-    /// <summary>
-    /// 是否进入弱模式
-    /// </summary>
-    public bool enterWeakMod;
-
-    /// <summary>
-    /// 将被执行
-    /// </summary>
-    public bool willBeExecute;
-
-    /// <summary>
-    /// 可以被追赶
-    /// </summary>
-    public bool canBeChased;
-
-    /// <summary>
-    /// 是否正在飞起来
-    /// </summary>
-    [HideInInspector] public bool isFlyingUp;
-
-    /// <summary>
-    /// 是否是左边的处理
-    /// </summary>
-    public bool followLeftHand;
-
-    /// <summary>
-    /// 检查击中地面
-    /// </summary>
-    [HideInInspector] public bool checkHitGround;
-
-    /// <summary>
-    /// 飞向坠落
-    /// </summary>
-    [HideInInspector] public bool flyToFall;
-
-    /// <summary>
-    /// 海拔高度
-    /// </summary>
-    public float altitude = 0.2f;
-
-
-    /// <summary>
-    /// 敌人的重力
-    /// </summary>
-    public GameObject enemyGravity;
-
-    /// <summary>
-    /// 等级类型
-    /// </summary>
     public enum RankType
     {
-        /// <summary>
-        /// 默认
-        /// </summary>
+        /// <summary> 默认 </summary>
         Normal,
 
-        /// <summary>
-        /// 精英
-        /// </summary>
+        /// <summary> 精英 </summary>
         Elite,
 
-        /// <summary>
-        /// Boss
-        /// </summary>
+        /// <summary> Boss </summary>
         BOSS
     }
 }

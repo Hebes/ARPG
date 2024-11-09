@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 /// <summary>
 /// 输入
@@ -74,5 +75,74 @@ public static class Input
         public static readonly InputButtonProcessor Right = new InputButtonProcessor();
         public static readonly InputButtonProcessor Jump = new InputButtonProcessor();
         public static readonly InputButtonProcessor Pause = new InputButtonProcessor();
+    }
+    
+    /// <summary>
+    /// 震动
+    /// </summary>
+    public static class Vibration
+    {
+        //private static float[][] VibrationData => SingletonMono<EnemyDataPreload>.Instance.VibrationData;
+
+        public static void Vibrate(int id)
+        {
+            // if (!R.Settings.IsVibrate)
+            // {
+            //     return;
+            // }
+            // id--;
+            // if (Input.Vibration._isPlaying)
+            // {
+            //     R.Coroutine.Stop(Input.Vibration.PlayCoroutine(id));
+            //     Input.Vibration.SetVibration(0f, 0f);
+            //     Input.Vibration._isPlaying = false;
+            // }
+            // R.Coroutine.Start(Input.Vibration.PlayCoroutine(id));
+        }
+
+        public static void Stop()
+        {
+            // if (!R.Settings.IsVibrate)
+            // {
+            //     return;
+            // }
+            // R.Coroutine.Stop("PlayCoroutine");
+            // Input.Vibration.SetVibration(0f, 0f);
+            // Input.Vibration._isPlaying = false;
+        }
+
+        private static IEnumerator PlayCoroutine(int id)
+        {
+            // Input.Vibration._isPlaying = true;
+            // float[] leftMoterRecords = Input.Vibration.VibrationData[id * 2];
+            // float[] rightMoterRecord = Input.Vibration.VibrationData[id * 2 + 1];
+            // for (int i = 0; i < leftMoterRecords.Length; i++)
+            // {
+            //     if (!Input.Vibration._isPlaying)
+            //     {
+            //         Input.Vibration.SetVibration(0f, 0f);
+            //         yield break;
+            //     }
+            //     float l2Axis = leftMoterRecords[i];
+            //     float r2Axis = rightMoterRecord[i];
+            //     Input.Vibration.SetVibration(l2Axis, r2Axis);
+            //     yield return null;
+            //     for (int j = 0; j < Input.Vibration._period - 1; j++)
+            //     {
+            //         yield return null;
+            //     }
+            // }
+            // Input.Vibration.SetVibration(0f, 0f);
+             yield break;
+        }
+
+        private static void SetVibration(float leftMotorValue, float rightMotorValue)
+        {
+            InputDriver.Vibration.SetVibration(leftMotorValue, rightMotorValue);
+        }
+
+        private static bool _isPlaying;
+
+        private static int _period = 3;
     }
 }

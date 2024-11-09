@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using LitJson;
 using UnityEngine;
 
 /// <summary>
@@ -18,14 +20,26 @@ public class PlayerHurtAbility : CharacterState
     /// </summary>
     private float _clearRate;
 
-    //private PlayerSpHurt _spHurt;
+    private PlayerSpHurt _spHurt;
 
+    /// <summary>
+    /// 护盾是否损坏
+    /// </summary>
     private bool _broken;
 
+    /// <summary>
+    /// 能量恢复
+    /// </summary>
     private float _energyRecover;
 
+    /// <summary>
+    /// 受伤计时器
+    /// </summary>
     private int _hurtTimes;
 
+    /// <summary>
+    /// 伤害区间
+    /// </summary>
     private float _hurtLimit;
 
     /// <summary>
@@ -33,32 +47,37 @@ public class PlayerHurtAbility : CharacterState
     /// </summary>
     public bool Invincible;
 
+    /// <summary>
+    /// 起立无敌时间
+    /// </summary>
     private int _getUpInvincibleTime;
 
     /// <summary>
-    /// 损坏切断
+    /// 伤害中断
     /// </summary>
     private float DamageCutOff
     {
         get
         {
-            return 1;
-            // switch (R.Player.EnhancementSaveData.MaxEnergy)
-            // {
-            //     case 1: return 0.7f;
-            //     case 2: return 0.6f;
-            //     case 3: return 0.5f;
-            //     default: return 1f;
-            // }
+            switch (R.Player.Enhancement.MaxEnergy)
+            {
+                case 1: return 0.7f;
+                case 2: return 0.6f;
+                case 3: return 0.5f;
+                default: return 1f;
+            }
         }
     }
 
-    private float ShieldRecoverTime => (R.GameData.Difficulty > 1) ? 10f : 5f;
+    /// <summary>
+    /// 护盾恢复时间
+    /// </summary>
+    private float ShieldRecoverTime => R.GameData.Difficulty > 1 ? 10f : 5f;
 
 
     public override void Start()
     {
-        //_spHurt = new PlayerSpHurt();
+        _spHurt = new PlayerSpHurt();
     }
 
     public override void OnEnable()
@@ -98,10 +117,8 @@ public class PlayerHurtAbility : CharacterState
     /// </summary>
     private void UpdatePlayerDeath()
     {
-        if (Attribute.isDead && !DeadFlag)
-        {
-            PlayerDie();
-        }
+        if (!Attribute.isDead || DeadFlag) return;
+        PlayerDie();
     }
 
     /// <summary>
@@ -109,31 +126,31 @@ public class PlayerHurtAbility : CharacterState
     /// </summary>
     private void UpdateShield()
     {
-        // if (PAttr.currentEnergy == 0)
-        // {
-        //     _energyRecover += Time.deltaTime;
-        //     if (_energyRecover >= ShieldRecoverTime)
-        //     {
-        //         PAttr.currentEnergy = PAttr.maxEnergy;
-        //         _energyRecover = 0f;
-        //     }
-        // }
+        if (Attribute.currentEnergy == 0)
+        {
+            _energyRecover += Time.deltaTime;
+            if (_energyRecover >= ShieldRecoverTime)
+            {
+                Attribute.currentEnergy = Attribute.maxEnergy;
+                _energyRecover = 0f;
+            }
+        }
     }
-
 
     private void PlayeAllHurt(object udata)
     {
-        // PlayerHurtAtkEventArgs args = (PlayerHurtAtkEventArgs)udata;
-        // if (PAttr.isDead) return;
-        // if (PAttr.flashFlag && R.Player.EnhancementSaveData.FlashAttack != 0)
-        // {
-        //     hurtId.Add(args.atkId);
-        //     PAbilities.flashAttack.FlashAttack(args.origin);
-        //     return;
-        // }
-        //
-        // if (Invincible) return;
-        // HurtFeedback(args.sender.transform, args.damage, args.atkId, args.data, args.forceHurt);
+        if (Attribute.isDead) return;
+        PlayerHurtAtkEventArgs args = (PlayerHurtAtkEventArgs)udata;
+        if (Attribute.flashFlag && R.Player.Enhancement.FlashAttack != 0) //FlashAttack等级
+        {
+            "玩家闪攻击".Log();
+            hurtId.Add(args.atkId);
+            //Abilities.flashAttack.FlashAttack(args.origin);
+            return;
+        }
+
+        if (Invincible) return;
+        HurtFeedback(args.sender.transform, args.damage, args.atkId, args.data, args.forceHurt);
     }
 
     /// <summary>
@@ -144,49 +161,50 @@ public class PlayerHurtAbility : CharacterState
     /// <param name="atkId"></param>
     /// <param name="atkData"></param>
     /// <param name="forceHurt"></param>
-    private void HurtFeedback(Transform enemy, int damage, int atkId, JsonData1 atkData, bool forceHurt)
+    private void HurtFeedback(Transform enemy, int damage, int atkId, JsonData atkData, bool forceHurt)
     {
-        "伤害反馈".Error();
-        return;
-        // if (HurtFilter(atkId)) return;
-        // if (StateMachine.currentState.IsInArray(PlayerAction.FlashAttackSta))
-        // {
-        //     EGameEvent.Assessment.Trigger((this, new AssessmentEventArgs(AssessmentEventArgs.EventType.CurrentComboFinish)));
-        //     return;
-        // }
-        //
-        // if (atkData == null)
-        // {
-        //     Debug.Log(enemy.name + "  " + enemy.GetComponent<EnemyBaseAction>().stateMachine.currentState);
-        //     return;
-        // }
-        //
-        // _broken = false;
-        // hurtId.Add(atkId);
-        // SingletonMono<WorldTime>.Instance.TimeFrozenByFixedFrame(6, WorldTime.FrozenArgs.FrozenType.Player);
-        // SingletonMono<CameraController>.Instance.CameraShake(0.2f);
-        // damage = (int)((float)damage * atkData.Get<float>("damagePercent", 1f));
-        // _energyRecover = 0f;
-        // int dir = JudgeDir(enemy);
-        // if (PAttr.currentEnergy > 0 && !StateMachine.currentState.IsInArray(PlayerAction.SpHurtSta) &&
-        //     HurtInDefense(enemy, atkData.Get<int>("shieldDamage", 3), ref damage))
-        // {
-        //     return;
-        // }
-        //
-        // if (_spHurt.DaoRoll(enemy))
-        // {
-        //     // if (enemy.GetComponent<DaoAction>() != null)
-        //     // {
-        //     //     enemy.GetComponent<DaoAction>().RollToIdle();
-        //     // }
-        //     //
-        //     // if (enemy.GetComponent<DaoPaoAction>() != null)
-        //     // {
-        //     //     enemy.GetComponent<DaoPaoAction>().RollToIdle();
-        //     // }
-        // }
-        //
+        "玩家受到伤害".Log();
+        //return;
+        if (HurtFilter(atkId)) return;
+        if (StateMachine.currentState.IsInArray(PlayerAction.FlashAttackSta))
+        {
+            GameEvent.Assessment.Trigger(new AssessmentEventArgs(AssessmentEventArgs.EventType.CurrentComboFinish));
+            return;
+        }
+
+        if (atkData == null)
+            throw new Exception($"{enemy.name}  {enemy.GetComponent<EnemyBaseAction>().stateMachine.currentState}当前没有伤害数据");
+
+        _broken = false;
+        hurtId.Add(atkId); //受伤ID
+        WorldTime.I.TimeFrozenByFixedFrame(6, FrozenArgs.FrozenType.Player); //时间被固定帧冻结
+        R.Camera.CameraController.CameraShake(0.2f, ShakeTypeEnum.Rect); //相机抖动
+        float damagePercent = atkData.Get<float>(EnemyAttackDataType.damagePercent.ToString(), 1f); //伤害百分比
+        int shieldDamage = atkData.Get<int>(EnemyAttackDataType.shieldDamage.ToString(), 3); //盾伤害
+        damage = (int)((float)damage * damagePercent);
+        _energyRecover = 0f; //能量恢复=0
+        int dir = JudgeDir(enemy); //设置玩家的朝向
+        if (Attribute.currentEnergy > 0 && //能量大于0
+            !StateMachine.currentState.IsInArray(PlayerAction.SpHurtSta) && //护盾受伤状态
+            HurtInDefense(enemy, shieldDamage, ref damage)) //是否防御成功
+        {
+            return;
+        }
+
+        //敌人滚动击中后的效果
+        if (_spHurt.DaoRoll(enemy))
+        {
+            // if (enemy.GetComponent<DaoAction>() != null)
+            // {
+            //     enemy.GetComponent<DaoAction>().RollToIdle();
+            // }
+            //
+            // if (enemy.GetComponent<DaoPaoAction>() != null)
+            // {
+            //     enemy.GetComponent<DaoPaoAction>().RollToIdle();
+            // }
+        }
+
         // if (_spHurt.CanBeJumperCatach(enemy))
         // {
         //     // HurtStiffInit(dir);
@@ -241,69 +259,72 @@ public class PlayerHurtAbility : CharacterState
         // {
         //     HurtStiff(dir, atkData, enemy);
         // }
-        //
-        // HpMinus(damage);
-        // if (PAttr.isDead)
-        // {
-        //     return;
-        // }
-        //
-        // if (StateMachine.currentState.IsInArray(PlayerAction.SpHurtSta))
-        // {
-        //     return;
-        // }
-        //
-        // HurtStiff(dir, atkData, enemy);
+
+        HpMinus(damage);
+        if (Attribute.isDead || StateMachine.currentState.IsInArray(PlayerAction.SpHurtSta))
+        {
+            return;
+        }
+
+        HurtStiff(dir, atkData, enemy);
     }
 
-    private void HurtStiff(int dir, JsonData1 atkData, Transform enemy)
+    /// <summary>
+    /// 受伤硬直
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="atkData"></param>
+    /// <param name="enemy"></param>
+    private void HurtStiff(int dir, JsonData atkData, Transform enemy)
     {
-        // R.Player.Rigidbody2D.gravityScale = 1f;
-        // float num = 0f;
-        // float y = 0f;
-        // float num2 = 3f;
-        // float y2 = 5f;
-        // string text = "UnderAtk1";
-        // string text2 = "UnderAtkHitToFly";
-        // if (atkData != null)
-        // {
-        //     num = (float)atkData.Get<int>("xSpeed", 0);
-        //     y = (float)atkData.Get<int>("ySpeed", 0);
-        //     num2 = (float)atkData.Get<int>("airXSpeed", 3);
-        //     y2 = (float)atkData.Get<int>("airYSpeed", 5);
-        //     text = atkData.Get<string>("animName", "UnderAtk1");
-        // }
-        //
-        // if (_broken || (_hurtTimes >= 2 && _hurtLimit > 0f))
-        // {
-        //     text = text2;
-        //     num = 3f;
-        //     y = 20f;
-        //     num2 = 3f;
-        //     y2 = 15f;
-        // }
-        //
-        // R.Effect.Generate(216);
-        // HurtStiffInit(dir);
-        // Vector2 vector = new Vector2(num * PAction.transform.localScale.x, y);
-        // Vector2 vector2 = new Vector2(num2 * PAction.transform.localScale.x, y2);
-        // R.Player.TimeController.SetSpeed((!PAttr.isOnGround) ? vector2 : vector);
-        // Input.Vibration.Vibrate(1);
-        // HurtState((!PAttr.isOnGround) ? text2 : text);
-        // HitEffect(dir, enemy);
+        R.Player.Rigidbody2D.gravityScale = 1f; //重力
+        float num = 0f;
+        float y = 0f;
+        float num2 = 3f;
+        float y2 = 5f;
+        string text = PlayerStaEnum.UnderAtk1.ToString();
+        string text2 = PlayerStaEnum.UnderAtkHitToFly.ToString();
+        if (atkData != null)
+        {
+            num = (float)atkData.Get<float>(EnemyAttackDataType.xSpeed.ToString(), 0);
+            y = (float)atkData.Get<float>(EnemyAttackDataType.ySpeed.ToString(), 0);
+            num2 = (float)atkData.Get<float>(EnemyAttackDataType.airXSpeed.ToString(), 3);
+            y2 = (float)atkData.Get<float>(EnemyAttackDataType.airYSpeed.ToString(), 5);
+            text = atkData.Get<string>(EnemyAttackDataType.animName.ToString(), "UnderAtk1");
+        }
+
+        if (_broken || (_hurtTimes >= 2 && _hurtLimit > 0f))
+        {
+            text = text2;
+            num = 3f;
+            y = 20f;
+            num2 = 3f;
+            y2 = 15f;
+        }
+
+        R.Effect.Generate(216);
+        HurtStiffInit(dir); //设置玩家朝向
+        //设置玩家后退
+        Vector2 vector = new Vector2(num * Action.transform.localScale.x *-1, y);//* dir
+        Vector2 vector2 = new Vector2(num2 * Action.transform.localScale.x*-1, y2);
+        R.Player.TimeController.SetSpeed(Attribute.isOnGround ? vector : vector2);
+        Input.Vibration.Vibrate(1);
+        HurtState(Attribute.isOnGround ? text : text2);
+        HitEffect(dir, enemy);
     }
 
-    public Coroutine PlayerDieEnumeratorCoroutine;
-
+    /// <summary>
+    /// 玩家死亡
+    /// </summary>
     private void PlayerDie()
     {
         DeadFlag = true;
         R.Player.Rigidbody2D.gravityScale = 1f;
-        R.Camera.Controller.CameraBloom(0.5f, 1f);
+        R.Camera.CameraEffect.CameraBloom(0.5f, 1f);
         Vector2 speed = new Vector2(Attribute.faceDir * -7, 15f);
         TimeController.SetSpeed(speed);
         Action.ChangeState(PlayerStaEnum.Death);
-        Listener.PlayerDieEnumerator().StartIEnumerator();
+        R.StartCoroutine(AnimEvent.PlayerDieEnumerator());
     }
 
     /// <summary>
@@ -313,118 +334,156 @@ public class PlayerHurtAbility : CharacterState
     /// <returns></returns>
     private bool HurtFilter(int atkId)
     {
-        return hurtId.Contains(atkId);
-        //return hurtId.Contains(atkId) || StateMachine.currentState.IsInArray(PlayerAction.ExecuteSta);
+        return hurtId.Contains(atkId) || StateMachine.currentState.IsInArray(PlayerAction.ExecuteSta);
     }
 
+    /// <summary>
+    /// 受伤僵硬初始化
+    /// </summary>
+    /// <param name="dir"></param>
     private void HurtStiffInit(int dir)
     {
-        // listener.checkFallDown = false;
-        // listener.isFalling = false;
-        // listener.airAtkDown = false;
-        // listener.checkHitGround = false;
-        // listener.flyHitFlag = false;
-        // listener.flyHitGround = false;
-        // listener.StopIEnumerator("FlashPositionSet");
-        // PAction.TurnRound(dir);
-        // PAbilities.charge.CancelCharge();
+        AnimEvent.checkFallDown = false;
+        AnimEvent.isFalling = false;
+        AnimEvent.airAtkDown = false;
+        AnimEvent.checkHitGround = false;
+        AnimEvent.flyHitFlag = false;
+        AnimEvent.flyHitGround = false;
+        AnimEvent.StopIEnumerator(nameof(AnimEvent.FlashPositionSet)); //闪的位置设置取消
+        Action.TurnRound(dir);
+        Abilities.Charge.CancelCharge(); //充能取消
     }
 
+    /// <summary>
+    /// 判断方向
+    /// </summary>
+    /// <param name="enemy"></param>
+    /// <returns></returns>
     private int JudgeDir(Transform enemy)
     {
-        // if (enemy == null)
-        // {
-        //     return PAttr.faceDir;
-        // }
-        //
-        // EnemyAttribute component = enemy.GetComponent<EnemyAttribute>();
-        // if (component != null)
-        // {
-        //     return component.faceDir * -1;
-        // }
-        //
-        // Rigidbody2D component2 = enemy.GetComponent<Rigidbody2D>();
-        // if (component2 != null)
-        // {
-        //     return (component2.velocity.x >= 0f) ? -1 : 1;
-        // }
+        if (enemy == null)
+        {
+            return Attribute.faceDir;
+        }
+
+        EnemyAttribute component = enemy.GetComponent<EnemyAttribute>();
+        if (component != null)
+        {
+            return component.faceDir * -1;
+        }
+
+        Rigidbody2D component2 = enemy.GetComponent<Rigidbody2D>();
+        if (component2 != null)
+        {
+            return (component2.velocity.x >= 0f) ? -1 : 1;
+        }
 
         return (enemy.position.x - Action.transform.position.x <= 0f) ? -1 : 1;
     }
 
+    /// <summary>
+    /// 生命减少
+    /// </summary>
+    /// <param name="damage"></param>
     private void HpMinus(int damage)
     {
-        // if (damage == 0) return;
-        // PAttr.currentHP -= damage;
+        if (damage == 0) return;
+        Attribute.currentHP -= damage;
+        $"当前生命值{Attribute.currentHP}".Log();
     }
 
+    /// <summary>
+    /// 防御的伤害(是否防御成功)
+    /// </summary>
+    /// <param name="enemy">敌人</param>
+    /// <param name="shieldDamage">护盾伤害</param>
+    /// <param name="damage">伤害</param>
+    /// <returns></returns>
     private bool HurtInDefense(Transform enemy, int shieldDamage, ref int damage)
     {
-        // shieldDamage *= ((R.GameData.Difficulty > 1) ? 2 : 1);
-        // if (R.GameData.Difficulty == 3)
-        // {
-        //     shieldDamage *= 100;
-        // }
-        //
-        // damage = Mathf.Clamp((int)(damage * DamageCutOff), 1, int.MaxValue);
-        // PAttr.currentEnergy = PAttr.currentEnergy - shieldDamage;
-        // HitEffect(PAttr.faceDir, enemy);
-        // if (PAttr.currentEnergy > 0)
-        // {
-        //     HitShidleEffect(158, 186);
-        //     HpMinus(damage);
-        //     Input.Vibration.Vibrate(1);
-        //     return true;
-        // }
-        //
-        // HitShidleEffect(161, 191);
-        // Input.Vibration.Vibrate(3);
-        // _broken = true;
+        //难度
+        shieldDamage *= R.GameData.Difficulty > 1 ? 2 : 1;
+        if (R.GameData.Difficulty == 3)
+            shieldDamage *= 100;
+
+        damage = Mathf.Clamp((int)(damage * DamageCutOff), 1, int.MaxValue); //伤害
+        Attribute.currentEnergy -= shieldDamage; //减少护盾
+        HitEffect(Attribute.faceDir, enemy); //效果
+        if (Attribute.currentEnergy > 0) //当前能量值大于0
+        {
+            HitShidleEffect(158, 186);
+            HpMinus(damage); //生命减少
+            Input.Vibration.Vibrate(1);
+            return true;
+        }
+
+        HitShidleEffect(161, 191);
+        Input.Vibration.Vibrate(3);
+        _broken = true;
         return false;
     }
 
+    /// <summary>
+    /// 击中护盾效果
+    /// </summary>
+    /// <param name="effectId"></param>
+    /// <param name="soundId"></param>
     private void HitShidleEffect(int effectId, int soundId)
     {
-        // Vector3 position = PAction.transform.position - PAttr.bounds.center;
-        // position.Set(position.x, position.y + 2f, position.z);
-        // R.Effect.Generate(effectId, PAction.transform, position);
-        // R.Audio.PlayEffect(soundId, PAction.transform.position);
+        Vector3 position = Action.transform.position - Attribute.bounds.center;
+        position.Set(position.x, position.y + 2f, position.z);
+        R.Effect.Generate(effectId, Action.transform, position); //播放效果
+        R.Audio.PlayEffect(soundId, Action.transform.position); //播放音效
     }
 
+    /// <summary>
+    /// 伤害效果
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="enemy"></param>
     private void HitEffect(int dir, Transform enemy)
     {
-        // R.Effect.Generate((enemy.position.x - PAction.transform.position.x <= 0f) ? 76 : 80, null,
-        //     PAction.transform.position + new Vector3(dir * 0.2f, 1.3f, 0f), Vector3.zero);
-        // R.Effect.Generate(70, null, PAction.transform.position + new Vector3(dir * 0.2f, 1.3f, 0f), Vector3.zero);
+        Vector3 temp = Action.transform.position + new Vector3(dir * 0.2f, 1.3f, 0f); //玩家的位置和偏移
+        int temp2 = enemy.position.x - Action.transform.position.x <= 0f ? 76 : 80; //效果ID
+        R.Effect.Generate(temp2, null, temp, Vector3.zero);
+        R.Effect.Generate(70, null, temp, Vector3.zero);
     }
 
+    /// <summary>
+    /// 受伤状态
+    /// </summary>
+    /// <param name="sta"></param>
     private void HurtState(string sta)
     {
-        // EGameEvent.PlayerHurt.Trigger(PAction.gameObject);
-        // PAction.ChangeState(sta);
+        GameEvent.PlayerHurt.Trigger(Action.gameObject);
+        Action.ChangeState(sta);
     }
 
     public override void OnStateTransfer(object sender, TransferEventArgs args)
     {
-        // if (args.lastState == "UnderAtkGetUp")
-        // {
-        //     Invincible = true;
-        //     _getUpInvincibleTime = WorldTime.SecondToFrame(0.2f);
-        // }
-        //
-        // if (args.nextState == "UnderAtkHitToFly")
-        // {
-        //     _hurtTimes = 0;
-        //     _hurtLimit = 0f;
-        // }
-        //
-        // if (args.nextState == "UnderAtk1")
-        // {
-        //     _hurtTimes++;
-        //     _hurtLimit = 0.5f;
-        // }
+        "受伤起身的无敌时间".Log();
+        if (args.lastState == "UnderAtkGetUp")
+        {
+            Invincible = true;
+            _getUpInvincibleTime = WorldTime.SecondToFrame(0.2f);
+        }
+
+        if (args.nextState == "UnderAtkHitToFly")
+        {
+            _hurtTimes = 0;
+            _hurtLimit = 0f;
+        }
+
+        if (args.nextState == "UnderAtk1")
+        {
+            _hurtTimes++;
+            _hurtLimit = 0.5f;
+        }
     }
 
+    /// <summary>
+    /// 更新受伤起身的无敌时间
+    /// </summary>
     private void UpdateHurtGetUp()
     {
         if (_getUpInvincibleTime > 0)

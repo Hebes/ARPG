@@ -26,7 +26,7 @@ public class PlayerJumpAbility : CharacterState
         {
             _invincibleRecover--;
             if (_invincibleRecover <= 0)
-                Abilities.hurt.Invincible = false;
+                Abilities.Hurt.Invincible = false;
         }
     }
 
@@ -37,10 +37,10 @@ public class PlayerJumpAbility : CharacterState
         if ((StateMachine.currentState.IsInArray(CanJumpSta) || Action.canChangeAnim) && !_firstJumped)
         {
             _firstJumped = true;
-            Listener.PhysicReset();
+            AnimEvent.PhysicReset();
             StateCheck();
             Action.ChangeState(PlayerStaEnum.Jump);
-            Listener.FallDown();
+            AnimEvent.FallDown();
             Vector2 currentSpeed = TimeController.GetCurrentSpeed();
             currentSpeed.y = 15f; //跳跃的高度15
             TimeController.SetSpeed(currentSpeed);
@@ -49,24 +49,24 @@ public class PlayerJumpAbility : CharacterState
 
         //第二次跳跃
         if ((StateMachine.currentState.IsInArray(SecondJumpSta) && _firstJumped && !_secondJumpped) ||
-            (StateMachine.currentState.IsInArray(HurtJumpSta) && Listener.hitJump))
+            (StateMachine.currentState.IsInArray(HurtJumpSta) && AnimEvent.hitJump))
         {
-            if (Listener.hitJump && StateMachine.currentState.IsInArray(HurtJumpSta))
+            if (AnimEvent.hitJump && StateMachine.currentState.IsInArray(HurtJumpSta))
             {
                 JumpEffect();
-                Listener.hitJump = false;
-                Listener.flyHitFlag = false;
-                Listener.flyHitGround = false;
-                Abilities.hurt.Invincible = true;
+                AnimEvent.hitJump = false;
+                AnimEvent.flyHitFlag = false;
+                AnimEvent.flyHitGround = false;
+                Abilities.Hurt.Invincible = true;
                 _invincibleRecover = WorldTime.SecondToFrame(0.3f);
             }
 
             _firstJumped = true;
             _secondJumpped = true;
-            Listener.PhysicReset();
+            AnimEvent.PhysicReset();
             StateCheck();
             Action.ChangeState(PlayerStaEnum.Jump);
-            Listener.FallDown();
+            AnimEvent.FallDown();
             Vector2 currentSpeed2 = TimeController.GetCurrentSpeed();
             currentSpeed2.y = 10f;
             TimeController.SetSpeed(currentSpeed2);
@@ -78,9 +78,9 @@ public class PlayerJumpAbility : CharacterState
     /// </summary>
     private void StateCheck()
     {
-        Listener.checkFallDown = false;
-        Listener.isFalling = false;
-        Listener.airAtkDown = false;
+        AnimEvent.checkFallDown = false;
+        AnimEvent.isFalling = false;
+        AnimEvent.airAtkDown = false;
     }
 
     private void JumpEffect()
@@ -128,7 +128,6 @@ public class PlayerJumpAbility : CharacterState
     /// </summary>
     private static readonly string[] HurtJumpSta =
     {
-        PlayerStaEnum.Hurt.ToString(),
         "UnderAtkFlyToFall",
         "UnderAtkHitGround",
         "UnderAtkHitToFly"

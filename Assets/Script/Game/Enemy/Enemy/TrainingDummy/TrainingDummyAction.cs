@@ -64,7 +64,7 @@ public class TrainingDummyAction : EnemyBaseAction
             case EnemyStaEnum.Idle:
             case EnemyStaEnum.Jumping:
             case EnemyStaEnum.Falling:
-                EnemyAnim.Play(enemySta.ToString(), true, false, eAttr.atkSpeed);
+                enemyAnim.Play(enemySta.ToString(), true, false, eAttr.atkSpeed);
                 break;
             case EnemyStaEnum.Atk1:
             case EnemyStaEnum.Hurt:
@@ -76,7 +76,7 @@ public class TrainingDummyAction : EnemyBaseAction
             case EnemyStaEnum.AtkRemote:
             case EnemyStaEnum.Jump:
             case EnemyStaEnum.Fall:
-                EnemyAnim.Play(enemySta.ToString(), false, true, eAttr.atkSpeed);
+                enemyAnim.Play(enemySta.ToString(), false, true, eAttr.atkSpeed);
                 break;
             default:
                 throw new Exception("请添加类型");

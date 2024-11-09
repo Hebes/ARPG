@@ -146,11 +146,11 @@ public class BattleCheckPoint : BaseBehaviour
             foreach (EnemyJsonObject enemyJsonObject in levelEnemyData.enemyJsonObject)
             {
                 "出现敌人".Log();
-                //GameObject e = R.Enemy.Generate(enemyJsonObject.name, enemyJsonObject.position, PointData.HasWall);
-                //e.GetComponent<EnemyAttribute>().id = enemyJsonObject.guid;
+                // GameObject e = R.Enemy.Generate(enemyJsonObject.name, enemyJsonObject.position, PointData.HasWall);
+                // e.GetComponent<EnemyAttribute>().id = enemyJsonObject.guid;
                 if (canShake)
                 {
-                    CameraController.I.CameraShake(0.13333334f, ShakeTypeEnum.Rect);
+                    R.Camera.CameraController.CameraShake(0.13333334f, ShakeTypeEnum.Rect);
                 }
 
                 yield return new WaitForSeconds(0.5f);

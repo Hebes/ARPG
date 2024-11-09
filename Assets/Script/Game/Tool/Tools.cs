@@ -140,26 +140,46 @@ public static class ComponentTools
         return value.name.Equals(nameValue) ? value : FindParentByName(value.parent, nameValue);
     }
 
-    public static T FindComponent<T>(this Transform value) where T : UnityEngine.Object
+    public static T FindComponent<T>(this GameObject value) where T : UnityEngine.Object
     {
-        T t = value.GetComponent<T>();
-        if (t != null)
-        {
-            return t;
-        }
+        return FindComponent<T>(value.transform);
+    }
 
-        for (int i = 0; i < value.childCount; i++)
+    public static T FindComponent<T>(this Transform value, string valueName = null) where T : UnityEngine.Object
+    {
+        if (valueName != null)
         {
-            t = FindComponent<T>(value.GetChild(i));
-            if (t != null)
+            T t = value.GetComponent<T>();
+            if (t != null && t.name.Equals(valueName)) return t;
+            for (int i = 0; i < value.childCount; i++)
             {
-                return t;
+                t = FindComponent<T>(value.GetChild(i));
+                if (t != null && t.name.Equals(valueName)) return t;
             }
         }
+        else
+        {
+            T t = value.GetComponent<T>();
+            if (t != null) return t;
+            for (int i = 0; i < value.childCount; i++)
+            {
+                t = FindComponent<T>(value.GetChild(i));
+                if (t != null) return t;
+            }
+        }
+
 
         return default;
     }
 }
+
+// /// <summary>
+// /// 后期效果库
+// /// </summary>
+// public static class PostEffectsBase
+// {
+//    
+// }
 
 /// <summary>
 /// https://www.bilibili.com/read/cv14521774/ Animator实现动画
@@ -178,9 +198,11 @@ public static class AnimatorTools
     /// <param name="animationName"></param>
     /// <param name="parameter">执行方法后要传入的参数</param>
     /// <param name="frame">从左边开始为0 如果是秒0.02 就是第2帧</param>
-    public static void AddAnimatorEvent(this Animator animator, string animationName, int frame, string eventName, System.Object parameter = default)
+    public static void AddAnimatorEvent(this Animator animator, string animationName, int frame, string eventName = default, System.Object parameter = default)
     {
-        AnimationEvent evt = new AnimationEvent(); // 创建一个事件
+        if (eventName==default)
+            return;
+        
         AnimationClip clip = null;
         foreach (var animationClip in animator.runtimeAnimatorController.animationClips)
         {
@@ -191,20 +213,20 @@ public static class AnimatorTools
 
         if (clip == null)
             throw new Exception($"没有找到动画片段{animationName}");
-
+        AnimationEvent evt = new(); // 创建一个事件
         evt.functionName = eventName; // 绑定触发事件后要执行的方法名
 
-        if (parameter is String)
+        switch (parameter)
         {
-            evt.stringParameter = (string)parameter;
-        }
-        else if (parameter is Int32)
-        {
-            evt.intParameter = (int)parameter;
-        }
-        else if (parameter is Single)
-        {
-            evt.floatParameter = (float)parameter;
+            case String s:
+                evt.stringParameter = s;
+                break;
+            case Int32 i:
+                evt.intParameter = i;
+                break;
+            case Single o:
+                evt.floatParameter = o;
+                break;
         }
 
         evt.time = 1 / clip.frameRate * frame; // 设置事件关键帧的位置，当事件过了1.3秒后执行
@@ -213,14 +235,18 @@ public static class AnimatorTools
         //clip.AddEvent(evt); // 绑定事件此方法会使事件添加的顺序出现变化
     }
 
+    /// <summary>
+    /// 检查动画片段
+    /// </summary>
+    /// <param name="animator"></param>
+    /// <param name="animationName"></param>
+    /// <returns></returns>
     public static bool CheckClip(this Animator animator, string animationName)
     {
         foreach (var animationClip in animator.runtimeAnimatorController.animationClips)
         {
-            if (animationClip.name.Equals(animationName))
-            {
-                return true;
-            }
+            if (!animationClip.name.Equals(animationName)) continue;
+            return true;
         }
 
         return false;
@@ -238,11 +264,9 @@ public static class AnimatorTools
         AnimationClip clip = null;
         foreach (var animationClip in animator.runtimeAnimatorController.animationClips)
         {
-            if (animationClip.name.Equals(animationName))
-            {
-                clip = animationClip;
-                break;
-            }
+            if (!animationClip.name.Equals(animationName)) continue;
+            clip = animationClip;
+            break;
         }
 
         //移除
@@ -482,6 +506,11 @@ public static class StringUtils
         return false;
     }
 
+    public static string Ts(this Enum value)
+    {
+        return value.ToString();
+    }
+
     public static string Combine(this string name, string path)
     {
         return System.IO.Path.Combine(path, name);
@@ -544,9 +573,9 @@ public static class VU
     /// <returns></returns>
     public static Vector3 ProjectOnPlane(Vector3 vector, Vector3 planeNormal)
     {
-       return Vector3.ProjectOnPlane(vector, planeNormal);
+        return Vector3.ProjectOnPlane(vector, planeNormal);
     }
-    
+
     /// <summary>
     /// 两个向量的点乘,大于0则面对，否则则背对着
     /// 点乘得到你当前的面朝向的方向和你到敌人的方向的所成的角度大小

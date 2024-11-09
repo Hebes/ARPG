@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// 状态机
@@ -16,13 +17,7 @@ public class StateMachine :MonoBehaviour
     private Enum _nextState; //当前状态
     
     public string currentState { get; private set; }
-
-    /// <summary>
-    /// 是否是某个状态
-    /// </summary>
-    /// <returns></returns>
-    public bool IsSta(string[] array) => currentState.IsInArray(array);
-
+    
     public void Awake()
     {
         currentState = "__Empty__";
@@ -117,4 +112,5 @@ public class StateMachine :MonoBehaviour
         public EventHandler<StateEventArgs> OnExit;
         public EventHandler<StateEventArgs> StateUpdate;
     }
+
 }

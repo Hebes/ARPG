@@ -606,6 +606,8 @@ public class EnemyBaseAIAction
     [TaskCategory("Enemy/Base基础行动")]
     public class InNormalState : Action
     {
+        private EnemyBaseAction enemy;
+
         public override void OnAwake()
         {
             enemy = GetComponent<EnemyBaseAction>();
@@ -616,7 +618,6 @@ public class EnemyBaseAIAction
             return enemy.IsInNormalState() ? TaskStatus.Success : TaskStatus.Failure;
         }
 
-        private EnemyBaseAction enemy;
     }
 
     [TaskDescription("AI启动")]
@@ -814,17 +815,14 @@ public class EnemyBaseAIAction
             int dir = InputSetting.JudgeDir(transform.position, R.Player.Transform.position);
             switch (atkType)
             {
-                case EnemyAIAttribute.ActionEnum.ATK1:
+                case EnemyAIAttribute.ActionEnum.Atk1:
                     action.Attack1(dir);
                     break;
-                case EnemyAIAttribute.ActionEnum.ATK2:
+                case EnemyAIAttribute.ActionEnum.Atk2:
                     action.Attack2(dir);
                     break;
-                case EnemyAIAttribute.ActionEnum.ATK3:
+                case EnemyAIAttribute.ActionEnum.Atk3:
                     action.Attack3(dir);
-                    break;
-                case EnemyAIAttribute.ActionEnum.ATK4:
-                    action.Attack4(dir);
                     break;
                 case EnemyAIAttribute.ActionEnum.AtkRemote:
                     action.AtkRemote(dir);

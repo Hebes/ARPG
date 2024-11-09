@@ -71,6 +71,7 @@
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\Attributes\ShowIfAttributeProcessor.cs" />
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\Attributes\HelpBoxAttributeProcessor.cs" />
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\Attributes\HelpBoxIfAttributeProcessor.cs" />
+    <Compile Include="Assets\Editor\DataTools.cs" />
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\Attributes\DisableInPlayModeAttributeProcessor.cs" />
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\SerializeReferenceDropdown.cs" />
     <Compile Include="Assets\Resources\Sprites\SceneImage\Cainos\Third Party\Lucid Editor\Editor\Attributes\IndentAttributeProcessor.cs" />

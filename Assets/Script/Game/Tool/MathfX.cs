@@ -82,9 +82,9 @@ public static class MathfX
     /// <summary>
     /// 在距离中
     /// </summary>
-    /// <param name="x"></param>
-    /// <param name="middle"></param>
-    /// <param name="diameter"></param>
+    /// <param name="x">x</param>
+    /// <param name="middle">中间</param>
+    /// <param name="diameter">直径</param>
     /// <returns></returns>
     public static bool isInMiddleRange(float x, float middle, float diameter)
     {

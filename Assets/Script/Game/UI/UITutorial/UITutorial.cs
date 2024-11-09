@@ -9,6 +9,12 @@ using UnityEngine;
 public class UITutorial : SMono<UITutorial>
 {
     private List<CanvasGroup> _tutorial=new List<CanvasGroup>();
+    
+    private bool Tutorial1
+    {
+        get => RoundStorage.Get("Tutorial1", true);
+        set => RoundStorage.Set("Tutorial1", value);
+    }
 
     private void Awake()
     {
@@ -28,22 +34,26 @@ public class UITutorial : SMono<UITutorial>
 
     public IEnumerator ShowTutorial()
     {
-        WaitForSeconds waitForSeconds1 = new WaitForSeconds(5);
-        yield return UITutorial.I.Show(0);
-        yield return waitForSeconds1;
-        yield return UITutorial.I.Hide(0);
-        yield return new WaitForSeconds(2);
-        yield return UITutorial.I.Show(1);
-        yield return waitForSeconds1;
-        yield return UITutorial.I.Hide(1);
+        if (Tutorial1)
+        {
+            WaitForSeconds waitForSeconds1 = new WaitForSeconds(5);
+            yield return UITutorial.I.Show(0);
+            yield return waitForSeconds1;
+            yield return UITutorial.I.Hide(0);
+            yield return new WaitForSeconds(2);
+            yield return UITutorial.I.Show(1);
+            yield return waitForSeconds1;
+            yield return UITutorial.I.Hide(1);
+            Tutorial1 = false;
+        }
     }
 
-    public YieldInstruction Show(int id)
+    private YieldInstruction Show(int id)
     {
         if (!_tutorial[id].gameObject.activeInHierarchy)
         {
-            _tutorial[id].alpha = 0f;
             _tutorial[id].gameObject.SetActive(true);
+            _tutorial[id].alpha = 0f;
             return FadeIn(_tutorial[id]);
         }
 

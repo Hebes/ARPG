@@ -164,6 +164,111 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: UI_Atlas_ps4_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 20
+        width: 414
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 548b886dc765cfc4d9e9549f1869b7b4
+      internalID: -1966025739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Atlas_ps4_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 129
+        width: 371
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1ddf8b9d06f6d42a6bee1d60a2669d
+      internalID: 413846948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Atlas_ps4_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 161
+        width: 371
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d592ea7968aa7be408cad3bd9fbec0d2
+      internalID: -845030546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Atlas_ps4_5
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 98
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399625e04acbe304b803d0bccdfd4f8f
+      internalID: 95014608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Atlas_ps4_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 265
+        width: 149
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9bedb78eacde645994e400ad8d420d
+      internalID: -2065003774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -177,6 +282,11 @@ TextureImporter:
     nameFileIdTable:
       UI_Atlas_ps4_0: -750905340
       UI_Atlas_ps4_1: 1650068609
+      UI_Atlas_ps4_2: -102793965
+      UI_Atlas_ps4_3: 413846948
+      UI_Atlas_ps4_4: -845030546
+      UI_Atlas_ps4_5: 95014608
+      UI_Atlas_ps4_6: -2065003774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

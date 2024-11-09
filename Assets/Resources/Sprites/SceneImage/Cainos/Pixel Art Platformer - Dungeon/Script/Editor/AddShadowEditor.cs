@@ -6,7 +6,7 @@ using UnityEditor;
 namespace Cainos.PixelArtPlatformer_Dungeon
 {
     [CustomEditor(typeof(AddShadow))]
-    public class AddShadowEditor : Editor
+    public class AddShadowEditor : UnityEditor.Editor
     {
         private AddShadow instance;
 

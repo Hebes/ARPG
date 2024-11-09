@@ -1,30 +1,23 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// 怪物的时间控制器
 /// </summary>
 public class TimeController : MonoBehaviour, IPlatformPhysics
 {
-    #region 组件
-
     private EnemyAttribute _eAttr;
     private Rigidbody2D _rigid;
     private Animator _animator;
 
-    private void GetComponent()
-    {
-        _animator = GetComponentInChildren<Animator>();
-        _rigid = GetComponentInChildren<Rigidbody2D>();
-        _eAttr = GetComponent<EnemyAttribute>();
-    }
-
-    #endregion
-
-
     private void Awake()
     {
-        GetComponent();
+        Transform tr = transform;
+        _animator = transform.FindComponent<Animator>();
+        _rigid = transform.FindComponent<Rigidbody2D>();
+        _eAttr = transform.FindComponent<EnemyAttribute>();
+        
         GameEvent.WorldTimeFrozenEvent.Register(ClipFrozen);
         GameEvent.WorldTimeResumeEvent.Register(ClipResume);
     }
@@ -151,4 +144,6 @@ public class TimeController : MonoBehaviour, IPlatformPhysics
     /// 下一次的速度
     /// </summary>
     private Vector2? nextSpeed;
+
+  
 }

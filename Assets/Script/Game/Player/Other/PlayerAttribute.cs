@@ -15,6 +15,9 @@ public class PlayerAttribute
 
     [SerializeField] private int _currentHP;
 
+    /// <summary>
+    /// 最大能量
+    /// </summary>
     public int maxEnergy;
 
     [SerializeField] private int _currentEnergy;
@@ -107,7 +110,7 @@ public class PlayerAttribute
     /// </summary>
     private void SetBaseLevelData()
     {
-        maxHP = 150; // DB.EnhancementDic["maxHP"].GetEnhanceEffect(R.Player.EnhancementSaveData.MaxHp);
+        maxHP = 20; // DB.EnhancementDic["maxHP"].GetEnhanceEffect(R.Player.EnhancementSaveData.MaxHp);
         baseAtk = !Debug.isDebugBuild ? 40 : !R.Settings.CheatMode ? 40 : 9999;
         maxEnergy = R.GameData.Difficulty != 3 ? 10 : 1;
         moveSpeed = 9f;
@@ -120,7 +123,7 @@ public class PlayerAttribute
     /// </summary>
     public void AllAttributeRecovery()
     {
-        maxHP = 150; // DB.EnhancementDic["maxHP"].GetEnhanceEffect(R.Player.EnhancementSaveData.MaxHp);
+        maxHP = 20; // DB.EnhancementDic["maxHP"].GetEnhanceEffect(R.Player.EnhancementSaveData.MaxHp);
         currentHP = maxHP;
         currentEnergy = maxEnergy;
         currentFlashTimes = flashTimes;

@@ -60,6 +60,6 @@ public class UITrophyItem : MonoBehaviour
         TrophyName = achievementInfo.Name;
         TrophyDetail = achievementInfo.Detail;
         //TrophyIconSprite =  $"{TrophyId}{(!achievementUnlockState ? "_l" : string.Empty)}";
-        cg.alpha = achievementUnlockState ? 1f : 0.5f;
+        cg.alpha = achievementUnlockState ? 1f : 0.1f;
     }
 }

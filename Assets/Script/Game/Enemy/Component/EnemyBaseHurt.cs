@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using LitJson;
 using UnityEngine;
@@ -9,18 +10,19 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class EnemyBaseHurt : MonoBehaviour
 {
+    //初始化获取的
     protected GameObject player => R.Player.GameObject;
     protected PlayerAttribute Attr => R.Player.Attribute;
     protected JsonData hurtData;
-
     protected Pivot Pivot;
     protected EnemyAttribute eAttr;
     protected EnemyBaseAction action;
     private EnemyArmor armor;
-
     public Transform atkBox;
     public Transform center;
+    [SerializeField] private Transform frameShakeBody;
 
+    //等待设置的属性
 
     /// <summary>
     /// 显示攻击伤害
@@ -83,21 +85,23 @@ public class EnemyBaseHurt : MonoBehaviour
 
     protected void Awake()
     {
-        frameShakeBody = transform.FindChildByName("Body");
-        eAttr = transform.FindComponent<EnemyAttribute>();
-        action = transform.FindComponent<EnemyBaseAction>();
-        Pivot = transform.FindComponent<Pivot>();
-        armor = transform.FindComponent<EnemyArmor>();
+        Transform tr = transform;
+        frameShakeBody = tr.FindChildByName("Body");
+        atkBox = tr.FindChildByName("AtkBox");
+        center = tr.FindChildByName("center");
+        eAttr = tr.FindComponent<EnemyAttribute>();
+        action = tr.FindComponent<EnemyBaseAction>();
+        Pivot = tr.FindComponent<Pivot>();
+        armor = tr.FindComponent<EnemyArmor>();
 
         GameEvent.EnemyHurtAtk.Register(EnemyHurtAtk);
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         frameShakeOffset = m_frameShakeOffset;
         spHurtAudio = 6;
         chaseEnd = 0f;
-        Init();
     }
 
     private void OnDestroy()
@@ -150,13 +154,6 @@ public class EnemyBaseHurt : MonoBehaviour
             if (chaseEnd >= 1.3f)
                 ChaseEnd();
         }
-    }
-
-    /// <summary>
-    /// 初始化
-    /// </summary>
-    protected virtual void Init()
-    {
     }
 
     /// <summary>
@@ -237,20 +234,20 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <param name="shakeOffset">摇晃偏移</param>
     protected void TimeFrozenAndCameraShake(int frozenFrame, int frameShakeFrame, int shakeType, int shakeFrame, float shakeOffset)
     {
-        FrozenArgs.FrozenType type = playerAtkName != "HitGround" ? FrozenArgs.FrozenType.All : FrozenArgs.FrozenType.Enemy;
+        FrozenArgs.FrozenType type = playerAtkName != PlayerStaEnum.HitGround1.ToString() ? FrozenArgs.FrozenType.All : FrozenArgs.FrozenType.Enemy;
         WorldTime.I.TimeFrozenByFixedFrame(frozenFrame, type);
         StopCoroutine("ClipShake");
         StartCoroutine(ClipShake(frameShakeFrame));
         switch (shakeType)
         {
             case 0:
-                R.Camera.Controller.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Rect, shakeOffset);
+                R.Camera.CameraController.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Rect, shakeOffset);
                 break;
             case 1:
-                R.Camera.Controller.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Horizon, shakeOffset);
+                R.Camera.CameraController.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Horizon, shakeOffset);
                 break;
             case 2:
-                R.Camera.Controller.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Vertical, shakeOffset);
+                R.Camera.CameraController.CameraShake(shakeFrame / 60f, ShakeTypeEnum.Vertical, shakeOffset);
                 break;
         }
     }
@@ -465,6 +462,7 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <param name="num"></param>
     protected virtual void HpMinus(int num)
     {
+        $"{gameObject.name}受到的伤害{num}".Log();
         if (eAttr.rankType != EnemyAttribute.RankType.Normal)
         {
             eAttr.currentHp = Mathf.Clamp(eAttr.currentHp - num, MinLockedHp(), int.MaxValue);
@@ -517,6 +515,11 @@ public class EnemyBaseHurt : MonoBehaviour
         return HurtDataTools.Counterattack(damage, groundOnly, ref actionInterrupt, ref eAttr, ref action);
     }
 
+    /// <summary>
+    /// 添加动作中断点
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="atkName"></param>
     protected void AddActionInterruptPoint(int damage, string atkName)
     {
         HurtDataTools.AddActionInterruptPoint(damage, atkName, ref eAttr, ref actionInterrupt);
@@ -602,6 +605,10 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <param name="hurtPos"></param>
     public virtual void NormalHurt(EnemyHurtAtkEventArgs.PlayerNormalAtkData atkData, int atkId, HurtCheck.BodyType body, Vector2 hurtPos)
     {
+        if (!hurtData.ContainsKey(atkData.atkName))
+        {
+            $"敌人没有受伤的{atkData.atkName},但是有些可以忽略".Error();
+        }
         if (hurtId >= atkId || !hurtData.ContainsKey(atkData.atkName)) return;
         GetHurt(atkId);
         HurtAttribute hurtAttribute = new HurtAttribute(hurtData[atkData.atkName], defaultAnimName, defaultAirAnimName); //伤害属性
@@ -648,12 +655,9 @@ public class EnemyBaseHurt : MonoBehaviour
                 GenerateCritHurtNum(finalDamage);
             }
 
-            if (DoWeak(pos, speed, airSpeed, hurtAttribute, atkData))
-            {
-                return;
-            }
-
-            if (!flag2)
+            //进入弱状态
+            if (DoWeak(pos, speed, airSpeed, hurtAttribute, atkData)) return;
+            if (!flag2) //没进入回避
             {
                 HitEffect(pos, atkData.atkName); //伤害效果
                 DoHurt(atkData, speed, airSpeed, hurtAttribute); //受伤
@@ -705,6 +709,11 @@ public class EnemyBaseHurt : MonoBehaviour
         return flag;
     }
 
+    /// <summary>
+    /// 能够回避
+    /// </summary>
+    /// <param name="hitNumber"></param>
+    /// <returns></returns>
     private bool CalSideStep(int hitNumber)
     {
         bool flag = CalculateMonsterSideStep(hitNumber);
@@ -724,6 +733,7 @@ public class EnemyBaseHurt : MonoBehaviour
     /// <param name="pos"></param>
     private void DoCounterAttack(EnemyHurtAtkEventArgs.PlayerNormalAtkData atkData, Vector3 pos)
     {
+        $"{gameObject.name}开始反击".Log();
         TimeFrozenAndCameraShake(atkData.frozenFrame, atkData.shakeFrame, atkData.shakeType, atkData.camShakeFrame, atkData.shakeStrength);
         HitEffect(pos, atkData.atkName);
         eAttr.currentDefence = 0;
@@ -832,7 +842,7 @@ public class EnemyBaseHurt : MonoBehaviour
     {
         R.Audio.PlayEffect(192, transform.position);
         R.Effect.Generate(160, transform.Find("HurtBox"));
-        //Input.Vibration.Vibrate(4);//振动
+        Input.Vibration.Vibrate(4);//振动
         eAttr.currentActionInterruptPoint = 0;
         defecnceBreak = true;
         eAttr.paBody = false;
@@ -893,7 +903,7 @@ public class EnemyBaseHurt : MonoBehaviour
             R.Effect.Generate(127, transform, default(Vector3), default(Vector3), default(Vector3), true);
         }
 
-        //Input.Vibration.Vibrate(4);
+        Input.Vibration.Vibrate(4);
         if (BloodWeak())
         {
             action.EnterWeakState();
@@ -916,8 +926,8 @@ public class EnemyBaseHurt : MonoBehaviour
         action.hurtBox.gameObject.SetActive(true);
         currentPhase = Mathf.Clamp(currentPhase + 1, 0, maxPhase);
         ExecuteDieEffect();
-        SingletonMono<WorldTime>.I.TimeSlowByFrameOn60Fps(30, 0.2f);
-        R.Camera.Controller.CameraShake(0.5f, ShakeTypeEnum.Rect, 0.3f);
+        WorldTime.I.TimeSlowByFrameOn60Fps(30, 0.2f);
+        R.Camera.CameraController.CameraShake(0.5f, ShakeTypeEnum.Rect, 0.3f);
         R.Effect.Generate(127, transform);
     }
 
@@ -1035,9 +1045,9 @@ public class EnemyBaseHurt : MonoBehaviour
         ExecuteDieEffect();
         R.Effect.Generate(213);
         R.Effect.Generate(214);
-        SingletonMono<WorldTime>.I.TimeSlowByFrameOn60Fps(45, 0.2f);
-        R.Camera.Controller.CameraShake(0.9166667f, ShakeTypeEnum.Rect, 0.3f);
-        R.Camera.Controller.OpenMotionBlur(0.13333334f, 1f, transform.position);
+        WorldTime.I.TimeSlowByFrameOn60Fps(45, 0.2f);
+        R.Camera.CameraController.CameraShake(0.9166667f, ShakeTypeEnum.Rect, 0.3f);
+        R.Camera.CameraEffect.OpenMotionBlur(0.13333334f, 1f, transform.position);
     }
 
     /// <summary>
@@ -1084,7 +1094,7 @@ public class EnemyBaseHurt : MonoBehaviour
     protected void DieTimeControl()
     {
         WorldTime.I.TimeFrozenByFixedFrame(25, FrozenArgs.FrozenType.Enemy); //时间冻结
-        //R.Camera.Controller.CameraShake(0.416666657f, ShakeTypeEnum.Rect, 0.3f);//相机抖动
+        R.Camera.CameraController.CameraShake(0.416666657f, ShakeTypeEnum.Rect, 0.3f); //相机抖动
         if (gameObject.activeSelf)
             StartCoroutine(ClipShake(12));
     }
@@ -1095,7 +1105,7 @@ public class EnemyBaseHurt : MonoBehaviour
     public void NormalKill()
     {
         R.Audio.PlayEffect(24, transform.position);
-        R.Camera.Controller.CameraBloom(0.25f, 0f);
+        R.Camera.CameraEffect.CameraBloom(0.25f, 0f);
         R.Effect.Generate(49, transform, new Vector3(0f, 1.2f, LayerManager.ZNum.Fx), Vector3.zero);
         R.Effect.Generate(9, transform, new Vector3(0f, 1.2f, LayerManager.ZNum.Fx), new Vector3(0f, 0f, 0f));
         R.Effect.Generate(14, transform, new Vector3(0f, 1.2f, -0.1f), new Vector3(0f, 0f, 0f));
@@ -1161,22 +1171,16 @@ public class EnemyBaseHurt : MonoBehaviour
     /// </summary>
     protected bool deadFlag;
 
-    protected string defaultAnimName;
-
-    protected string defaultAirAnimName;
-
-    protected string airDieAnimName;
-
-    protected string airDieHitGroundAnimName;
-
-    protected string flyToFallAnimName;
-
+    protected string defaultAnimName, airDieHitGroundAnimName, defaultAirAnimName, airDieAnimName, flyToFallAnimName;
 
     /// <summary>
     /// 玩家攻击的名称
     /// </summary>
     protected string playerAtkName;
 
+    /// <summary>
+    /// 是否中断行为
+    /// </summary>
     protected bool actionInterrupt;
 
     protected bool defecnceBreak;
@@ -1190,8 +1194,8 @@ public class EnemyBaseHurt : MonoBehaviour
 
     protected int maxPhase;
 
+
     [SerializeField] private bool canChangeFace = true;
-    [Header("框架振动体")] [SerializeField] private Transform frameShakeBody;
     [SerializeField] private Vector3 centerOffset;
     [Header("左右抖动幅度")] [SerializeField] private float m_frameShakeOffset = 0.1f;
     [SerializeField] private int[] hpPercent;
@@ -1275,6 +1279,4 @@ public class EnemyBaseHurt : MonoBehaviour
         /// </summary>
         public string airAtkType;
     }
-
-    
 }

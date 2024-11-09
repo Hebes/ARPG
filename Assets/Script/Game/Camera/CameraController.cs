@@ -7,23 +7,19 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// 相机控制器
 /// </summary>
-public class CameraController : SMono<CameraController>
+public class CameraController : MonoBehaviour
 {
     [Header("是否跟随")] public bool IsFollowPivot = true;
     [Header("摄像机")] private Camera _camera;
     [Header("是否锁定")] [SerializeField] private bool _isLock;
     [Header("平滑时间")] [SerializeField] private float _smoothTime = 0.4f;
 
-    [Header("是动态模糊")] private bool _isMotionBlur;
 
-    //[Header("是动态模糊")] private CameraMotionBlur _blur;
     [Header("手动偏移Y")] public float ManualOffsetY;
     [Header("视野")] private float _fieldOfView = 60f;
     [Header("当前速度")] private Vector3 _currentSpeed = Vector3.zero;
 
     private Transform _pivot;
-    // private Bloom _globalBloom;
-    // private BloomOptimized _bloom;
 
 
     /// <summary>
@@ -45,16 +41,34 @@ public class CameraController : SMono<CameraController>
     /// </summary>
     private Rect MaxDetectRect => CameraRect(MaxDetectZ);
 
+    /// <summary>
+    /// 最小可见矩形
+    /// </summary>
     private Rect MinVisibleRect => CameraRect(MinVisibleZ);
 
+    /// <summary>
+    /// 最小检测矩形
+    /// </summary>
     private Rect MinDetectRect => CameraRect(MinDetectZ);
 
+    /// <summary>
+    /// 最大可见Z
+    /// </summary>
     private float MaxVisibleZ => -12f + Fv2DeltaZ();
 
+    /// <summary>
+    /// 最大检测Z
+    /// </summary>
     private float MaxDetectZ => MaxVisibleZ - -2f + Fv2DeltaZ();
 
+    /// <summary>
+    /// 最小可见Z
+    /// </summary>
     private float MinVisibleZ => -8f + Fv2DeltaZ();
 
+    /// <summary>
+    /// 最小检测Z
+    /// </summary>
     private float MinDetectZ => MinVisibleZ - -2f + Fv2DeltaZ();
 
     /// <summary>
@@ -76,7 +90,6 @@ public class CameraController : SMono<CameraController>
     private void Awake()
     {
         _camera = GetComponent<Camera>();
-        DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -191,40 +204,13 @@ public class CameraController : SMono<CameraController>
         UpdateCamera(1000f);
     }
 
-    public void CameraBloom(float recoveryTime, float waitingTime)
-    {
-        // if (this._bloom == null)
-        // {
-        //     base.StartCoroutine(this.BloomCoroutine(recoveryTime, waitingTime));
-        // }
-    }
-
-    private IEnumerator BloomCoroutine(float recoveryTime, float waitingTime)
-    {
-        // this._bloom = R.Camera.AddComponent<BloomOptimized>();
-        // this._bloom.fastBloomShader = (this._bloom.fastBloomShader ?? Shader.Find("Hidden/FastBloom"));
-        // if (!this._bloom.enabled)
-        // {
-        //     this._bloom.enabled = true;
-        // }
-        // this._bloom.intensity = 2.5f;
-        // this._bloom.threshold = 0.3f;
-        // yield return new WaitForSeconds(waitingTime);
-        // float calTime = 0f;
-        // float startTime = Time.time;
-        // while (Time.time - startTime < recoveryTime)
-        // {
-        //     this._bloom.intensity = Mathf.Lerp(2.5f, 0.38f, Mathf.Clamp(calTime, 0f, recoveryTime) / recoveryTime);
-        //     this._bloom.threshold = Mathf.Lerp(0.3f, 0.4f, Mathf.Clamp(calTime, 0f, recoveryTime) / recoveryTime);
-        //     yield return null;
-        //     calTime += Time.deltaTime;
-        // }
-        // this._bloom.enabled = false;
-        // UnityEngine.Object.Destroy(this._bloom);
-        // this._bloom = null;
-        yield break;
-    }
-
+    /// <summary>
+    /// 相机移动，秒
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="second"></param>
+    /// <param name="ease"></param>
+    /// <returns></returns>
     public YieldInstruction CameraMoveTo(Vector3 pos, float second, Ease ease = Ease.Linear)
     {
         if (!_isLock)
@@ -233,13 +219,19 @@ public class CameraController : SMono<CameraController>
             _isLock = true;
             pos.z = MovableCamera.position.z;
             KillTweening();
-            return MovableCamera.DOMove(CameraPositionClamp(pos), second).SetEase(ease).OnComplete(delegate { CamereMoveFinished(false); })
-                .WaitForCompletion();
+            return MovableCamera.DOMove(CameraPositionClamp(pos), second).SetEase(ease).OnComplete(delegate { CamereMoveFinished(false); }).WaitForCompletion();
         }
 
         return null;
     }
 
+    /// <summary>
+    /// 相机移动，速度
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="speed"></param>
+    /// <param name="canReturn"></param>
+    /// <param name="type"></param>
     public void CameraMoveToBySpeed(Vector3 pos, float speed, bool canReturn = false, Ease type = Ease.Linear)
     {
         if (!_isLock)
@@ -263,12 +255,22 @@ public class CameraController : SMono<CameraController>
         }
     }
 
+    /// <summary>
+    /// 摄像机移动完成
+    /// </summary>
+    /// <param name="follow"></param>
     private void CamereMoveFinished(bool follow)
     {
         _isLock = false;
         IsFollowPivot = follow;
     }
 
+    /// <summary>
+    /// 相机变焦
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="second"></param>
+    /// <param name="deltaZ"></param>
     public void CameraZoom(Vector3 pos, float second, float deltaZ = 3f)
     {
         if (!_isLock)
@@ -281,11 +283,17 @@ public class CameraController : SMono<CameraController>
         }
     }
 
+    /// <summary>
+    /// 变焦完成
+    /// </summary>
     public void ZoomFinished()
     {
         _isLock = false;
     }
 
+    /// <summary>
+    /// 相机变焦完成
+    /// </summary>
     public void CameraZoomFinished()
     {
         _pivot = R.Player.Transform;
@@ -317,61 +325,30 @@ public class CameraController : SMono<CameraController>
         }
 
         KillTweening();
-        //strength2.z = -10;
         transform.DOShakePosition(second, strength2, 100).SetLoops(isLoop ? -1 : 1).OnKill(OnShakeFinished).OnComplete(OnShakeFinished);
     }
 
+    /// <summary>
+    /// 相机晃动完成
+    /// </summary>
     private void OnShakeFinished()
     {
         transform.localPosition = Vector3.zero;
     }
 
+    /// <summary>
+    /// 抖动杀死
+    /// </summary>
     public void KillTweening()
     {
         transform.DOKill();
     }
 
-    public void OpenMotionBlur(float second, float scale, Vector3 pos)
-    {
-    }
-
-    private IEnumerator CameraMotionBlur(float second, float scale, Vector3 pos)
-    {
-        // float startTime = Time.time;
-        // float calTime = 0f;
-        // this._blur.preview = true;
-        // do
-        // {
-        // 	this._blur.velocityScale = scale * calTime / second;
-        // 	Vector2 camPos = this._camera.WorldToViewportPoint(pos);
-        // 	Vector2 blurPos = camPos * -2f + new Vector2(1f, 1f / this._camera.aspect);
-        // 	Vector3 realBlurScale = blurPos;
-        // 	realBlurScale.z = 1f;
-        // 	realBlurScale *= 13f;
-        // 	this._blur.previewScale = realBlurScale;
-        // 	calTime += Time.deltaTime;
-        // 	yield return null;
-        // }
-        // while (Time.time - startTime < second);
-        // this._blur.enabled = false;
-        // this._isMotionBlur = false;
-        yield break;
-    }
-
-    public void CloseMotionBlur()
-    {
-    }
-
-    public void EnableGlobalBloom()
-    {
-        //this._globalBloom.enabled = true;
-    }
-
-    public void DisableGlobalBloom()
-    {
-        //this._globalBloom.enabled = false;
-    }
-
+    /// <summary>
+    /// 场景切换
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="loadSceneMode"></param>
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         ManualOffsetY = 0f;

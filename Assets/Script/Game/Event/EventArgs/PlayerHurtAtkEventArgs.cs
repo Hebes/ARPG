@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerHurtAtkEventArgs : EventArgs
 {
     public PlayerHurtAtkEventArgs(GameObject _hurted, GameObject _sender,
-        GameObject _origin, int _damage, int _atkId,  Dictionary<PlayerHurtDataType, string> _data, bool _forceHurt = false)
+        GameObject _origin, int _damage, int _atkId,  JsonData _data, bool _forceHurt = false)
     {
         hurted = _hurted;
         sender = _sender;
@@ -21,7 +21,7 @@ public class PlayerHurtAtkEventArgs : EventArgs
 
     public int damage;
 
-    public  Dictionary<PlayerHurtDataType, string> data;
+    public  JsonData data;
 
     public GameObject hurted;
 

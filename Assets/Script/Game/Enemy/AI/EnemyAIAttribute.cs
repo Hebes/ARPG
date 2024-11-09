@@ -17,16 +17,15 @@ public class EnemyAIAttribute : BaseBehaviour
     public ExpectationParam[] attackExpectations;
 
     /// <summary>
-    /// 期望参数
+    /// 当前的期望参数
     /// </summary>
     public ExpectationParam currentEx;
 
     public enum ActionEnum
     {
-        ATK1 = 1,
-        ATK2,
-        ATK3,
-        ATK4,
+        Atk1 = 0,
+        Atk2,
+        Atk3,
         AtkRemote,
     }
 

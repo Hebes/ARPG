@@ -16,19 +16,19 @@ public class PlayerHitGroundAbility : CharacterState
     {
         if (Attribute.isDead) return; //死亡
         if (TimeController.isPause) return; //暂停
-        if (Listener.checkHitGround && Attribute.isOnGround) //站在地面或者击中地面
+        if (AnimEvent.checkHitGround && Attribute.isOnGround) //站在地面或者击中地面
         {
             TimeController.SetSpeed(Vector2.zero);
-            Listener.PhysicReset();
-            Listener.checkHitGround = false;
+            AnimEvent.PhysicReset();
+            AnimEvent.checkHitGround = false;
             Vector3 position = new Vector3(0f, _platform.GetDistanceToGround(), 0f);
             R.Effect.Generate(22, Action.transform, position, Vector3.zero);
             PlayerStaEnum currentState = StateMachine.currentState.ToEnum<PlayerStaEnum>();
             switch (currentState)
             {
-                case PlayerStaEnum.HitGrounding:
-                    R.Player.AnimEvent.CameraEffect(0, 0.2f, 0.1f, ShakeTypeEnum.Rect, 0.2f);
-                    Action.ChangeState(PlayerStaEnum.HitGroundEnd);
+                case PlayerStaEnum.HitGround1:
+                    //R.Player.AnimEvent.CameraEffect(0, 0.2f, 0.1f, ShakeTypeEnum.Rect, 0.2f);
+                    Action.ChangeState(PlayerStaEnum.HitGround2);
                     break;
                 // case "Roll":
                 // case "DahalRoll":
@@ -63,7 +63,7 @@ public class PlayerHitGroundAbility : CharacterState
     private IEnumerator ExecuteHitGround()
     {
         yield return new WaitForSeconds(0.05f);
-        Listener.StartExecute();
+        AnimEvent.StartExecute();
     }
 
     /// <summary>
@@ -76,21 +76,21 @@ public class PlayerHitGroundAbility : CharacterState
             && StateMachine.currentState.IsInArray(CanHitGroundSta)
             && R.Player.Enhancement.HitGround != 0)
         {
-            nameof(Listener.FlashPositionSet).StopIEnumerator();
+            R.StopIEnumerator(nameof(AnimEvent.FlashPositionSet));
             if (Action.tempDir != 3)
                 Action.TurnRound(Action.tempDir);
-            Action.ChangeState(PlayerStaEnum.HitGroundStart);
+            Action.ChangeState(PlayerStaEnum.HitGround1);
         }
     }
 
     public override void OnStateTransfer(object sender, TransferEventArgs args)
     {
-        if (args.nextState == PlayerStaEnum.AirAtk3.ToString()) //"Roll"
-        {
-            Vector2 speed = new Vector2(4 * Attribute.faceDir, 0f);
-            Listener.AirPhysic(0.8f);
-            R.Player.TimeController.SetSpeed(speed);
-        }
+        // if (args.nextState == PlayerStaEnum.AirAtk3.ToString()) //"Roll"
+        // {
+        //     Vector2 speed = new Vector2(4 * Attribute.faceDir, 0f);
+        //     Listener.AirPhysic(0.8f);
+        //     R.Player.TimeController.SetSpeed(speed);
+        // }
     }
 
     /// <summary>

@@ -14,9 +14,9 @@ public class UISplashScreen : MonoBehaviour
 
     private void Start()
     {
-        _asyncOperation = LevelManager.LoadScene(CScene.InitScene);
+        _asyncOperation = LevelManager.LoadScene(CScene.InitScene01);
         _asyncOperation.allowSceneActivation = false;
-        Sequence0().StartIEnumerator();
+        R.StartCoroutine(Sequence0());
     }
 
     /// <summary>

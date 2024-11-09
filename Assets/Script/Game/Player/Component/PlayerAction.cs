@@ -60,12 +60,12 @@ public class PlayerAction : MonoBehaviour
 
         if (_move)
         {
-            _playerAbilities.move.Move(R.Player.Attribute.faceDir);
+            _playerAbilities.Move.Move(R.Player.Attribute.faceDir);
         }
     }
 
     /// <summary>
-    /// 朝向
+    /// 玩家朝向
     /// </summary>
     /// <param name="dir">方向</param>
     public void TurnRound(int dir)
@@ -96,16 +96,28 @@ public class PlayerAction : MonoBehaviour
     {
         _move = false;
     }
+    
+    /// <summary>
+    /// 吸收能量球
+    /// </summary>
+    public void AbsorbEnergyBall()
+    {
+        R.Audio.PlayEffect(43, transform.position);
+        if (playerAttribute.isInCharging && R.Player.Enhancement.Charging >= 1)
+        {
+            absorbNum++;
+            weapon.AddChargeLevel();
+        }
+    }
 
     /// <summary>
     /// 播放动画
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="args"></param>
-    public void OnMyStateEnter(object sender, StateEventArgs args)
+    private void OnMyStateEnter(object sender, StateEventArgs args)
     {
         string state = args.state;
-        //if (R.Player.Abilities.hurt.DeadFlag && !args.state.IsInArray(DieSta)) return;
         if (R.Player.Attribute.isDead && !state.IsInArray(DieSta)) return;
         PlayerStaEnum playerEnemyStaEnum = state.ToEnum<PlayerStaEnum>();
         switch (playerEnemyStaEnum)
@@ -125,20 +137,25 @@ public class PlayerAction : MonoBehaviour
             case PlayerStaEnum.AtkRemote: //远程攻击
             case PlayerStaEnum.RunSlow:
             case PlayerStaEnum.UpRising:
-            case PlayerStaEnum.HitGroundStart:
-            case PlayerStaEnum.HitGroundEnd:
+            case PlayerStaEnum.HitGround1:
+            case PlayerStaEnum.HitGround2:
             case PlayerStaEnum.DoubleFlash:
-            case PlayerStaEnum.AtkFlashRollEnd:
             case PlayerStaEnum.Cast1:
+            case PlayerStaEnum.AtkFlashRollEnd:
+                _playerAnimationController.Play(state, false, true, _playerAnimationController.animSpeed);
+                break;
+            case PlayerStaEnum.UnderAtk1:
+            case PlayerStaEnum.UnderAtkHitToFly:
+            case PlayerStaEnum.UnderAtkFlyToFall:
+            case PlayerStaEnum.UnderAtkHitGround:
+            case PlayerStaEnum.UnderAtkGetUp:
                 _playerAnimationController.Play(state, false, true, _playerAnimationController.animSpeed);
                 break;
             case PlayerStaEnum.Idle:
             case PlayerStaEnum.Run:
             case PlayerStaEnum.Jumping:
             case PlayerStaEnum.Falling:
-            case PlayerStaEnum.Hurt:
             case PlayerStaEnum.GetUp:
-            case PlayerStaEnum.HitGrounding:
                 _playerAnimationController.Play(state, true, false, _playerAnimationController.animSpeed);
                 break;
             default: throw new Exception($"未找到播放的状态的动画{state}");
@@ -152,7 +169,7 @@ public class PlayerAction : MonoBehaviour
         if (args.nextState.IsInArray(HurtSta))
         {
             weapon.AirAttackReset();
-            listener.StopIEnumerator("FlashPositionSet");
+            listener.StopIEnumerator(nameof(listener.FlashPositionSet));
             listener.isFalling = false;
             listener.airAtkDown = false;
             listener.checkFallDown = false;
@@ -219,7 +236,7 @@ public class PlayerAction : MonoBehaviour
     {
         GameEvent.Assessment.Trigger(new AssessmentEventArgs(AssessmentEventArgs.EventType.ContinueGame));
         R.Player.Attribute.AllAttributeRecovery();
-        R.Player.Abilities.hurt.DeadFlag = false; //死去的标志位
+        R.Player.Abilities.Hurt.DeadFlag = false; //死去的标志位
         R.Player.Action.ChangeState(PlayerStaEnum.Idle);
     }
 
@@ -231,7 +248,7 @@ public class PlayerAction : MonoBehaviour
         "玩家重置".Log();
         PlayerAttribute attribute = R.Player.Attribute;
         attribute.ResetData();
-        R.Player.Abilities.hurt.DeadFlag = false;
+        R.Player.Abilities.Hurt.DeadFlag = false;
         R.Player.Action.ChangeState(PlayerStaEnum.Idle);
     }
 
@@ -343,7 +360,8 @@ public class PlayerAction : MonoBehaviour
     /// </summary>
     public static readonly string[] HurtSta =
     {
-        PlayerStaEnum.Hurt.ToString(),
+        PlayerStaEnum.UnderAtk1.ToString(),
+        PlayerStaEnum.UnderAtkHitToFly.ToString(),
     };
 
     /// <summary>
@@ -380,5 +398,16 @@ public class PlayerAction : MonoBehaviour
         "Charge1End",
         "AirCharging",
         "AirChargeEnd"
+    };
+    
+    /// <summary>
+    /// 护盾受伤状态
+    /// </summary>
+    public static readonly string[] SpHurtSta =
+    {
+        "UnderAtkJumper",
+        "UnderAtkEat",
+        "UnderAtkHitSaw",
+        "UnderAtkBombKillerII"
     };
 }

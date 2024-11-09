@@ -20,7 +20,7 @@ public class PlatformMovement : MonoBehaviour
 
     [Header("是否是右方")] public bool m_faceRight = true;
     [Header("是否显示射线")] private bool m_DrawRays = true;
-    [Header("是否在运行")] public bool isKinematic;
+    [Header("玩家是否在运动")] public bool isKinematic;
     [Header("重力是否有效")] public bool isGravityActive = true;
     [Header("检测碰撞")] public bool detecteCollided = true;
 
@@ -35,7 +35,8 @@ public class PlatformMovement : MonoBehaviour
     [Header("地面正常位置LS")] private Vector2 m_groundNormalLs;
     [Header("地面的物体")] private GameObject m_groundGameObject;
     [Header("忽略碰撞的列表")] private List<IgnoreCollider> m_ignoreColliders = new List<IgnoreCollider>(8);
-    [Header("Rigidbody2D")] [SerializeField] private Rigidbody2D rigid;
+
+    private Rigidbody2D Rigid => R.Player.Rigidbody2D;
 
 
     public readonly PlatformControllerState State = new PlatformControllerState();
@@ -60,10 +61,9 @@ public class PlatformMovement : MonoBehaviour
     {
         get
         {
-            
             string currentState = R.Player.StateMachine.currentState;
             if (currentState.IsInArray(PlayerAction.FlashAttackSta) && R.Player.Attribute.flashLevel == 3)
-                return LayerManager.GroundMask | LayerManager.WallMask; 
+                return LayerManager.GroundMask | LayerManager.WallMask;
             return LayerManager.GroundMask | LayerManager.WallMask | LayerManager.ObstacleMask;
         }
     }
@@ -73,42 +73,41 @@ public class PlatformMovement : MonoBehaviour
     /// </summary>
     private Vector2 Position2D
     {
-        get => rigid.position;
+        get => Rigid.position;
         set
         {
             Vector3 vector = value;
             vector.z = transform.position.z;
             transform.position = vector;
-            rigid.position = vector;
+            Rigid.position = vector;
         }
     }
 
     private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
         m_oneWayLayer = LayerManager.OneWayGroundMask;
         m_Ceiling = LayerManager.CeilingMask;
 
         //初始化射线检测
-        m_RaysGround = new[]//地面
+        m_RaysGround = new[] //地面
         {
             new CharacterRay2D { m_position = new Vector2(-0.27f, 0.2f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0f, 0.2f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0.27f, 0.2f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
         };
-        m_RaysHead = new[]//上面
+        m_RaysHead = new[] //上面
         {
             new CharacterRay2D { m_position = new Vector2(-0.27f, 0.8f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0f, 0.8f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0.27f, 0.8f), m_penetration = 0.2f, m_extraDistance = 0.1f, },
         };
-        m_RaysFront = new[]//正面
+        m_RaysFront = new[] //正面
         {
             new CharacterRay2D { m_position = new Vector2(0f, 0.1f), m_penetration = 0.5f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0f, 0.5f), m_penetration = 0.5f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0f, 0.9f), m_penetration = 0.5f, m_extraDistance = 0.1f, },
         };
-        m_RaysBack = new[]//后面
+        m_RaysBack = new[] //后面
         {
             new CharacterRay2D { m_position = new Vector2(0f, 0.1f), m_penetration = 0.5f, m_extraDistance = 0.1f, },
             new CharacterRay2D { m_position = new Vector2(0f, 0.5f), m_penetration = 0.5f, m_extraDistance = 0.1f, },
@@ -154,7 +153,7 @@ public class PlatformMovement : MonoBehaviour
         UpdateMoveGroundFriction();
         if (m_DrawRays)
         {
-            Vector3 b = rigid.velocity;
+            Vector3 b = Rigid.velocity;
             Debug.DrawLine(transform.position, transform.position + b, Color.green);
         }
     }
@@ -201,12 +200,12 @@ public class PlatformMovement : MonoBehaviour
         MoveVertical(ref moveOffset, true, !flag, ref zero);
         if (deltaTime > Mathf.Epsilon) //这个常量表示在浮点数表示中比 0 大的最小正数值
         {
-            rigid.velocity = (m_curPos - position2D) / deltaTime;
+            Rigid.velocity = (m_curPos - position2D) / deltaTime;
             velocity = (m_curPos - position2D - zero) / deltaTime;
         }
         else
         {
-            rigid.velocity = Vector2.zero;
+            Rigid.velocity = Vector2.zero;
             velocity = Vector2.zero;
         }
     }
@@ -224,7 +223,7 @@ public class PlatformMovement : MonoBehaviour
             if (num2 > num3)
             {
                 // Physics2D.gravity 获取当前重力值 rigid.gravityScale 属性设置为0.5，表示 Rigidbody2D 对象受到全局重力的一半影响。
-                float num4 = (Physics2D.gravity * (deltaTime * rigid.gravityScale)).y * 1.2f;
+                float num4 = (Physics2D.gravity * (deltaTime * Rigid.gravityScale)).y * 1.2f;
                 if (velocity.y > -num)
                     velocity.y = Mathf.Max(-num, velocity.y + num4); //获取两个数值之间的最大值
             }
@@ -482,7 +481,7 @@ public class PlatformMovement : MonoBehaviour
                 for (int j = 0; j < num7; j++)
                 {
                     RaycastHit2D raycastHit2D = m_rayResults[j];
-                    if (!(raycastHit2D.rigidbody == rigid))
+                    if (!(raycastHit2D.rigidbody == Rigid))
                     {
                         if (raycastHit2D.collider != null)
                         {
@@ -494,7 +493,7 @@ public class PlatformMovement : MonoBehaviour
                                 goto IL_3D8;
                         }
 
-                        if (raycastHit2D.fraction != 0f)//沿着射线的距离的分数
+                        if (raycastHit2D.fraction != 0f) //沿着射线的距离的分数
                         {
                             Vector2 vector2 = transform.InverseTransformDirection(raycastHit2D.normal);
                             if ((!bDown || vector2.y > 0f) && (bDown || vector2.y < 0f))
@@ -626,7 +625,7 @@ public class PlatformMovement : MonoBehaviour
                 for (int j = 0; j < num6; j++)
                 {
                     RaycastHit2D raycastHit2D = m_rayResults[j];
-                    if (!(raycastHit2D.rigidbody == rigid))
+                    if (!(raycastHit2D.rigidbody == Rigid))
                     {
                         if (raycastHit2D.collider == null ||
                             (!raycastHit2D.collider.isTrigger && !IsIgnoredCollider(raycastHit2D.collider)))

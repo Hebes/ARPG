@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!4 &1790495663562945316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790495663512613667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.487211, y: -1.150837, z: 0.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1790495663512613667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790495663562945316}
+  - component: {fileID: 1790495665408439078}
+  - component: {fileID: 1790495665358107429}
+  - component: {fileID: 1790495665408439079}
+  m_Layer: 0
+  m_Name: "EnemyExecute"
+  m_TagString:
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!111 &1790495665358107429
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790495663512613667}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3cf7b1af3c78495ebcde8f5e47ab7104, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3cf7b1af3c78495ebcde8f5e47ab7104, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &1790495665408439078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790495663512613667}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb41a2747febc2cfbfd827c4677b85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaHexa: 0.45
+  hexaSize: 1.4
+  borderSize: 1
+  borderColor: {r: 0.75, g: 0.75, b: 1, a: 1}
+  hexaColor: {r: 0.3098039, g: 1, b: 1, a: 1}
+  spotSize: 2.5
+  noiseSpeed: 1
+  noiseAlpha: 0.48
+  radius: 0.25
+--- !u!114 &1790495665408439079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790495663512613667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434203eced23c936b0b06dfdb9db8ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayTime: 2

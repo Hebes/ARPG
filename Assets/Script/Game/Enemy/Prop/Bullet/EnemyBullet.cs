@@ -39,8 +39,7 @@ public class EnemyBullet : BaseBehaviour
     {
         if (other.name == "PlayerHurtBox")
         {
-            PlayerHurtAtkEventArgs args = new PlayerHurtAtkEventArgs(other.transform.parent.gameObject, gameObject, origin, damage,
-                Incrementor.GetNextId(), atkData);
+            var args = new PlayerHurtAtkEventArgs(other.transform.parent.gameObject, gameObject, origin, damage, Incrementor.GetNextId(), atkData);
             GameEvent.PlayerHurtAtk.Trigger(args);
             if (hitAudio > 0)
             {
@@ -110,7 +109,7 @@ public class EnemyBullet : BaseBehaviour
     public void SetAtkData(JsonData jsonData)
     {
         $"子弹伤害设置".Log();
-        //atkData = jsonData;
+        atkData = jsonData;
     }
 
     private Transform player;
@@ -119,8 +118,9 @@ public class EnemyBullet : BaseBehaviour
     /// 是否被攻击
     /// </summary>
     public bool beAtked;
+
     public int damage;
-    public Dictionary<PlayerHurtDataType, string> atkData;
+    public JsonData atkData;
     [HideInInspector] public GameObject origin;
     [SerializeField] public int explosionEffect = 90;
     [SerializeField] private bool enableOnGround;

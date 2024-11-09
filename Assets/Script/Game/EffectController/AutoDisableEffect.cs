@@ -15,7 +15,8 @@ public class AutoDisableEffect : MonoBehaviour
 
     private void Update()
     {
-        if (Math.Abs(delayTime) < 1.4) return;
+        //1.4乘于10的负45次方
+        if (Math.Abs(delayTime) < 1.401298E-45f) return;
         if (_timeFromEnable > delayTime)
             Disable(transform);
         else

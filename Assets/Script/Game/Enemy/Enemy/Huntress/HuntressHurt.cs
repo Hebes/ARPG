@@ -6,17 +6,7 @@ using UnityEngine;
 /// </summary>
 public class HuntressHurt : EnemyBaseHurt
 {
-    #region 组件
-
     private HuntressAnimEvent _anim;
-
-    private void GetComponent()
-    {
-        atkBox = transform.FindChildByName("AtkBox 攻击区");
-        _anim = GetComponentInChildren<HuntressAnimEvent>();
-    }
-
-    #endregion
 
 
     protected override void Update()
@@ -37,15 +27,10 @@ public class HuntressHurt : EnemyBaseHurt
         }
     }
 
-    protected override void Init()
+    protected override void Start()
     {
-        GetComponent();
-        // defaultAnimName = "Hit1";
-        // defaultAirAnimName = "HitToFly1";
-        // airDieAnimName = "Fall";
-        // airDieHitGroundAnimName = "AirDie";
-        // flyToFallAnimName = "AirDiePre";
-        hurtData = DB.LevelEnemyData[EnemyType.女猎手.ToString()];
+        _anim = GetComponentInChildren<HuntressAnimEvent>();
+        hurtData = DB.EnemyHurtData[EnemyType.女猎手.ToString()];
     }
 
     /// <summary>
@@ -105,7 +90,7 @@ public class HuntressHurt : EnemyBaseHurt
             return;
         }
 
-        if (playerAtkName == "RollReady" || playerAtkName == "BladeStormReady")
+        if (playerAtkName is "RollReady" or "BladeStormReady")
         {
             Vector2? vector3 = atkFollowPos;
             if (vector3 == null)

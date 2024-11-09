@@ -126,6 +126,11 @@ public class EnemyQueue : MonoBehaviour
         // }
     }
 
+    /// <summary>
+    /// 检查敌人
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
     private IEnumerator CheckEnemy(EnemyType type)
     {
         yield return new WaitForSeconds(queueData.DelayTime);
@@ -155,6 +160,9 @@ public class EnemyQueue : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 随机敌人
+    /// </summary>
     private void RandomSuppleEnemy()
     {
         //随机敌人

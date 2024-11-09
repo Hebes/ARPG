@@ -175,7 +175,7 @@ public class PlayerMoveAbility : CharacterState
     /// <returns></returns>
     private Vector2 SlopeCheck(Vector2 speed)
     {
-        if (StateMachine.IsSta(PlayerAction.NormalSta))
+        if (StateMachine.currentState.IsInArray(PlayerAction.NormalSta))
         {
             Vector2 groundNormal = R.Player.PlatformMovement.GetGroundNormal();
             Vector2 vector = VU.ProjectOnPlane(speed, groundNormal);;

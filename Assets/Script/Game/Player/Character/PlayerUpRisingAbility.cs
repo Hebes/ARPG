@@ -11,14 +11,12 @@ public class PlayerUpRisingAbility : CharacterState
         if (Attribute.isOnGround)
         {
             R.Player.TimeController.SetSpeed(Vector2.zero);
-            if (R.Player.Enhancement.Combo1 != 0 && StateMachine.currentState.IsInArray(_canUpRisingSta))
+            if (R.Player.Enhancement.Combo1 != 0 && StateMachine.currentState.IsInArray(_canUpRisingSta))//上挑
             {
-                //上挑特殊转向处理,因为动画不是朝右边的
-                Vector3 temp = Listener.transform.localScale;
-                temp.x = -1;
-                Listener.transform.localScale = temp;
-                //下面的不是
-                weapon.HandleUpRising();
+                R.Player.AnimEvent.PhysicReset();
+                Weapon. AirAttackReset();
+                Action.ChangeState(PlayerStaEnum.UpRising);
+                Weapon.HandleUpRising();
             }
         }
     }

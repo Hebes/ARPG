@@ -1,6 +1,7 @@
 ﻿using System;
 using LitJson;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 敌人动画控制器
@@ -8,18 +9,14 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class EnemyAnimationController : MonoBehaviour
 {
-    private Animator _animator;
-    private TimeController _timeController;
-
-
     public event EventHandler<EffectArgs> OnAnimChange; //动画切换事件
     public event EventHandler<EffectArgs> OnAnimSpeedChange; //动画速度切换事件
 
     private void Awake()
     {
-        _timeController = transform.parent.FindComponent<TimeController>();
-        _animator = GetComponent<Animator>();
-        CurrentUnityAnim = string.Empty;
+        Transform tr = transform.parent;
+        _timeController = tr.FindComponent<TimeController>();
+        _animator = tr.FindComponent<Animator>();
     }
 
     /// <summary>
@@ -34,7 +31,7 @@ public class EnemyAnimationController : MonoBehaviour
         _lastAnimSpeed = animSpeed;
 
         //重复的不切换
-        if (loop && CurrentUnityAnim == animName && MathfX.isInMiddleRange(_lastAnimSpeed, animSpeed, 0.1f))
+        if (loop && currentUnityAnim == animName && MathfX.isInMiddleRange(_lastAnimSpeed, animSpeed, 0.1f))
             return;
 
         //切换动画
@@ -49,11 +46,11 @@ public class EnemyAnimationController : MonoBehaviour
         _animator.speed = animSpeed;
         OnAnimSpeedChange?.Invoke(this, new EffectArgs(animSpeed));
 
-        if (forceChange || CurrentUnityAnim != animName)
+        if (forceChange || currentUnityAnim != animName)
         {
-            CurrentUnityAnim = animName;
-            _animator.Play(CurrentUnityAnim);
-            OnAnimChange?.Invoke(this, new EffectArgs(CurrentUnityAnim, loop));
+            currentUnityAnim = animName;
+            _animator.Play(currentUnityAnim);
+            OnAnimChange?.Invoke(this, new EffectArgs(currentUnityAnim, loop));
         }
     }
 
@@ -86,5 +83,7 @@ public class EnemyAnimationController : MonoBehaviour
     /// </summary>
     public float TimeScale => _animator.speed;
 
-    [Header("当前动画名称")] public string CurrentUnityAnim;
+    public string currentUnityAnim = string.Empty;
+    private Animator _animator;
+    private TimeController _timeController;
 }
